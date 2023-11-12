@@ -50,10 +50,10 @@ the `README` file to find out which libraries your are missing.
 
 After downloading the package you need to unpack, compile and install the sources:
 
-```
-tar xf collectd-<span class="variable">version</span>.tar.bz2<br />
-cd collectd-<span class="variable">version</span><br />
-./configure<br />
+```shell
+tar xf collectd-${version?}.tar.bz2
+cd collectd-${version?}
+./configure
 make all install
 ```
 
@@ -62,7 +62,7 @@ make all install
 The Git repository, along with issue tracker and Pull Requests, is hosted on GitHub at
 http://github.com/collectd/collectd/.
 
-```
+```shell
 git clone git://github.com/collectd/collectd.git
 ```
 
@@ -82,7 +82,7 @@ is very welcome, of course&nbsp;:)
 
 Both, Debian and Ubuntu provide packages for collectd.
 
-```
+```shell
 apt-get install collectd
 ```
 
@@ -119,7 +119,7 @@ And *component* is one of:
 
 To verify downloaded packages, you need to add our continous integration PGP key to Apt:
 
-```
+```shell
 gpg --recv-keys 3994D24FB8543576
 gpg --export -a 3994D24FB8543576 | apt-key add -
 ```
@@ -158,7 +158,7 @@ pkg_add -r collectd
 To install the *port* (source package), use:
 
 ```shell
-cd /usr/ports/net-mgmt/collectd<br />
+cd /usr/ports/net-mgmt/collectd
 make clean install
 ```
 
@@ -175,7 +175,7 @@ Packages are available for Solaris 10/11 on x86 and SPARC. The available package
 
 *   [collectd](http://www.opencsw.org/packages/collectd/)<br>
     Collects system performance statistics periodically
-*   [collectd_plugins_all](http://www.opencsw.org/packages/collectd_plugins_all/)<br/>
+*   [collectd_plugins_all](http://www.opencsw.org/packages/collectd_plugins_all/)<br>
     CollectD Metapackage that pulls in all plugins
 
 Use the following command to install the package:
