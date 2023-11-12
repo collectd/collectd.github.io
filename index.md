@@ -1,4 +1,4 @@
-# collectd – The system statistics collection daemon
+<a href="https://storage.googleapis.com/collectd-tarballs/collectd-5.12.0.tar.bz2" id="download-tar-gz" class="button"><span>Download .tar.bz2</span></a>
 
 **collectd** is a
 [daemon](http://en.wikipedia.org/wiki/Daemon_%28computing%29) collecting system
