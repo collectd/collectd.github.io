@@ -1,4 +1,6 @@
-<a href="https://storage.googleapis.com/collectd-tarballs/collectd-5.12.0.tar.bz2" id="download-tar-gz" class="button"><span>Download .tar.bz2</span></a>
+<section id="downloads" class="clearfix">
+  <a href="{{ site.github.tar_url }}" id="download-tar-gz" class="button"><span>Download .tar.bz2</span></a>
+</section>
 
 **collectd** is a
 [daemon](http://en.wikipedia.org/wiki/Daemon_%28computing%29) collecting system

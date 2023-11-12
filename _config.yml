@@ -7,3 +7,5 @@ description: The system statistics collection daemon
 #google_analytics: [Your Google Analytics tracking ID]
 
 show_downloads: false
+github:
+  tar_url: "https://storage.googleapis.com/collectd-tarballs/collectd-5.12.0.tar.bz2"

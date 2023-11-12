@@ -16,7 +16,6 @@ The packages available are:
 *   [Source packages](#source)
     *   [Git repository](#git_repository)
     *   [Daily snapshots](#snapshot)
-  <!-- <li>[Development source packages](#development_source)</li> -->
 *   [Debian packages](#debian)
 *   [Fedora](#fedora)
 *   [RPM packages](#rpm)
