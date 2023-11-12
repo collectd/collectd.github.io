@@ -1,5 +1,5 @@
 <section id="downloads" class="clearfix">
-  <a href="{{ site.github.tar_url }}" id="download-tar-gz" class="button"><span>Download .tar.bz2</span></a>
+  <a href="https://storage.googleapis.com/collectd-tarballs/collectd-{{ site.current.version }}.tar.bz2" id="download-tar-gz" class="button"><span>Download .tar.bz2</span></a>
 </section>
 
 **collectd** is a

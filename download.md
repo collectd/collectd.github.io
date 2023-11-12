@@ -2,8 +2,6 @@
 title: Download
 ---
 
-# Download
-
 On this page you can download the collectd sources as GZip or BZip2 compressed
 tar&nbsp;archive. Some Linux distributions provide binary packages of
 collectd&nbsp;&ndash; you can find links to the package description pages where
@@ -32,9 +30,9 @@ These tarballs hold the collectd sources as published by the collectd
 developers. These are the *supported* versions, previous versions will not get
 updates.
 
-*   Version 5.12
-    *   [collectd-5.12.0.tar.bz2](https://storage.googleapis.com/collectd-tarballs/collectd-5.12.0.tar.bz2)<br>
-        SHA-256: `5bae043042c19c31f77eb8464e56a01a5454e0b39fa07cf7ad0f1bfc9c3a09d6`
+*   Version {{ site.current.version }}
+    *   [collectd-{{ site.current.version }}.tar.bz2](https://storage.googleapis.com/collectd-tarballs/collectd-{{ site.current.version }}.tar.bz2)<br>
+        SHA-256: `{{ site.current.sha256 }}`
 *   Version 5.11
     *   [collectd-5.11.0.tar.bz2](https://storage.googleapis.com/collectd-tarballs/collectd-5.11.0.tar.bz2)<br>
         `SHA-256: 37b10a806e34aa8570c1cafa6006c604796fae13cc2e1b3e630d33dcba9e5db2`
@@ -50,8 +48,8 @@ the `README` file to find out which libraries your are missing.
 After downloading the package you need to unpack, compile and install the sources:
 
 ```shell
-tar xf collectd-${version?}.tar.bz2
-cd collectd-${version?}
+tar xf collectd-{{ site.current.version }}.tar.bz2
+cd collectd-{{ site.current.version }}
 ./configure
 make all install
 ```
