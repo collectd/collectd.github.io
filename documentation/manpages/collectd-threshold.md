@@ -162,7 +162,7 @@ included in a `Type` block. Currently the following statements are recognized:
     If set to **true**, the minimum and maximum values given are interpreted as
     percentage value, relative to the other data sources. This is helpful for
     example for the "df" type, where you may want to issue a warning when less than
-    5 % of the total space is available. Defaults to **false**.
+    5 &#37; of the total space is available. Defaults to **false**.
 
 - **Hits** _Value_
 

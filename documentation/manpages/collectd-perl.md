@@ -345,7 +345,7 @@ exported by the ":plugin" export tag (see the section "EXPORTS" below).
 - **plugin\_dispatch\_values** (_value-list_)
 
     Submits a _value-list_ to the daemon. If the data-set identified by
-    _value-list_->{_type_}
+    _value-list_->&#123;_type_&#125;
     is found (and the number of values matches the number of data-sources) then the
     type, data-set and value-list is passed to all write-callbacks that are
     registered with the daemon.

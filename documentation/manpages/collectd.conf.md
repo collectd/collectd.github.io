@@ -292,7 +292,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
     _will_ be enqueued. If the number of metrics currently in the queue is between
     _LowNum_ and _HighNum_, the metric is dropped with a probability that is
     proportional to the number of metrics in the queue (i.e. it increases linearly
-    until it reaches 100%.)
+    until it reaches 100&#37;.)
 
     If **WriteQueueLimitHigh** is set to non-zero and **WriteQueueLimitLow** is
     unset, the latter will default to half of **WriteQueueLimitHigh**.
@@ -1183,7 +1183,7 @@ Synopsis:
     `TemperatureSensor` (uses fixed global temperature average instead).
     - **2** - formula as recommended by the Deutsche Wetterdienst (German
     Meteorological Service).
-    See [http://de.wikipedia.org/wiki/Barometrische\_H%C3%B6henformel#Theorie](http://de.wikipedia.org/wiki/Barometrische_H%C3%B6henformel#Theorie)
+    See [http://de.wikipedia.org/wiki/Barometrische\_H&#37;C3&#37;B6henformel#Theorie](http://de.wikipedia.org/wiki/Barometrische_H%C3%B6henformel#Theorie)
     For this method you have to configure both  `Altitude` and
     `TemperatureSensor`.
 
@@ -1210,7 +1210,7 @@ laptop batteries.
 
 - **ValuesPercentage** **false**|**true**
 
-    When enabled, remaining capacity is reported as a percentage, e.g. "42%
+    When enabled, remaining capacity is reported as a percentage, e.g. "42&#37;
     capacity remaining". Otherwise the capacity is stored as reported by the
     battery, most likely in "Wh". This option does not work with all input methods,
     in particular when only `/proc/pmu` is available on an old Linux system.
@@ -4270,7 +4270,7 @@ Example message:
 `Jan 17 05:24:27 pc1 mdadm[188]: NewArray event detected on md device /dev/md0`
 
 Plugin also classifies gathered event. This means that a notification will have
-a different severity {OKAY, WARNING, FAILURE} for particular mdadm event.
+a different severity &#123;OKAY, WARNING, FAILURE&#125; for particular mdadm event.
 
 For proper work, mdevents plugin needs syslog and mdadm utilities to be present on
 the running system. Otherwise it will not be compiled as a part of collectd.
@@ -8473,30 +8473,30 @@ The _sysevent_ plugin monitors rsyslog messages.
       RegexFilter "regex"
     </Plugin>
 
-    rsyslog should be configured such that it sends data to the IP and port you
-    include in the plugin configuration.  For example, given the configuration
-    above, something like this would be set in /etc/rsyslog.conf:
+rsyslog should be configured such that it sends data to the IP and port you
+include in the plugin configuration.  For example, given the configuration
+above, something like this would be set in /etc/rsyslog.conf:
 
-      if $programname != 'collectd' then
-      *.* @192.168.0.2:6666
+    if $programname != 'collectd' then
+    *.* @192.168.0.2:6666
 
-    This plugin is designed to consume JSON rsyslog data, so a more complete
-    rsyslog configuration would look like so (where we define a JSON template
-    and use it when sending data to our IP and port):
+This plugin is designed to consume JSON rsyslog data, so a more complete
+rsyslog configuration would look like so (where we define a JSON template
+and use it when sending data to our IP and port):
 
-      $template ls_json,"{%timestamp:::date-rfc3339,jsonf:@timestamp%, \
-      %source:::jsonf:@source_host%,\"@source\":\"syslog://%fromhost-ip:::json%\", \
-      \"@message\":\"%timestamp% %app-name%:%msg:::json%\",\"@fields\": \
-      {%syslogfacility-text:::jsonf:facility%,%syslogseverity:::jsonf:severity-num%, \
-      %syslogseverity-text:::jsonf:severity%,%programname:::jsonf:program%, \
-      %procid:::jsonf:processid%}}"
+    $template ls_json,"{ %timestamp:::date-rfc3339,jsonf:@timestamp%, \
+    %source:::jsonf:@source_host%,\"@source\":\"syslog://%fromhost-ip:::json%\", \
+    \"@message\":\"%timestamp% %app-name%:%msg:::json%\",\"@fields\": \
+    { %syslogfacility-text:::jsonf:facility%,%syslogseverity:::jsonf:severity-num%, \
+    %syslogseverity-text:::jsonf:severity%,%programname:::jsonf:program%, \
+    %procid:::jsonf:processid%}}"
 
-      if $programname != 'collectd' then
-      *.* @192.168.0.2:6666;ls_json
+    if $programname != 'collectd' then
+    *.* @192.168.0.2:6666;ls_json
 
-    Please note that these rsyslog.conf examples are *not* complete, as rsyslog
-    requires more than these options in the configuration file.  These examples
-    are meant to demonstration the proper remote logging and JSON format syntax.
+Please note that these rsyslog.conf examples are \*not\* complete, as rsyslog
+requires more than these options in the configuration file. These examples
+are meant to demonstration the proper remote logging and JSON format syntax.
 
 **Options:**
 
@@ -11196,7 +11196,7 @@ included in a `Type` block. Currently the following statements are recognized:
     If set to **true**, the minimum and maximum values given are interpreted as
     percentage value, relative to the other data sources. This is helpful for
     example for the "df" type, where you may want to issue a warning when less than
-    5 % of the total space is available. Defaults to **false**.
+    5 &#37; of the total space is available. Defaults to **false**.
 
 - **Hits** _Number_
 
@@ -11206,7 +11206,7 @@ included in a `Type` block. Currently the following statements are recognized:
     collected once every 10 seconds and **Hits** is set to 3, a notification
     will be dispatched at most once every 30 seconds.
 
-    This is useful when short bursts are not a problem. If, for example, 100% CPU
+    This is useful when short bursts are not a problem. If, for example, 100&#37; CPU
     usage for up to a minute is normal (and data is collected every
     10 seconds), you could set **Hits** to **6** to account for this.
 
@@ -11791,15 +11791,15 @@ plugins to be loaded:
         This required option sets the message of the notification. The following
         placeholders will be replaced by an appropriate value:
 
-        - **%{host}**
-        - **%{plugin}**
-        - **%{plugin\_instance}**
-        - **%{type}**
-        - **%{type\_instance}**
+        - **&#37;&#123;host&#125;**
+        - **&#37;&#123;plugin&#125;**
+        - **&#37;&#123;plugin\_instance&#125;**
+        - **&#37;&#123;type&#125;**
+        - **&#37;&#123;type\_instance&#125;**
 
             These placeholders are replaced by the identifier field of the same name.
 
-        - **%{ds:**_name_**}**
+        - **&#37;&#123;ds:**_name_**&#125;**
 
             These placeholders are replaced by a (hopefully) human readable representation
             of the current rate of this data source. If you changed the instance name
@@ -11869,15 +11869,15 @@ plugins to be loaded:
 
         The following placeholders will be replaced by an appropriate value:
 
-        - **%{host}**
-        - **%{plugin}**
-        - **%{plugin\_instance}**
-        - **%{type}**
-        - **%{type\_instance}**
+        - **&#37;&#123;host&#125;**
+        - **&#37;&#123;plugin&#125;**
+        - **&#37;&#123;plugin\_instance&#125;**
+        - **&#37;&#123;type&#125;**
+        - **&#37;&#123;type\_instance&#125;**
 
             These placeholders are replaced by the identifier field of the same name.
 
-        - **%{meta:**_name_**}**
+        - **&#37;&#123;meta:**_name_**&#125;**
 
             These placeholders are replaced by the meta data value with the given name.
 

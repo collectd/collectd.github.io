@@ -2,6 +2,13 @@
 
 for f in ~/collectd/src/*.pod
 do
-	#perl -MPod::Markdown -e 'Pod::Markdown->new->filter(@ARGV)' "${f}" >$(basename "${f/pod/md}")
-	pod2markdown --utf8 "${f}" >$(basename "${f/pod/md}")
+	outfile="$(basename "${f/pod/md}")"
+	# Escape characters used by the templating engine, '{', '}', and '%'.
+	echo -n "Generating ${outfile} ... "
+	pod2markdown --utf8 --html-encode-chars='{%}' "${f}" >"${outfile}"
+
+	# Prevent '{%' and '{{' from appearing, e.g. in code blocks
+	sed -i -e 's/{%/{ %/g' -e 's/{{/{ {/g' "${outfile}"
+
+	echo "done"
 done
