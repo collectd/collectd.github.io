@@ -50,7 +50,7 @@ The following commands are implemented:
     value-list is returned. The response is a list of name-value-pairs, each pair
     on its own line (the number of lines is indicated by the status line - see
     above). Each name-value-pair is of the form _name_**=**_value_.
-    Counter-values are converted to a rate, e. g. bytes per second.
+    Counter-values are converted to a rate, e.Â g. bytes per second.
     Undefined values are returned as **NaN**.
 
     Example:
@@ -88,7 +88,7 @@ The following commands are implemented:
     omitted, too. _plugin_ and each _instance_-part may be chosen freely as long
     as the tuple (plugin, plugin instance, type instance) uniquely identifies the
     plugin within collectd. _type_ identifies the type and number of values
-    (i. e. data-set) passed to collectd. A large list of predefined
+    (i.Â e. data-set) passed to collectd. A large list of predefined
     data-sets is available in the **types.db** file.
 
     The _OptionList_ is an optional list of _Options_, where each option is a
@@ -100,7 +100,7 @@ The following commands are implemented:
     an integer if the data-source is a counter, or a double if the data-source is
     of type "gauge". You can submit an undefined gauge-value by using **U**. When
     submitting **U** to a counter the behavior is undefined. The time is given as
-    epoch (i. e. standard UNIX time).
+    epoch (i.Â e. standard UNIX time).
 
     You can mix options and values, but the order is important: Options only
     effect following values, so specifying an option as last field is allowed, but
@@ -150,7 +150,7 @@ The following commands are implemented:
 
     - **time=**_Time_ (**REQUIRED**)
 
-        Sets the time of the notification. The time is given as "epoch", i. e. as
+        Sets the time of the notification. The time is given as "epoch", i.Â e. as
         seconds since January 1st, 1970, 00:00:00. This option is mandatory.
 
     - **host=**_Hostname_
@@ -160,7 +160,7 @@ The following commands are implemented:
     - **type\_instance=**_Type-Instance_
 
         These "associative" options establish a relation between this notification and
-        collected performance data. This connection is purely informal, i. e. the
+        collected performance data. This connection is purely informal, i.Â e. the
         daemon itself doesn't do anything with this information. However, websites or
         GUIs may use this information to place notifications near the affected graph or
         table. All the options are optional, but **plugin\_instance** without **plugin**

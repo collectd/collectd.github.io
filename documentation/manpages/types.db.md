@@ -35,7 +35,9 @@ minimum and maximum values: _ds-name_**:**_ds-type_**:**_min_**:**_max_.
 - _ds-name_ is, by convention, a lower-case alphanumeric string. If the data set
 contains a single data source, it is called "value" by convention. Data source
 names must be unique within a data set.
-- _ds-type_ may be **DERIVE**, **GAUGE**, or **COUNTER**.
+- _ds-type_ may be **DERIVE**, **GAUGE**, or **COUNTER**. For historic reasons a
+type called **ABSOLUTE** is also supported, but its use is strongly discouraged,
+and it should not be used for new metric type definitions.
 - _min_ and _max_ define the range of valid values this data source. Either or
 both may be unbounded, which is specified by providing `U` instead of a
 number. For cumulative metric values, _min_ and _max_ apply to the value's
@@ -45,7 +47,7 @@ rate, not the raw cumulative metric value.
 
 The location of the types.db file is defined by the **TypesDB** configuration
 option (see [collectd.conf(5)](http://man.he.net/man5/collectd.conf)). It defaults to collectd's shared data
-directory, i. e. `_prefix_/share/collectd/`.
+directory, i.Â e. `_prefix_/share/collectd/`.
 
 # CUSTOM TYPES
 
@@ -71,7 +73,7 @@ sending values over the network.
 # AUTHOR
 
 **collectd** has been written by Florian Forster
-&lt;octo at collectd.org>.
+&lt;octoÂ atÂ collectd.org>.
 
 This manpage has been written by Sebastian Harl
-&lt;sh at tokkee.org>.
+&lt;shÂ atÂ tokkee.org>.

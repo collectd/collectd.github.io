@@ -106,7 +106,7 @@ example. The following types of **callback functions** are known to collectd
 
     This type of functions is called once after loading the module and before any
     calls to the read and write functions. It should be used to initialize the
-    internal state of the plugin (e. g. open sockets, ...). If the return
+    internal state of the plugin (e.Â g. open sockets, ...). If the return
     value evaluates to **false**, the plugin will be disabled.
 
 - read functions
@@ -157,7 +157,7 @@ See the documentation of the **plugin\_register** method in the section
 **callback function**. This section also explains how to register **callback
 functions** with collectd.
 
-To enable a plugin, copy it to a place where Perl can find it (i. e. a
+To enable a plugin, copy it to a place where Perl can find it (i.Â e. a
 directory listed in the **@INC** array) just as any other Perl plugin and add
 an appropriate **LoadPlugin** option to the configuration file. After
 restarting collectd you're done.
@@ -188,7 +188,7 @@ and collectd:
 
         [{
           name => 'data_source_name',
-          type => DS_TYPE_COUNTER || DS_TYPE_GAUGE || DS_TYPE_DERIVE,
+          type => DS_TYPE_COUNTER || DS_TYPE_GAUGE || DS_TYPE_DERIVE || DS_TYPE_ABSOLUTE,
           min  => value || undef,
           max  => value || undef
         }, ...]
@@ -196,7 +196,7 @@ and collectd:
 - Value-List
 
     A value-list is one structure which features an array of values and fields to
-    identify the values, i. e. time and host, plugin name and
+    identify the values, i.Â e. time and host, plugin name and
     plugin-instance as well as a type and type-instance. Since the "type" is not
     included in the value-list but is passed as an extra argument, the general
     layout looks like this:
@@ -340,7 +340,7 @@ exported by the ":plugin" export tag (see the section "EXPORTS" below).
 - **plugin\_unregister** (_type_, _plugin_)
 
     Removes a callback or data-set from collectd's internal list of
-    functions / datasets.
+    functionsÂ / datasets.
 
 - **plugin\_dispatch\_values** (_value-list_)
 
@@ -492,6 +492,7 @@ available (**:all** will export all of them):
     - **DS\_TYPE\_COUNTER**
     - **DS\_TYPE\_GAUGE**
     - **DS\_TYPE\_DERIVE**
+    - **DS\_TYPE\_ABSOLUTE**
 - **:log**
     - **ERROR** ()
     - **WARNING** ()
@@ -578,7 +579,7 @@ types used by the read, write and match functions.
 # NOTES
 
 - Please feel free to send in new plugins to collectd's mailing list at
-&lt;collectd at collectd.org> for review and, possibly,
+&lt;collectdÂ atÂ collectd.org> for review and, possibly,
 inclusion in the main distribution. In the latter case, we will take care of
 keeping the plugin up to date and adapting it to new versions of collectd.
 
@@ -592,13 +593,13 @@ plugin will be mapped to a Perl interpreter thread (see [threads(3perl)](http://
 Any such thread will be created and destroyed transparently and on-the-fly.
 
     Hence, any plugin has to be thread-safe if it provides several entry points
-    from collectd (i. e. if it registers more than one callback or if a
+    from collectd (i.Â e. if it registers more than one callback or if a
     registered callback may be called more than once in parallel). Please note
     that no data is shared between threads by default. You have to use the
     **threads::shared** module to do so.
 
 - Each function name registered with collectd has to be available before the
-first thread has been created (i. e. basically at compile time). This
+first thread has been created (i.Â e. basically at compile time). This
 basically means that hacks (yes, I really consider this to be a hack) like
 `*foo = \&bar; plugin_register (TYPE_READ, "plugin", "foo");` most likely
 will not work. This is due to the fact that the symbol table is not shared
@@ -627,8 +628,8 @@ dispatched by the perl plugin after upgrades.
 # AUTHOR
 
 The `perl plugin` has been written by Sebastian Harl
-&lt;sh at tokkee.org>.
+&lt;shÂ atÂ tokkee.org>.
 
 This manpage has been written by Florian Forster
-&lt;octo at collectd.org> and Sebastian Harl
-&lt;sh at tokkee.org>.
+&lt;octoÂ atÂ collectd.org> and Sebastian Harl
+&lt;shÂ atÂ tokkee.org>.

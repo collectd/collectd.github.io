@@ -56,4 +56,4 @@ once.
 
 # AUTHOR
 
-Florian Forster &lt;octo at collectd.org>
+Florian Forster &lt;octoÂ atÂ collectd.org>

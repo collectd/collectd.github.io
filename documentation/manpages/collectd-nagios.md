@@ -78,8 +78,8 @@ as no argument is passed more than once.
     used as a _min_ value, negative infinity is used. In case of _max_, it is
     interpreted as positive infinity.
 
-    If the first character of the _range_ is the at sign (**@**), the meaning
-    of the range will be inverted. I. e. all values _within_ the range will
+    If the first character of the _range_ is the atÂ sign (**@**), the meaning
+    of the range will be inverted. I.Â e. all values _within_ the range will
     yield a _warning_ or _critical_ status, while all values _outside_ the range
     will result in a _success_ status.
 
@@ -110,4 +110,4 @@ it returns **3** for _unknown_.
 
 # AUTHOR
 
-Florian Forster &lt;octo at collectd.org>
+Florian Forster &lt;octoÂ atÂ collectd.org>

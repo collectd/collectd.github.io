@@ -138,5 +138,5 @@ collectd has been written by Florian Forster &lt;octo at collectd.org>
 and many contributors (see \`AUTHORS').
 
 collectdctl has been written by
-H�kon J Dugstad Johnsen &lt;hakon-dugstad.johnsen at telenor.com>
+Håkon J Dugstad Johnsen &lt;hakon-dugstad.johnsen at telenor.com>
 and Sebastian Harl &lt;sh at tokkee.org>.

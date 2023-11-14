@@ -164,7 +164,7 @@ example. The following types of **callback functions** are known to collectd
 
     These are called once after loading the module and before any
     calls to the read and write functions. It should be used to initialize the
-    internal state of the plugin (e. g. open sockets, ...). This is the
+    internal state of the plugin (e.Â g. open sockets, ...). This is the
     earliest point where you may use threads.
 
 - read functions
@@ -216,7 +216,7 @@ See the documentation of the various **register\_** methods in the section
 **callback function**. This section also explains how to register **callback
 functions** with collectd.
 
-To enable a module, copy it to a place where Python can find it (i. e. a
+To enable a module, copy it to a place where Python can find it (i.Â e. a
 directory listed in **sys.path**) just as any other Python plugin and add
 an appropriate **Import** option to the configuration file. After restarting
 collectd you're done.
@@ -567,7 +567,7 @@ The following functions provide the C-interface to Python-modules.
     - type
 
         A string that is equal to either of the variables **DS\_TYPE\_COUNTER**,
-        **DS\_TYPE\_GAUGE**, or **DS\_TYPE\_DERIVE**.
+        **DS\_TYPE\_GAUGE**, **DS\_TYPE\_DERIVE** or **DS\_TYPE\_ABSOLUTE**.
 
     - min
 
@@ -624,7 +624,7 @@ plugin will be mapped to a Python interpreter thread. Any such thread will be
 created and destroyed transparently and on-the-fly.
 
     Hence, any plugin has to be thread-safe if it provides several entry points
-    from collectd (i. e. if it registers more than one callback or if a
+    from collectd (i.Â e. if it registers more than one callback or if a
     registered callback may be called more than once in parallel).
 
 - The Python thread module is initialized just before calling the init callbacks.
@@ -653,10 +653,10 @@ but is not limited to filters.
 # AUTHOR
 
 The `python plugin` has been written by
-Sven Trenkel &lt;collectd at semidefinite.de>.
+Sven Trenkel &lt;collectdÂ atÂ semidefinite.de>.
 
 This manpage has been written by Sven Trenkel
-&lt;collectd at semidefinite.de>.
+&lt;collectdÂ atÂ semidefinite.de>.
 It is based on the [collectd-perl(5)](http://man.he.net/man5/collectd-perl) manual page by
-Florian Forster &lt;octo at collectd.org> and
-Sebastian Harl &lt;sh at tokkee.org>.
+Florian Forster &lt;octoÂ atÂ collectd.org> and
+Sebastian Harl &lt;shÂ atÂ tokkee.org>.

@@ -80,8 +80,8 @@ with them. Common applications are writing to RRD-files, CSV-files or sending
 the data over a network link to a remote box.
 
 Of course not all plugins fit neatly into one of the two above categories. The
-`network plugin`, for example, is able to send (i. e. "write") **and**
-receive (i. e. "dispatch") values. Also, it opens a socket upon
+`network plugin`, for example, is able to send (i.Â e. "write") **and**
+receive (i.Â e. "dispatch") values. Also, it opens a socket upon
 initialization and dispatches the values when it receives them and isn't
 triggered at the same time the input plugins are being read. You can think of
 the network receive part as working asynchronous if it helps.
@@ -112,7 +112,7 @@ detail. In particular those are [collectd-email(5)](http://man.he.net/man5/colle
 - **SIGUSR1**
 
     This signal causes **collectd** to signal all plugins to flush data from
-    internal caches. E. g. the `rrdtool plugin` will write all pending data
+    internal caches. E.Â g. the `rrdtool plugin` will write all pending data
     to the RRD files. This is the same as using the `FLUSH -1` command of the
     `unixsock plugin`.
 

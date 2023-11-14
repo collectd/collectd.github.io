@@ -124,12 +124,12 @@ The following functions are provided to Lua modules:
 # AUTHOR
 
 The `Lua plugin` has been written by
-Julien Ammous &lt;j.ammous at gmail.com>,
-Florian Forster &lt;octo at collectd.org> and
-Ruben Kerkhof &lt;ruben at rubenkerkhof.com>.
+Julien Ammous &lt;j.ammousÂ atÂ gmail.com>,
+Florian Forster &lt;octoÂ atÂ collectd.org> and
+Ruben Kerkhof &lt;rubenÂ atÂ rubenkerkhof.com>.
 
 This manpage has been written by Ruben Kerkhof
-&lt;ruben at rubenkerkhof.com>.
+&lt;rubenÂ atÂ rubenkerkhof.com>.
 It is based on the [collectd-perl(5)](http://man.he.net/man5/collectd-perl) manual page by
-Florian Forster &lt;octo at collectd.org> and
-Sebastian Harl &lt;sh at tokkee.org>.
+Florian Forster &lt;octoÂ atÂ collectd.org> and
+Sebastian Harl &lt;shÂ atÂ tokkee.org>.

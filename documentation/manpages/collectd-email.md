@@ -53,8 +53,8 @@ with the plugin:
 
 # AUTHOR
 
-The `email plugin` has been written by Sebastian Harl &lt;sh at tokkee.org>.
+The `email plugin` has been written by Sebastian Harl &lt;shÂ atÂ tokkee.org>.
 
-The SpamAssassin-plugin has been written by Alexander Wirt &lt;formorer at formorer.de>.
+The SpamAssassin-plugin has been written by Alexander Wirt &lt;formorerÂ atÂ formorer.de>.
 
-This manpage has been written by Florian Forster &lt;octo at collectd.org>.
+This manpage has been written by Florian Forster &lt;octoÂ atÂ collectd.org>.

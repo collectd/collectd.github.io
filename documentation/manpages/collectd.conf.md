@@ -313,8 +313,8 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
 
     If **Hostname** is determined automatically this setting controls whether or not
     the daemon should try to figure out the "fully qualified domain name", FQDN.
-    This is done using a lookup of the name returned by `gethostname`. This option
-    is enabled by default.
+    This is achieved by using `getaddrinfo()` to look up full web address of the
+    first network interface that has one. This option is enabled by default.
 
 - **PreCacheChain** _ChainName_
 - **PostCacheChain** _ChainName_
@@ -643,10 +643,10 @@ _Publish_ blocks in the future.
 
 - **StoreRates** **true**|**false** (Publish only)
 
-    Determines whether or not `COUNTER` and `DERIVE` data sources are converted
-    to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the default), no
-    conversion is performed. Otherwise the conversion is performed using the
-    internal value cache.
+    Determines whether or not `COUNTER`, `DERIVE` and `ABSOLUTE` data sources
+    are converted to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the
+    default), no conversion is performed. Otherwise the conversion is performed
+    using the internal value cache.
 
     Please note that currently this option is only used if the **Format** option has
     been set to **JSON**.
@@ -797,10 +797,11 @@ The following options are accepted within each _Transport_ block:
     to reconnect at 1 second intervals.
 
 - **SendQueueLimit** _SendQueueLimit_
-If there is no AMQP1 connection, the plugin will continue to queue
-messages to send, which could result in unbounded memory consumption. This
-parameter is used to limit the number of messages in the outbound queue to
-the specified value. The default value is 0, which disables this feature.
+
+    If there is no AMQP1 connection, the plugin will continue to queue
+    messages to send, which could result in unbounded memory consumption. This
+    parameter is used to limit the number of messages in the outbound queue to
+    the specified value. The default value is 0, which disables this feature.
 
 The following options are accepted within each _Instance_ block:
 
@@ -840,10 +841,10 @@ The following options are accepted within each _Instance_ block:
 
 - **StoreRates** **true**|**false**
 
-    Determines whether or not `COUNTER` and `DERIVE` data sources are converted
-    to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the default), no
-    conversion is performed. Otherwise the conversion is performed using the
-    internal value cache.
+    Determines whether or not `COUNTER`, `DERIVE` and `ABSOLUTE` data sources
+    are converted to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the
+    default), no conversion is performed. Otherwise the conversion is performed
+    using the internal value cache.
 
     Please note that currently this option is only used if the **Format** option has
     been set to **JSON**.
@@ -1017,6 +1018,51 @@ library provided by _aquatools-ng_.
     Device path of the Aquaero 5's USB HID (human interface device), usually
     in the form `/dev/usb/hiddevX`. If this option is no set the plugin will try
     to auto-detect the Aquaero 5 USB device based on vendor-ID and product-ID.
+
+## Plugin `ascent`
+
+This plugin collects information about an Ascent server, a free server for the
+"World of Warcraft" game. This plugin gathers the information by fetching the
+XML status page using `libcurl` and parses it using `libxml2`.
+
+The configuration options are the same as for the `apache` plugin above:
+
+- **URL** _http://localhost/ascent/status/_
+
+    Sets the URL of the XML status output.
+
+- **User** _Username_
+
+    Optional user name needed for authentication.
+
+- **Password** _Password_
+
+    Optional password needed for authentication.
+
+- **VerifyPeer** **true|false**
+
+    Enable or disable peer SSL certificate verification. See
+    [http://curl.haxx.se/docs/sslcerts.html](http://curl.haxx.se/docs/sslcerts.html) for details. Enabled by default.
+
+- **VerifyHost** **true|false**
+
+    Enable or disable peer host name verification. If enabled, the plugin checks
+    if the `Common Name` or a `Subject Alternate Name` field of the SSL
+    certificate matches the host name provided by the **URL** option. If this
+    identity check fails, the connection is aborted. Obviously, only works when
+    connecting to a SSL enabled server. Enabled by default.
+
+- **CACert** _File_
+
+    File that holds one or more SSL certificates. If you want to use HTTPS you will
+    possibly need this option. What CA certificates come bundled with `libcurl`
+    and are checked by default depends on the distribution you use.
+
+- **Timeout** _Milliseconds_
+
+    The **Timeout** option sets the overall timeout for HTTP requests to **URL**, in
+    milliseconds. By default, the configured **Interval** is used to set the
+    timeout.
 
 ## Plugin `barometer`
 
@@ -1655,6 +1701,11 @@ wall clock.
     If set to **true**, convert counter values to rates. If set to **false** (the
     default) counter values are stored as is, i. e. as an increasing integer
     number.
+
+- **FileDate** **true|false**
+
+    If set to **true** (the default value), the generated files will include the date.
+    If set to **false** the date will not be included in the generated files.
 
 ## cURL Statistics
 
@@ -3459,73 +3510,28 @@ are formatted like `DEVICE:PORTNUM` (see examples below).
 The _intel\_pmu_ plugin collects performance counters data on Intel CPUs using
 Linux perf interface. All events are reported on a per core basis.
 
+**Note:** When using intel\_pmu plugin number of reading threads in collectd
+should be adjusted accordingly. The value should be more than a half of
+configured cores, so for 60 monitored cores the recommendation is to set
+**ReadThreads** > 30. The optimal number of **WriteThreads** depends on volume
+of metrics from read plugins, interval and number of enabled write plugins.
+The above adjustments can help with performance scaling when monitoring a high
+number of events on many cores.
+
 **Synopsis:**
 
     <Plugin intel_pmu>
-      ReportHardwareCacheEvents true
-      ReportKernelPMUEvents true
-      ReportSoftwareEvents true
-      EventList "/var/cache/pmu/GenuineIntel-6-2D-core.json"
+      EventList "/var/cache/pmu/GenuineIntel-6-55-4-core.json"
       HardwareEvents "L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS" "L2_RQSTS.ALL_CODE_RD"
       Cores "0-3" "4,6" "[12-15]"
-      DispatchMultiPmu false
+      HardwareEvents "L2_RQSTS.PF_MISS"
+      Cores "[1,2]"
+      HardwareEvents "INST_RETIRED.ANY" "CPU_CLK_UNHALTED.THREAD"
+      Cores ""
+      AggregateUncorePMUs true
     </Plugin>
 
 **Options:**
-
-- **ReportHardwareCacheEvents** **false**|**true**
-
-    Enable or disable measuring of hardware CPU cache events:
-      - L1-dcache-loads
-      - L1-dcache-load-misses
-      - L1-dcache-stores
-      - L1-dcache-store-misses
-      - L1-dcache-prefetches
-      - L1-dcache-prefetch-misses
-      - L1-icache-loads
-      - L1-icache-load-misses
-      - L1-icache-prefetches
-      - L1-icache-prefetch-misses
-      - LLC-loads
-      - LLC-load-misses
-      - LLC-stores
-      - LLC-store-misses
-      - LLC-prefetches
-      - LLC-prefetch-misses
-      - dTLB-loads
-      - dTLB-load-misses
-      - dTLB-stores
-      - dTLB-store-misses
-      - dTLB-prefetches
-      - dTLB-prefetch-misses
-      - iTLB-loads
-      - iTLB-load-misses
-      - branch-loads
-      - branch-load-misses
-
-- **ReportKernelPMUEvents** **false**|**true**
-
-    Enable or disable measuring of the following events:
-      - cpu-cycles
-      - instructions
-      - cache-references
-      - cache-misses
-      - branches
-      - branch-misses
-      - bus-cycles
-
-- **ReportSoftwareEvents** **false**|**true**
-
-    Enable or disable measuring of software events provided by kernel:
-      - cpu-clock
-      - task-clock
-      - context-switches
-      - cpu-migrations
-      - page-faults
-      - minor-faults
-      - major-faults
-      - alignment-faults
-      - emulation-faults
 
 - **EventList** _filename_
 
@@ -3536,7 +3542,10 @@ Linux perf interface. All events are reported on a per core basis.
 - **HardwareEvents** _events_
 
     This field is a list of event names or groups of comma separated event names.
-    This option requires **EventList** option to be configured.
+    This option requires **EventList** option to be configured. If "All" is
+    provided, all events from **EventList** are going to be loaded. This option
+    can be used multiple times in pair with **Cores** option, as shown in example
+    above.
 
 - **Cores** _cores groups_
 
@@ -3554,12 +3563,18 @@ Linux perf interface. All events are reported on a per core basis.
 
     If an empty string is provided as value for this field default cores
     configuration is applied - that is separate group is created for each core.
+    This option can be used once for every **HardwareEvents** set.
 
-- **DispatchMultiPmu** **false**|**true**
+- **AggregateUncorePMUs** **false**|**true**
 
-    Enable or disable dispatching of cloned multi PMU for uncore events. If
-    disabled only total sum is dispatched as single event. If enabled separate
-    metric is dispatched for every counter.
+    This option toggles the event value reporting from all the uncore PMUs to either
+    dispatch as aggregated value in a single metric or dispatch as individual
+    values. If **AggregateUncorePMUs** is set to 'true', uncore events from the
+    various PMU subsystems across uncore are reported as a single metric, usually
+    reported as single 'Core0' events. The total value is obtained by summing all
+    counters across all the units (e.g. CHAs). If **AggregateUncorePMUs** is set to
+    'false', values from the individual PMU subsystems across uncore are dispatched
+    separately with PMU name/number added to Collectd's _plugin\_instance_.
 
 ## Plugin `intel_rdt`
 
@@ -3582,6 +3597,8 @@ Please refer to _contrib/systemd.collectd.service_ file for more details.
 **Synopsis:**
 
     <Plugin "intel_rdt">
+      MonIPCEnabled true
+      MonLLCRefEnabled false
       Cores "0-2" "3,4,6" "8-10,15"
       Processes "sshd,qemu-system-x86" "bash"
     </Plugin>
@@ -3594,6 +3611,17 @@ Please refer to _contrib/systemd.collectd.service_ file for more details.
     For milliseconds divide the time by 1000 for example if the desired interval
     is 50ms, set interval to 0.05. Due to limited capacity of counters it is not
     recommended to set interval higher than 1 sec.
+
+- **MonIPCEnabled** **true**|**false**
+
+    Determines whether or not to enable IPC monitoring. If set to **true** (the
+    default), IPC monitoring statistics will be collected by intel\_rdt plugin.
+
+- **MonLLCRefEnabled** **true**|**false**
+
+    Determines whether or not to enable LLC references monitoring. If set to
+    **false** (the default), LLC references monitoring statistics will not be
+    collected by intel\_rdt plugin.
 
 - **Cores** _cores groups_
 
@@ -4269,20 +4297,20 @@ lists are empty - plugin will accept entry anyway.
 
     Names of events to be monitored, separated by spaces. Possible events include:
 
-    Event Name        | Class of event
-    \------------------+---------------
-    DeviceDisappeared | FAILURE
-    RebuildStarted    | OKAY
-    RebuildNN         | OKAY
-    RebuildFinished   | WARNING
-    Fail              | FAILURE
-    FailSpare         | WARNING
-    SpareActive       | OKAY
-    NewArray          | OKAY
-    DegradedArray     | FAILURE
-    MoveSpare         | WARNING
-    SparesMissing     | WARNING
-    TestMessage       | OKAY
+        Event Name        | Class of event
+        ------------------+---------------
+        DeviceDisappeared | FAILURE
+        RebuildStarted    | OKAY
+        RebuildNN         | OKAY
+        RebuildFinished   | WARNING
+        Fail              | FAILURE
+        FailSpare         | WARNING
+        SpareActive       | OKAY
+        NewArray          | OKAY
+        DegradedArray     | FAILURE
+        MoveSpare         | WARNING
+        SparesMissing     | WARNING
+        TestMessage       | OKAY
 
     User should set the events that should be monitored as a strings separated by spaces,
     for example Events "DeviceDisappeared Fail DegradedArray".
@@ -4687,7 +4715,7 @@ notation).
         **RegisterType** has been set to **Uint32** or **Float**, this and the next
         register will be read (the register number is increased by one).
 
-    - **RegisterType** **Int16**|**Int32**|**Int64**|**Uint16**|**Uint32**|**UInt64**|**Float**|**Int32LE**|**Uint32LE**|**FloatLE**
+    - **RegisterType** **Int16**|**Int32**|**Int64**|**Uint16**|**Uint32**|**UInt64**|**Float**|**Int32LE**|**Uint32LE**|**FloatLE**|**Double**
 
         Specifies what kind of data is returned by the device. This defaults to
         **Uint16**.  If the type is **Int32**, **Int32LE**, **Uint32**, **Uint32LE**,
@@ -4699,10 +4727,10 @@ notation).
         For **Int32LE**, **Uint32LE**, or **Float32LE**, the high and low order
         registers are swapped with the most significant 16 bits in
         the **RegisterBase+1** and the least significant 16 bits in
-        **RegisterBase**. If the type is **Int64** or **UInt64**, four 16 bit
-        registers at **RegisterBase**, **RegisterBase+1**, **RegisterBase+2** and
-        **RegisterBase+3** will be read and the data combined into one
-        64 value.
+        **RegisterBase**. If the type is **Int64**, **UInt64** or **Double**, four
+        16 bit registers at **RegisterBase**, **RegisterBase+1**, **RegisterBase+2**
+        and **RegisterBase+3** will be read and the data combined into one 64 bit
+        value.
 
     - **RegisterCmd** **ReadHolding**|**ReadInput**
 
@@ -5913,6 +5941,12 @@ The following options are accepted by the `nginx plugin`:
     The **Timeout** option sets the overall timeout for HTTP requests to **URL**, in
     milliseconds. By default, the configured **Interval** is used to set the
     timeout.
+
+- **Socket** _Path_
+
+    The **Socket** option sets the UNIX domain socket to use, if the NGINX listens
+    on a UNIX domain socket instead. Note that you still need to provide the
+    **URL** option.
 
 ## Plugin `notify_desktop`
 
@@ -7291,6 +7325,7 @@ The statistics collected for matched processes are:
       CollectFileDescriptor  true
       CollectContextSwitch   true
       CollectDelayAccounting false
+      CollectSystemContextSwitch false
       Process "name"
       ProcessMatch "name" "regex"
       <Process "collectd">
@@ -7346,6 +7381,13 @@ The statistics collected for matched processes are:
     Collect the number of memory mapped files of the process.
     The limit for this number is configured via `/proc/sys/vm/max_map_count` in
     the Linux kernel.
+
+- **CollectSystemContextSwitch** _Boolean_
+
+    Collect the number of context switches at the system level.
+    Collect ctxt fields from /proc/stat in linux systems.
+    Can be configured only outside the **Process** and **ProcessMatch**
+    blocks.
 
 The **CollectContextSwitch**, **CollectDelayAccounting**,
 **CollectFileDescriptor** and **CollectMemoryMaps** options may be used inside
@@ -7419,6 +7461,55 @@ Available configuration options:
 
 This plugin embeds a Python-interpreter into collectd and provides an interface
 to collectd's plugin system. See [collectd-python(5)](http://man.he.net/man5/collectd-python) for its documentation.
+
+## Plugin `ras`
+
+The `ras` plugin gathers and counts errors provided by \[RASDaemon\]
+(https://github.com/mchehab/rasdaemon). This plugin requires access to SQLite3
+database from \`RASDaemon\`.
+
+Metrics:
+  type: ras\_errors
+  plugin\_instance: CPU\_(number CPU) for metrics per CPU Core metric. For metrics per Server metrics this value is empty.
+  type\_instance:
+    per CPU Core:
+      - memory\_read\_corrected\_errors
+      - memory\_read\_uncorrectable\_errors
+      - memory\_write\_corrected\_errors
+      - memory\_write\_uncorrectable\_errors
+      - cache\_l0\_l1\_errors
+      - tlb\_instruction\_errors
+      - processor\_base\_errors
+      - processor\_bus\_errors
+      - internal\_timer\_errors
+      - smm\_handler\_code\_access\_violation\_errors
+      - internal\_parity\_errors
+      - frc\_errors
+      - external\_mce\_errors
+      - microcode\_rom\_parity\_errors
+      - unclassified\_mce\_errors
+    per Server:
+      - cache\_l2\_errors
+      - upi\_errors
+
+Please note that \`processor\_base\_errors\` is aggregate counter measuring the following MCE events:
+\- internal\_timer\_errors
+\- smm\_handler\_code\_access\_violation\_errors
+\- internal\_parity\_errors
+\- frc\_errors
+\- external\_mce\_errors
+\- microcode\_rom\_parity\_errors
+\- unclassified\_mce\_errors
+
+In addition \`RASDaemon\` runs, by default, with \`--enable-sqlite3\` flag. In case of
+problems with SQLite3 database please verify this is still a default option.
+
+- **DB\_Path** _Path_
+
+    Path to the RASDemon database (sqlite3). Please make sure that user has read
+    permissions to this database. Example and default setting:
+
+        DB_Path "/var/lib/rasdaemon/ras-mc_event.db"
 
 ## Plugin `redfish`
 
@@ -8301,6 +8392,13 @@ The following configuration options are valid:
     read. This option primarily exists for compatibility with the _statsd_
     implementation by Etsy.
 
+- **CounterSum** **false**|**true**
+
+    When enabled, creates a `gauge` metric which reports counters as a "gauge"
+    of the differential, resetting the counter between flush intervals.  This
+    option primarily exists for compatibility with the _statsd_ implementation
+    in GitHub Enterprise Server.
+
 - **TimerPercentile** _Percent_
 
     Calculate and dispatch the configured percentile, i.e. compute the latency, so
@@ -8645,7 +8743,7 @@ be performed:
     - **AbsoluteSet**
 
         The matched number is a counter. Simply _sets_ the internal counter to this
-        value. Variants exist for `COUNTER` and `DERIVE` data sources.
+        value. Variants exist for `COUNTER`, `DERIVE`, and `ABSOLUTE` data sources.
 
     - **GaugeAdd**
     - **CounterAdd**
@@ -10201,22 +10299,35 @@ block, the following options are available:
 
 ## Plugin `write_influxdb_udp`
 
-The write\_influxdb\_udp plugin sends data to a instance of InfluxDB using the
+The write\_influxdb\_udp plugin sends data to instances of InfluxDB using the
 "Line Protocol". Each plugin is sent as a measurement with a time precision of
 miliseconds while plugin instance, type and type instance are sent as tags.
 
     <Plugin "write_influxdb_udp">
-      Server "influxdb.internal.tld"
+      Server "influxdb.fqdn"
+      Server "influxdb2.fqdn"
+      TimePrecision "ms"
       StoreRates "yes"
+      WriteMetadata "no"
     </Plugin>
 
 - **<Server** _Host_ \[_Port_\]**>**
 
-    The **Server** statement sets the server to send datagrams to.
+    The **Server** statement sets a server to send datagrams to. This statement can
+    appear multiple times, once for each unique destination to send to.
 
     The argument _Host_ may be a hostname, an IPv4 address or an IPv6 address. The
     optional second argument specifies a port number or a service name. If not
-    given, the default, **8089**, is used.
+    given, the default, **8089**, is used. The arguments _Host_ and _Port_ should
+    be enclosed in "quotes".
+
+- **TimePrecision** _ms_|_us_|_ns_
+
+    The **TimePrecision** option sets the precision of the timestamps sent to 
+    InfluxDB. It must match the precision set in InfluxDB line protocol 
+    configuration.
+
+    The defaut value is _ms_. Note that InfluxDB default may differ.
 
 - **TimeToLive** _1-255_
 
@@ -10236,6 +10347,11 @@ miliseconds while plugin instance, type and type instance are sent as tags.
 
     If set to **true**, convert absolute, counter and derive values to rates. If set
     to **false** (the default) absolute, counter and derive values are sent as is.
+
+- **WriteMetadata** **true|false**
+
+    Defaults to **false**. If set to **true**, send aditional tags to influxdb with
+    collectd value metadata.
 
 ## Plugin `write_kafka`
 
@@ -10286,10 +10402,10 @@ The following options are understood by the _write\_kafka plugin_:
 
     - **StoreRates** **true**|**false**
 
-        Determines whether or not `COUNTER` and `DERIVE` data sources are converted
-        to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the default), no
-        conversion is performed. Otherwise the conversion is performed using the
-        internal value cache.
+        Determines whether or not `COUNTER`, `DERIVE` and `ABSOLUTE` data sources
+        are converted to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the
+        default), no conversion is performed. Otherwise the conversion is performed
+        using the internal value cache.
 
         Please note that currently this option is only used if the **Format** option has
         been set to **JSON**.

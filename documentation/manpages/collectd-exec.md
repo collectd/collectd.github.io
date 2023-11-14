@@ -73,7 +73,7 @@ format is as follows:
     omitted, too. _plugin_ and each _instance_-part may be chosen freely as long
     as the tuple (plugin, plugin instance, type instance) uniquely identifies the
     plugin within collectd. _type_ identifies the type and number of values
-    (i. e. data-set) passed to collectd. A large list of predefined
+    (i.Â e. data-set) passed to collectd. A large list of predefined
     data-sets is available in the **types.db** file. See [types.db(5)](http://man.he.net/man5/types.db) for a
     description of the format of this file.
 
@@ -86,7 +86,7 @@ format is as follows:
     an integer if the data-source is a counter, or a double if the data-source is
     of type "gauge". You can submit an undefined gauge-value by using **U**. When
     submitting **U** to a counter the behavior is undefined. The time is given as
-    epoch (i. e. standard UNIX time) or **N** to use the current time.
+    epoch (i.Â e. standard UNIX time) or **N** to use the current time.
 
     You can mix options and values, but the order is important: Options only
     effect following values, so specifying an option as last field is allowed, but
@@ -138,7 +138,7 @@ format is as follows:
 
     - **time=**_Time_ (**REQUIRED**)
 
-        Sets the time of the notification. The time is given as "epoch", i. e. as
+        Sets the time of the notification. The time is given as "epoch", i.Â e. as
         seconds since January 1st, 1970, 00:00:00. This option is mandatory.
 
     - **host=**_Hostname_
@@ -148,7 +148,7 @@ format is as follows:
     - **type\_instance=**_Type-Instance_
 
         These "associative" options establish a relation between this notification and
-        collected performance data. This connection is purely informal, i. e. the
+        collected performance data. This connection is purely informal, i.Â e. the
         daemon itself doesn't do anything with this information. However, websites or
         GUIs may use this information to place notifications near the affected graph or
         table. All the options are optional, but **plugin\_instance** without **plugin**
@@ -245,13 +245,13 @@ to make use of collectd's more powerful interface.
 
 # CAVEATS
 
-- The user, the binary is executed as, may not have root privileges, i. e.
+- The user, the binary is executed as, may not have root privileges, i.Â e.
 must have an UID that is non-zero. This is for your own good.
 - Early versions of the plugin did not use a command but treated all lines as if
 they were arguments to the _PUTVAL_ command. When the _PUTNOTIF_ command was
 implemented, this behavior was kept for lines which start with an unknown
 command for backwards compatibility. This compatibility code has been removed
-in _collectd 5_.
+in _collectdÂ 5_.
 
 # SEE ALSO
 

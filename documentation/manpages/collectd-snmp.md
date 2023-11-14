@@ -105,7 +105,7 @@ Since the `Net-SNMP` library is used you can use all the environment variables
 that are interpreted by that package. See [snmpcmd(1)](http://man.he.net/man1/snmpcmd) for more details.
 
 There are two types of blocks that can be contained in the
-`<Plugin snmp>` block: **Data** and **Host**:
+`<PluginÂ snmp>` block: **Data** and **Host**:
 
 ## The **Data** block
 
@@ -114,7 +114,7 @@ queried. The following options can be set:
 
 - **Type** _type_
 
-    collectd's type that is to be used, e. g. "if\_octets" for interface
+    collectd's type that is to be used, e.Â g. "if\_octets" for interface
     traffic or "users" for a user count. The types are read from the **TypesDB**
     (see [collectd.conf(5)](http://man.he.net/man5/collectd.conf)), so you may want to check for which types are
     defined. See [types.db(5)](http://man.he.net/man5/types.db) for a description of the format of this file.
@@ -147,7 +147,7 @@ queried. The following options can be set:
     OID.
 
     Counter example: If you want to query the interface table provided by the
-    `IF-MIB`, e. g. the bytes transmitted. There are potentially many
+    `IF-MIB`, e.Â g. the bytes transmitted. There are potentially many
     interfaces, so you will want to set **Table** to **true**. Because the
     `if_octets` type needs two values, received and transmitted bytes, you need to
     specify two OIDs in the **Values** setting, in this case likely
@@ -215,9 +215,9 @@ queried. The following options can be set:
 
     The `UPS-MIB` is an example where you need this setting: It has voltages of
     the inlets, outlets and the battery of an UPS. However, it doesn't provide a
-    descriptive column for these voltages. In this case having 1, 2, ... as
+    descriptive column for these voltages. In this case having 1, 2,Â ... as
     instances is not enough, because the inlet voltages and outlet voltages may
-    both have the subids 1, 2, ... You can use this setting to distinguish
+    both have the subids 1, 2,Â ... You can use this setting to distinguish
     between the different voltages.
 
 - **Instance** _Instance_
@@ -246,12 +246,12 @@ queried. The following options can be set:
     describes the format of OIDs.
 
     If **Table** is set to _true_, each _OID_ must be the prefix of all the
-    values to query, e. g. `IF-MIB::ifInOctets` for all the counters of
+    values to query, e.Â g. `IF-MIB::ifInOctets` for all the counters of
     incoming traffic. This subtree is walked (using `GETNEXT`) until a value from
     outside the subtree is returned.
 
     If **Table** is set to _false_, each _OID_ must be the OID of exactly one
-    value, e. g. `IF-MIB::ifInOctets.3` for the third counter of incoming
+    value, e.Â g. `IF-MIB::ifInOctets.3` for the third counter of incoming
     traffic.
 
 - **Count** _true|false_
@@ -374,7 +374,7 @@ stored by collectd.
 - **Interval** _Seconds_
 
     Collect data from this host every _Seconds_ seconds. This option is meant for
-    devices with not much CPU power, e. g. network equipment such as
+    devices with not much CPU power, e.Â g. network equipment such as
     switches, embedded devices, rack monitoring systems and so on. Since the
     **Step** of generated RRD files depends on this setting it's wise to select a
     reasonable value once and never change it.
