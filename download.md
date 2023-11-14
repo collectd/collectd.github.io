@@ -30,9 +30,9 @@ These tarballs hold the collectd sources as published by the collectd
 developers. These are the *supported* versions, previous versions will not get
 updates.
 
-*   Version {{ site.data.version.current.number }}
-    *   [collectd-{{ site.data.version.current.number }}.tar.bz2]({{ site.data.version.current.url }})<br>
-        SHA-256: `{{ site.data.version.current.sha256 }}`
+*   Version {{ site.data.version.latest.number }}
+    *   [collectd-{{ site.data.version.latest.number }}.tar.bz2]({{ site.data.version.latest.url }})<br>
+        SHA-256: `{{ site.data.version.latest.sha256 }}`
 *   Version {{ site.data.version.previous.number }}
     *   [collectd-{{ site.data.version.previous.number }}.tar.bz2]({{ site.data.version.previous.url }})<br>
         SHA-256: `{{ site.data.version.previous.sha256 }}`
