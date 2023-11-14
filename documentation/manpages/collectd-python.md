@@ -111,7 +111,7 @@ The minimum required Python version is _2.6_.
     directory exists in python's **sys.path**. You can prepend to the
     **sys.path** using the **ModulePath** configuration option.
 
-- <**Module** _Name_> block
+- &lt;**Module** _Name_> block
 
     This block may be used to pass on configuration settings to a Python module.
     The configuration is converted into an instance of the **Config** class which is

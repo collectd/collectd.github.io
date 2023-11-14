@@ -43,7 +43,7 @@ Perl-script every time you want to read a value with the `exec plugin` (see
     provided with the _collectd_ distributions reside in the `Collectd::Plugins`
     namespace.
 
-- <**Plugin** _Name_> block
+- &lt;**Plugin** _Name_> block
 
     This block may be used to pass on configuration settings to a Perl plugin. The
     configuration is converted into a config-item data type which is passed to the

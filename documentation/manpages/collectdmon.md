@@ -63,4 +63,4 @@ collectdmon supports the following options:
 collectd has been written by Florian Forster &lt;octo at collectd.org>
 and many contributors (see \`AUTHORS').
 
-collectdmon has been written by Sebastian Harl <sh@tokkee.org>.
+collectdmon has been written by Sebastian Harl &lt;sh@tokkee.org>.

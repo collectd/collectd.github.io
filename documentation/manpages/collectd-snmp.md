@@ -406,5 +406,5 @@ stored by collectd.
 
 # AUTHORS
 
-Florian Forster <octo@collectd.org>
-Michael Pilat <mike@mikepilat.com>
+Florian Forster &lt;octo@collectd.org>
+Michael Pilat &lt;mike@mikepilat.com>

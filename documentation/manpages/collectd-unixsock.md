@@ -58,8 +58,8 @@ The following commands are implemented:
 
     Example:
       -> &#124; GETVAL myhost/cpu-0/cpu-user
-      <- &#124; 1 Value found
-      <- &#124; value=1.260000e+00
+      &lt;- &#124; 1 Value found
+      &lt;- &#124; value=1.260000e+00
 
 - **LISTVAL**
 
@@ -73,11 +73,11 @@ The following commands are implemented:
 
     Example:
       -> &#124; LISTVAL
-      <- &#124; 69 Values found
-      <- &#124; 1182204284 myhost/cpu-0/cpu-idle
-      <- &#124; 1182204284 myhost/cpu-0/cpu-nice
-      <- &#124; 1182204284 myhost/cpu-0/cpu-system
-      <- &#124; 1182204284 myhost/cpu-0/cpu-user
+      &lt;- &#124; 69 Values found
+      &lt;- &#124; 1182204284 myhost/cpu-0/cpu-idle
+      &lt;- &#124; 1182204284 myhost/cpu-0/cpu-nice
+      &lt;- &#124; 1182204284 myhost/cpu-0/cpu-system
+      &lt;- &#124; 1182204284 myhost/cpu-0/cpu-user
       ...
 
 - **PUTVAL** _Identifier_ \[_OptionList_\] _Valuelist_
@@ -126,7 +126,7 @@ The following commands are implemented:
 
     Example:
       -> &#124; PUTVAL testhost/interface/if\_octets-test0 interval=10 1179574444:123:456
-      <- &#124; 0 Success
+      &lt;- &#124; 0 Success
 
 - **PUTNOTIF** \[_OptionList_\] **message=**_Message_
 
@@ -184,7 +184,7 @@ The following commands are implemented:
 
     Example:
       -> &#124; PUTNOTIF type=temperature severity=warning time=1201094702 message=The roof is on fire!
-      <- &#124; 0 Success
+      &lt;- &#124; 0 Success
 
 - **FLUSH** \[**timeout=**_Timeout_\] \[**plugin=**_Plugin_ \[...\]\] \[**identifier=**_Ident_ \[...\]\]
 
@@ -204,7 +204,7 @@ The following commands are implemented:
 
     Example:
       -> &#124; FLUSH plugin=rrdtool identifier=localhost/df/df-root identifier=localhost/df/df-var
-      <- &#124; 0 Done: 2 successful, 0 errors
+      &lt;- &#124; 0 Done: 2 successful, 0 errors
 
 ## Identifiers
 
@@ -241,4 +241,4 @@ and expand this module.
 
 # AUTHOR
 
-Florian Forster <octo@collectd.org>
+Florian Forster &lt;octo@collectd.org>

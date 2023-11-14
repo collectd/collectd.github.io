@@ -12,7 +12,7 @@ do
 title: ${NAME}(${SECT})
 ---
 EOF
-		pod2markdown --utf8 --html-encode-chars='|' ~/collectd/src/"${NAME}.pod"
+		pod2markdown --utf8 --html-encode-chars='|<' ~/collectd/src/"${NAME}.pod"
 	)>"${outfile}"
 
 	# Prevent '{%' and '{{' from appearing, e.g. in code blocks

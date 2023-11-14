@@ -140,12 +140,12 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
 
     When set to **false** (the default), each plugin needs to be loaded explicitly,
     using the **LoadPlugin** statement documented above. If a
-    **<Plugin ...>** block is encountered and no configuration
+    **&lt;Plugin ...>** block is encountered and no configuration
     handling callback for this plugin has been registered, a warning is logged and
     the block is ignored.
 
     When set to **true**, explicit **LoadPlugin** statements are not required. Each
-    **<Plugin ...>** block acts as if it was immediately preceded by a
+    **&lt;Plugin ...>** block acts as if it was immediately preceded by a
     **LoadPlugin** statement. **LoadPlugin** statements are still required for
     plugins that don't provide any configuration, e.g. the _Load plugin_.
 
@@ -1357,7 +1357,7 @@ The bind plugin accepts the following configuration options:
     configurations are called "views". If you don't use this feature, you most
     likely are only interested in the `_default` view.
 
-    Within a <**View** _name_> block, you can specify which
+    Within a &lt;**View** _name_> block, you can specify which
     information you want to collect about a view. If no **View** block is
     configured, no detailed view statistics will be collected.
 
@@ -1573,23 +1573,26 @@ The `connectivity plugin` queries interface status using netlink (man 7 netlink)
 The plugin listens to interfaces enumerated within the plugin configuration (see below).  If no interfaces are listed, then the default is for all interfaces to be monitored.
 
 This example shows `connectivity plugin` monitoring all interfaces.
-LoadPlugin connectivity
-<Plugin connectivity>
-&lt;/Plugin>
+
+    LoadPlugin connectivity
+    <Plugin connectivity>
+    </Plugin>
 
 This example shows `connectivity plugin` monitoring 2 interfaces, "eth0" and "eth1".
-LoadPlugin connectivity
-<Plugin connectivity>
-  Interface eth0
-  Interface eth1
-&lt;/Plugin>
+
+    LoadPlugin connectivity
+    <Plugin connectivity>
+      Interface eth0
+      Interface eth1
+    </Plugin>
 
 This example shows `connectivity plugin` monitoring all interfaces except "eth1".
-LoadPlugin connectivity
-<Plugin connectivity>
-  Interface eth1
-  IgnoreSelected true
-&lt;/Plugin>
+
+    LoadPlugin connectivity
+    <Plugin connectivity>
+      Interface eth1
+      IgnoreSelected true
+    </Plugin>
 
 - **Interface** _interface\_name_
 
@@ -1917,14 +1920,14 @@ The following options are valid within **Page** blocks:
     Measure response code for the request. If this setting is enabled, **Match**
     blocks (see below) are optional. Disabled by default.
 
-- **<Statistics>**
+- **&lt;Statistics>**
 
     One **Statistics** block can be used to specify cURL statistics to be collected
     for each request to the remote web site. See the section "cURL Statistics"
     above for details. If this setting is enabled, **Match** blocks (see below) are
     optional.
 
-- **<Match>**
+- **&lt;Match>**
 
     One or more **Match** blocks that define how to match information in the data
     returned by `libcurl`. The `curl` plugin uses the same infrastructure that's
@@ -2052,7 +2055,7 @@ The following options are valid within **URL** blocks:
     These options behave exactly equivalent to the appropriate options of the
     _cURL_ plugin. Please see there for a detailed description.
 
-- **<Statistics>**
+- **&lt;Statistics>**
 
     One **Statistics** block can be used to specify cURL statistics to be collected
     for each request to the remote URL. See the section "cURL Statistics" above
@@ -2156,7 +2159,7 @@ The following options are valid within **URL** blocks:
     These options behave exactly equivalent to the appropriate options of the
     _cURL_ plugin. Please see there for a detailed description.
 
-- **<BeanName>**
+- **&lt;BeanName>**
 
     One **BeanName** block configures the translation of the gauges of one bean
     to their respective collectd names, where BeanName sets the main name.
@@ -2284,13 +2287,13 @@ Within the **URL** block the following options are accepted:
     These options behave exactly equivalent to the appropriate options of the
     _cURL plugin_. Please see there for a detailed description.
 
-- **<Statistics>**
+- **&lt;Statistics>**
 
     One **Statistics** block can be used to specify cURL statistics to be collected
     for each request to the remote URL. See the section "cURL Statistics" above
     for details.
 
-- <**XPath** _XPath-expression_>
+- &lt;**XPath** _XPath-expression_>
 
     Within each **URL** block, there must be one or more **XPath** blocks. Each
     **XPath** block specifies how to get one type of information. The string
@@ -2376,10 +2379,10 @@ than those of other plugins. It usually looks something like this:
 
 The configuration above defines one query with one result and one database. The
 query is then linked to the database with the **Query** option _within_ the
-**<Database>** block. You can have any number of queries and databases
+**&lt;Database>** block. You can have any number of queries and databases
 and you can also use the **Include** statement to split up the configuration
-file in multiple, smaller files. However, the **<Query>** block _must_
-precede the **<Database>** blocks, because the file is interpreted from
+file in multiple, smaller files. However, the **&lt;Query>** block _must_
+precede the **&lt;Database>** blocks, because the file is interpreted from
 top to bottom!
 
 The following is a complete list of options:
@@ -3253,7 +3256,7 @@ Available configuration options:
 
     Default: **239.2.11.71** / **8649**
 
-- <**Metric** _Name_>
+- &lt;**Metric** _Name_>
 
     These blocks add a new metric conversion to the internal table. _Name_, the
     string argument to the **Metric** block, is the metric name as used by Ganglia.
@@ -3650,7 +3653,7 @@ Please refer to _contrib/systemd.collectd.service_ file for more details.
 
 **Note:** By default global interval is used to retrieve statistics on monitored
 events. To configure a plugin specific interval use **Interval** option of the
-intel\_rdt <LoadPlugin> block. For milliseconds divide the time by 1000 for
+intel\_rdt &lt;LoadPlugin> block. For milliseconds divide the time by 1000 for
 example if the desired interval is 50ms, set interval to 0.05.
 Due to limited capacity of counters it is not recommended to set interval higher
 than 1 sec.
@@ -3822,8 +3825,8 @@ The full list of options available to include in the counted statistics is:
   ip4badsum          IPv4 checksum bad
   ip4tooshort        IPv4 packet too short
   ip4toosmall        IPv4 not enough data
-  ip4badhlen         IPv4 ip header length < data size
-  ip4badlen          IPv4 ip length < ip header length
+  ip4badhlen         IPv4 ip header length &lt; data size
+  ip4badlen          IPv4 ip length &lt; ip header length
   ip4fragment        IPv4 fragments received
   ip4fragdrop        IPv4 frags dropped (dups, out of space)
   ip4fragtimeout     IPv4 fragments timed out
@@ -4417,7 +4420,7 @@ Synopsis of the configuration:
 
 The configuration options are:
 
-- <**Page** _Name_>
+- &lt;**Page** _Name_>
 
     Each **Page** block defines one _page_ to be queried from the memcached server.
     The block requires one string argument which is used as _plugin instance_.
@@ -4436,7 +4439,7 @@ The configuration options are:
     Use _Plugin_ as the plugin name when submitting values.
     Defaults to `memcachec`.
 
-- <**Match**>
+- &lt;**Match**>
 
     Match blocks define which strings to look for and how matches substrings are
     interpreted. For a description of match blocks, please see ["Plugin tail"](#plugin-tail).
@@ -4705,12 +4708,12 @@ notation).
       </Slave>
     </Host>
 
-- <**Data** _Name_> blocks
+- &lt;**Data** _Name_> blocks
 
     Data blocks define a mapping between register numbers and the "types" used by
     _collectd_.
 
-    Within <Data /> blocks, the following options are allowed:
+    Within &lt;Data /> blocks, the following options are allowed:
 
     - **RegisterBase** _Number_
 
@@ -4761,13 +4764,13 @@ notation).
         _Value_ is added to values from device after they have been multiplied by
         **Scale** value. The field is optional and the default value is **0.0**.
 
-- <**Host** _Name_> blocks
+- &lt;**Host** _Name_> blocks
 
     Host blocks are used to specify to which hosts to connect and what data to read
     from their "slaves". The string argument _Name_ is used as hostname when
     dispatching the values to _collectd_.
 
-    Within <Host /> blocks, the following options are allowed:
+    Within &lt;Host /> blocks, the following options are allowed:
 
     - **Address** _Hostname_
 
@@ -4802,13 +4805,13 @@ notation).
         Sets the interval (in seconds) in which the values will be collected from this
         host. By default the global **Interval** setting will be used.
 
-    - <**Slave** _ID_>
+    - &lt;**Slave** _ID_>
 
         Over each connection, multiple Modbus devices may be reached. The slave ID
         is used to specify which device should be addressed. For each device you want
         to query, one **Slave** block must be given.
 
-        Within <Slave /> blocks, the following options are allowed:
+        Within &lt;Slave /> blocks, the following options are allowed:
 
         - **Instance** _Instance_
 
@@ -5731,7 +5734,7 @@ signature):
       </Server>
     </Plugin>
 
-- **<Server** _Host_ \[_Port_\]**>**
+- **&lt;Server** _Host_ \[_Port_\]**>**
 
     The **Server** statement/block sets the server to send datagrams to. The
     statement may occur multiple times to send each datagram to multiple
@@ -5792,7 +5795,7 @@ signature):
         useful to force a regular DNS lookup to support a high availability setup. If
         not specified, re-resolves are never attempted.
 
-- **<Listen** _Host_ \[_Port_\]**>**
+- **&lt;Listen** _Host_ \[_Port_\]**>**
 
     The **Listen** statement sets the interfaces to bind to. When multiple
     statements are found the daemon will bind to multiple interfaces.
@@ -6649,7 +6652,7 @@ The plugin provides the following configuration options:
     "30002" will be used. The option accepts service names in addition to port
     numbers and thus requires a _string_ argument.
 
-- <**View** _Name_> block
+- &lt;**View** _Name_> block
 
     The packets sent by the Pinba extension include the hostname of the server, the
     server name (the name of the virtual host) and the script that was executed.
@@ -7631,7 +7634,7 @@ multiple routers:
     </Plugin>
 
 As you can see above, the configuration of the _routeros_ plugin consists of
-one or more **<Router>** blocks. Within each block, the following
+one or more **&lt;Router>** blocks. Within each block, the following
 options are understood:
 
 - **Host** _Host_
@@ -8092,7 +8095,7 @@ supported by the [sigrok](http://sigrok.org/) project.
     The default is **2** (`Warnings`). The _sigrok_ log messages, regardless of
     their level, are always submitted to _collectd_ at its INFO log level.
 
-- <**Device** _Name_>
+- &lt;**Device** _Name_>
 
     A sigrok-supported device, uniquely identified by this section's options. The
     _Name_ is passed to _collectd_ as the _plugin instance_.
@@ -8879,7 +8882,7 @@ internal representation. These are followed by one or more **Instance** blocks
 which configure which file to read, in which interval and which metrics to
 extract.
 
-- <**Metric** _Name_>
+- &lt;**Metric** _Name_>
 
     The **Metric** block configures a new metric to be extracted from the statistics
     file and how it is mapped on _collectd's_ data model. The string _Name_ is
@@ -8906,7 +8909,7 @@ extract.
         If the value is parsed as signed integer, unsigned integer or double depends on
         the **Type** setting, see above.
 
-- <**File** _Path_>
+- &lt;**File** _Path_>
 
     Each **File** block represents one CSV file to read. There must be at least one
     _File_ block but there can be multiple if you have multiple CSV files.
@@ -9298,12 +9301,12 @@ Synopsis:
       </Instance>
     </Plugin>
 
-The configuration consists of one or more <**Instance** _Name_>
+The configuration consists of one or more &lt;**Instance** _Name_>
 blocks. _Name_ is the parameter passed to "varnishd -n". If left empty, it
 will collectd statistics from the default "varnishd" instance (this should work
 fine in most cases).
 
-Inside each <**Instance**> blocks, the following options are recognized:
+Inside each &lt;**Instance**> blocks, the following options are recognized:
 
 - **CollectBackend** **true**&#124;**false**
 
@@ -9826,7 +9829,7 @@ Synopsis:
       </Node>
     </Plugin>
 
-The configuration consists of one or more <**Node** _Name_>
+The configuration consists of one or more &lt;**Node** _Name_>
 blocks. Inside the **Node** blocks, the following options are recognized:
 
 - **Host** _Address_
@@ -9945,8 +9948,8 @@ blocks. Inside the **Node** blocks, the following options are recognized:
      Hostname "node3.cluster1.example.com"
      LoadPlugin "cpu"
      LoadPlugin "write\_graphite"
-     <Plugin "write\_graphite">
-      <Node "graphite.example.com">
+     &lt;Plugin "write\_graphite">
+      &lt;Node "graphite.example.com">
        EscapeCharacter "."
        ReverseHost true
       &lt;/Node>
@@ -9993,7 +9996,7 @@ Synopsis:
       </Node>
     </Plugin>
 
-The configuration consists of one or more <**Node** _Name_>
+The configuration consists of one or more &lt;**Node** _Name_>
 blocks and global directives.
 
 Global directives are:
@@ -10149,7 +10152,7 @@ Synopsis:
     </Plugin>
 
 The plugin can send values to multiple HTTP servers by specifying one
-<**Node** _Name_> block for each server. Within each **Node**
+&lt;**Node** _Name_> block for each server. Within each **Node**
 block, the following options are available:
 
 - **URL** _URL_
@@ -10288,7 +10291,7 @@ block, the following options are available:
 
     Enables printing of HTTP error code to log. Turned off by default.
 
-- <**Statistics** _Name_>
+- &lt;**Statistics** _Name_>
 
     One **Statistics** block can be used to specify cURL statistics to be collected
     for each request to the remote URL. See the section "cURL Statistics" above
@@ -10314,7 +10317,7 @@ miliseconds while plugin instance, type and type instance are sent as tags.
       WriteMetadata "no"
     </Plugin>
 
-- **<Server** _Host_ \[_Port_\]**>**
+- **&lt;Server** _Host_ \[_Port_\]**>**
 
     The **Server** statement sets a server to send datagrams to. This statement can
     appear multiple times, once for each unique destination to send to.
@@ -10371,7 +10374,7 @@ Synopsis:
 
 The following options are understood by the _write\_kafka plugin_:
 
-- <**Topic** _Name_>
+- &lt;**Topic** _Name_>
 
     The plugin's configuration consists of one or more **Topic** blocks. Each block
     is given a unique _Name_ and specifies one kafka producer.
@@ -10595,7 +10598,7 @@ Synopsis:
 
 The following options are understood by the _write\_riemann plugin_:
 
-- <**Node** _Name_>
+- &lt;**Node** _Name_>
 
     The plugin's configuration consists of one or more **Node** blocks. Each block
     is given a unique _Name_ and specifies one connection to an instance of
@@ -10733,7 +10736,7 @@ Synopsis:
 
 The following options are understood by the _write\_sensu plugin_:
 
-- <**Node** _Name_>
+- &lt;**Node** _Name_>
 
     The plugin's configuration consists of one or more **Node** blocks. Each block
     is given a unique _Name_ and specifies one connection to an instance of
@@ -10943,7 +10946,7 @@ Synopsis:
       </Node>
     </Plugin>
 
-The configuration consists of one or more <**Node** _Name_>
+The configuration consists of one or more &lt;**Node** _Name_>
 blocks and global directives.
 
 Global directives are:
@@ -11982,4 +11985,4 @@ the items (mounts points, devices, ...) and the boolean option
 
 # AUTHOR
 
-Florian Forster <octo@collectd.org>
+Florian Forster &lt;octo@collectd.org>

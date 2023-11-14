@@ -132,4 +132,4 @@ detail. In particular those are [collectd-email(5)](./collectd-email.md), [colle
 
 # AUTHOR
 
-Florian Forster <octo@collectd.org>
+Florian Forster &lt;octo@collectd.org>

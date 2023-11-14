@@ -275,7 +275,7 @@ Signature: _int_ **config** (_OConfigItem_ ci)
 This method is passed a **OConfigItem** object, if both, method and
 configuration, are available. **OConfigItem** is the root of a tree representing
 the configuration for this plugin. The root itself is the representation of the
-**<Plugin />** block, so in next to all cases the children of the
+**&lt;Plugin />** block, so in next to all cases the children of the
 root are the first interesting objects.
 
 To signal success, this method has to return zero. Anything else will be
@@ -506,7 +506,7 @@ daemon:
 
 The following plugins are implemented in _Java_. Both, the **LoadPlugin**
 option and the **Plugin** block must be inside the
-**<Plugin java>** block (see above).
+**&lt;Plugin java>** block (see above).
 
 ## GenericJMX plugin
 

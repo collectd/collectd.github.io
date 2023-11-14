@@ -266,4 +266,4 @@ in _collectd 5_.
 
 # AUTHOR
 
-Florian Forster <octo@collectd.org>
+Florian Forster &lt;octo@collectd.org>
