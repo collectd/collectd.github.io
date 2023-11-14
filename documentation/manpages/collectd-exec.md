@@ -135,7 +135,7 @@ format is as follows:
         all options: If the message includes spaces, it must be quoted with double
         quotes. This option is mandatory.
 
-    - **severity=failure**|**warning**|**okay** (**REQUIRED**)
+    - **severity=failure**&#124;**warning**&#124;**okay** (**REQUIRED**)
 
         Sets the severity of the notification. This option is mandatory.
 

@@ -74,7 +74,7 @@ Perl-script every time you want to read a value with the `exec plugin` (see
     command line option or **use lib Dir** in the source code. Please note that it
     only has effect on plugins loaded after this option.
 
-- **RegisterLegacyFlush** _true|false_
+- **RegisterLegacyFlush** _true&#124;false_
 
     The `Perl plugin` used to register one flush callback (called **"perl"**) and
     call all Perl-based flush handlers when this callback was called. Newer versions

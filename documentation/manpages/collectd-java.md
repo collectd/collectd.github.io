@@ -579,7 +579,7 @@ The following options are recognized within _MBean_ blocks:
         When set, overrides the default setting for the _plugin_ field
         (`GenericJMX`).
 
-    - **Table** **true**|**false**
+    - **Table** **true**&#124;**false**
 
         Set this to true if the returned attribute is a _composite type_. If set to
         true, the keys within the _composite type_ is appended to the

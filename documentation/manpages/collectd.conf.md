@@ -102,7 +102,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
 
     The following options are valid inside **LoadPlugin** blocks:
 
-    - **Globals** **true|false**
+    - **Globals** **true&#124;false**
 
         If enabled, collectd will export all global symbols of the plugin (and of all
         libraries loaded as dependencies of the plugin) and, thus, makes those symbols
@@ -136,7 +136,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
 
         Specifies the value of the timeout argument of the flush callback.
 
-- **AutoLoadPlugin** **false**|**true**
+- **AutoLoadPlugin** **false**&#124;**true**
 
     When set to **false** (the default), each plugin needs to be loaded explicitly,
     using the **LoadPlugin** statement documented above. If a
@@ -149,7 +149,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
     **LoadPlugin** statement. **LoadPlugin** statements are still required for
     plugins that don't provide any configuration, e.g. the _Load plugin_.
 
-- **CollectInternalStats** **false**|**true**
+- **CollectInternalStats** **false**&#124;**true**
 
     When set to **true**, various statistics about the _collectd_ daemon will be
     collected, with "collectd" as the _plugin name_. Defaults to **false**.
@@ -312,7 +312,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
     Sets the hostname that identifies a host. If you omit this setting, the
     hostname will be determined using the [gethostname(2)](http://man.he.net/man2/gethostname) system call.
 
-- **FQDNLookup** **true|false**
+- **FQDNLookup** **true&#124;false**
 
     If **Hostname** is determined automatically this setting controls whether or not
     the daemon should try to figure out the "fully qualified domain name", FQDN.
@@ -417,7 +417,7 @@ aggregations. The following options are valid inside **Aggregation** blocks:
 
         Host "/^db[0-9]\\.example\\.com$/"
 
-- **GroupBy** **Host**|**Plugin**|**PluginInstance**|**TypeInstance**
+- **GroupBy** **Host**&#124;**Plugin**&#124;**PluginInstance**&#124;**TypeInstance**
 
     Group valued by the specified field. The **GroupBy** option may be repeated to
     group by multiple fields.
@@ -459,12 +459,12 @@ aggregations. The following options are valid inside **Aggregation** blocks:
     - foo.example.com/cpu-even-average/cpu-user
     - ...
 
-- **CalculateNum** **true**|**false**
-- **CalculateSum** **true**|**false**
-- **CalculateAverage** **true**|**false**
-- **CalculateMinimum** **true**|**false**
-- **CalculateMaximum** **true**|**false**
-- **CalculateStddev** **true**|**false**
+- **CalculateNum** **true**&#124;**false**
+- **CalculateSum** **true**&#124;**false**
+- **CalculateAverage** **true**&#124;**false**
+- **CalculateMinimum** **true**&#124;**false**
+- **CalculateMaximum** **true**&#124;**false**
+- **CalculateStddev** **true**&#124;**false**
 
     Boolean options for enabling calculation of the number of value lists, their
     sum, average, minimum, maximum and / or standard deviation. All options
@@ -582,7 +582,7 @@ _Publish_ blocks in the future.
     Configures the _queue_ name to subscribe to. If no queue name was configured
     explicitly, a unique queue name will be created by the broker.
 
-- **QueueDurable** **true**|**false** (Subscribe only)
+- **QueueDurable** **true**&#124;**false** (Subscribe only)
 
     Defines if the _queue_ subscribed to is durable (saved to persistent storage)
     or transient (will disappear if the AMQP broker is restarted). Defaults to
@@ -591,7 +591,7 @@ _Publish_ blocks in the future.
     This option should be used in conjunction with the _Persistent_ option on the
     publish side.
 
-- **QueueAutoDelete** **true**|**false** (Subscribe only)
+- **QueueAutoDelete** **true**&#124;**false** (Subscribe only)
 
     Defines if the _queue_ subscribed to will be deleted once the last consumer
     unsubscribes. Defaults to "true".
@@ -611,7 +611,7 @@ _Publish_ blocks in the future.
     interested in CPU statistics, you could use the routing key "collectd.\*.cpu.#"
     for example.
 
-- **Persistent** **true**|**false** (Publish only)
+- **Persistent** **true**&#124;**false** (Publish only)
 
     Selects the _delivery method_ to use. If set to **true**, the _persistent_
     mode will be used, i.e. delivery is guaranteed. If set to **false** (the
@@ -625,7 +625,7 @@ _Publish_ blocks in the future.
     attempt to reconnect at each read interval (in Subscribe mode) or each time
     values are ready for submission (in Publish mode).
 
-- **Format** **Command**|**JSON**|**Graphite** (Publish only)
+- **Format** **Command**&#124;**JSON**&#124;**Graphite** (Publish only)
 
     Selects the format in which messages are sent to the broker. If set to
     **Command** (the default), values are sent as `PUTVAL` commands which are
@@ -644,7 +644,7 @@ _Publish_ blocks in the future.
     determine how to decode the values. Currently, the _AMQP plugin_ itself can
     only decode the **Command** format.
 
-- **StoreRates** **true**|**false** (Publish only)
+- **StoreRates** **true**&#124;**false** (Publish only)
 
     Determines whether or not `COUNTER`, `DERIVE` and `ABSOLUTE` data sources
     are converted to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the
@@ -673,40 +673,40 @@ _Publish_ blocks in the future.
     metric parts (host, plugin, type).
     Default is "\_" (_Underscore_).
 
-- **GraphiteSeparateInstances** **true**|**false**
+- **GraphiteSeparateInstances** **true**&#124;**false**
 
     If set to **true**, the plugin instance and type instance will be in their own
     path component, for example `host.cpu.0.cpu.idle`. If set to **false** (the
     default), the plugin and plugin instance (and likewise the type and type
     instance) are put into one component, for example `host.cpu-0.cpu-idle`.
 
-- **GraphiteAlwaysAppendDS** **true**|**false**
+- **GraphiteAlwaysAppendDS** **true**&#124;**false**
 
     If set to **true**, append the name of the _Data Source_ (DS) to the "metric"
     identifier. If set to **false** (the default), this is only done when there is
     more than one DS.
 
-- **GraphitePreserveSeparator** **false**|**true**
+- **GraphitePreserveSeparator** **false**&#124;**true**
 
     If set to **false** (the default) the `.` (dot) character is replaced with
     _GraphiteEscapeChar_. Otherwise, if set to **true**, the `.` (dot) character
     is preserved, i.e. passed through.
 
-- **TLSEnabled** **true**|**false**
+- **TLSEnabled** **true**&#124;**false**
 
     If set to **true** then connect to the broker using a TLS connection.
     If set to **false** (the default), then a plain text connection is used.
 
     Requires rabbitmq-c >= 0.4.
 
-- **TLSVerifyPeer** **true**|**false**
+- **TLSVerifyPeer** **true**&#124;**false**
 
     If set to **true** (the default) then the server certificate chain is verified.
     Setting this to **false** will skip verification (insecure).
 
     Requires rabbitmq-c >= 0.8.
 
-- **TLSVerifyHostName** **true**|**false**
+- **TLSVerifyHostName** **true**&#124;**false**
 
     If set to **true** (the default) then the server host name is verified.
     Setting this to **false** will skip verification (insecure).
@@ -808,7 +808,7 @@ The following options are accepted within each _Transport_ block:
 
 The following options are accepted within each _Instance_ block:
 
-- **Format** **Command**|**JSON**|**Graphite**
+- **Format** **Command**&#124;**JSON**&#124;**Graphite**
 
     Selects the format in which messages are sent to the intermediary. If set to
     **Command** (the default), values are sent as `PUTVAL` commands which are
@@ -826,7 +826,7 @@ The following options are accepted within each _Instance_ block:
     A subscribing client _should_ use the `Content-Type` header field to
     determine how to decode the values.
 
-- **PreSettle** **true**|**false**
+- **PreSettle** **true**&#124;**false**
 
     If set to **false** (the default), the plugin will wait for a message
     acknowledgement from the messaging bus before sending the next
@@ -835,14 +835,14 @@ The following options are accepted within each _Instance_ block:
     acknowledgement and the message may be dropped prior to transfer of
     ownership.
 
-- **Notify** **true**|**false**
+- **Notify** **true**&#124;**false**
 
     If set to **false** (the default), the plugin will service the
     instance write call back as a value list. If set to **true** the
     plugin will service the instance as a write notification callback
     for alert formatting.
 
-- **StoreRates** **true**|**false**
+- **StoreRates** **true**&#124;**false**
 
     Determines whether or not `COUNTER`, `DERIVE` and `ABSOLUTE` data sources
     are converted to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the
@@ -871,20 +871,20 @@ The following options are accepted within each _Instance_ block:
     metric parts (host, plugin, type).
     Default is "\_" (_Underscore_).
 
-- **GraphiteSeparateInstances** **true**|**false**
+- **GraphiteSeparateInstances** **true**&#124;**false**
 
     If set to **true**, the plugin instance and type instance will be in their own
     path component, for example `host.cpu.0.cpu.idle`. If set to **false** (the
     default), the plugin and plugin instance (and likewise the type and type
     instance) are put into one component, for example `host.cpu-0.cpu-idle`.
 
-- **GraphiteAlwaysAppendDS** **true**|**false**
+- **GraphiteAlwaysAppendDS** **true**&#124;**false**
 
     If set to **true**, append the name of the _Data Source_ (DS) to the "metric"
     identifier. If set to **false** (the default), this is only done when there is
     more than one DS.
 
-- **GraphitePreserveSeparator** **false**|**true**
+- **GraphitePreserveSeparator** **false**&#124;**true**
 
     If set to **false** (the default) the `.` (dot) character is replaced with
     _GraphiteEscapeChar_. Otherwise, if set to **true**, the `.` (dot) character
@@ -942,12 +942,12 @@ The following options are accepted within each _Instance_ block:
 
     Optional password needed for authentication.
 
-- **VerifyPeer** **true|false**
+- **VerifyPeer** **true&#124;false**
 
     Enable or disable peer SSL certificate verification. See
     [http://curl.haxx.se/docs/sslcerts.html](http://curl.haxx.se/docs/sslcerts.html) for details. Enabled by default.
 
-- **VerifyHost** **true|false**
+- **VerifyHost** **true&#124;false**
 
     Enable or disable peer host name verification. If enabled, the plugin checks
     if the `Common Name` or a `Subject Alternate Name` field of the SSL
@@ -985,13 +985,13 @@ The following options are accepted within each _Instance_ block:
 
     TCP-Port to connect to. Defaults to **3551**.
 
-- **ReportSeconds** **true**|**false**
+- **ReportSeconds** **true**&#124;**false**
 
     If set to **true**, the time reported in the `timeleft` metric will be
     converted to seconds. This is the recommended setting. If set to **false**, the
     default for backwards compatibility, the time will be reported in minutes.
 
-- **PersistentConnection** **true**|**false**
+- **PersistentConnection** **true**&#124;**false**
 
     The plugin is designed to keep the connection to _apcupsd_ open between reads.
     If plugin poll interval is greater than 15 seconds (hardcoded socket close
@@ -1042,12 +1042,12 @@ The configuration options are the same as for the `apache` plugin above:
 
     Optional password needed for authentication.
 
-- **VerifyPeer** **true|false**
+- **VerifyPeer** **true&#124;false**
 
     Enable or disable peer SSL certificate verification. See
     [http://curl.haxx.se/docs/sslcerts.html](http://curl.haxx.se/docs/sslcerts.html) for details. Enabled by default.
 
-- **VerifyHost** **true|false**
+- **VerifyHost** **true&#124;false**
 
     Enable or disable peer host name verification. If enabled, the plugin checks
     if the `Common Name` or a `Subject Alternate Name` field of the SSL
@@ -1211,7 +1211,7 @@ Synopsis:
 The _battery plugin_ reports the remaining capacity, power and voltage of
 laptop batteries.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     When enabled, remaining capacity is reported as a percentage, e.g. "42%
     capacity remaining". Otherwise the capacity is stored as reported by the
@@ -1219,7 +1219,7 @@ laptop batteries.
     in particular when only `/proc/pmu` is available on an old Linux system.
     Defaults to **false**.
 
-- **ReportDegraded** **false**|**true**
+- **ReportDegraded** **false**&#124;**true**
 
     Typical laptop batteries degrade over time, meaning the capacity decreases with
     recharge cycles. The maximum charge of the previous charge cycle is tracked as
@@ -1236,7 +1236,7 @@ laptop batteries.
     and "remaining capacity") and **degraded** (difference between "design capacity"
     and "last full capacity").
 
-- **QueryStateFS** **false**|**true**
+- **QueryStateFS** **false**&#124;**true**
 
     When set to **true**, the battery plugin will only read statistics
     related to battery performance as exposed by StateFS at
@@ -1291,7 +1291,7 @@ The bind plugin accepts the following configuration options:
     URL from which to retrieve the XML data. If not specified,
     `http://localhost:8053/` will be used.
 
-- **ParseTime** **true**|**false**
+- **ParseTime** **true**&#124;**false**
 
     When set to **true**, the time provided by BIND will be parsed and used to
     dispatch the values. When set to **false**, the local time source is queried.
@@ -1300,35 +1300,35 @@ The bind plugin accepts the following configuration options:
     this to **false** is _recommended_ to avoid problems with timezones and
     localization.
 
-- **OpCodes** **true**|**false**
+- **OpCodes** **true**&#124;**false**
 
     When enabled, statistics about the _"OpCodes"_, for example the number of
     `QUERY` packets, are collected.
 
     Default: Enabled.
 
-- **QTypes** **true**|**false**
+- **QTypes** **true**&#124;**false**
 
     When enabled, the number of _incoming_ queries by query types (for example
     `A`, `MX`, `AAAA`) is collected.
 
     Default: Enabled.
 
-- **ServerStats** **true**|**false**
+- **ServerStats** **true**&#124;**false**
 
     Collect global server statistics, such as requests received over IPv4 and IPv6,
     successful queries, and failed updates.
 
     Default: Enabled.
 
-- **ZoneMaintStats** **true**|**false**
+- **ZoneMaintStats** **true**&#124;**false**
 
     Collect zone maintenance statistics, mostly information about notifications
     (zone updates) and zone transfers.
 
     Default: Enabled.
 
-- **ResolverStats** **true**|**false**
+- **ResolverStats** **true**&#124;**false**
 
     Collect resolver statistics, i. e. statistics about outgoing requests
     (e. g. queries over IPv4, lame servers). Since the global resolver
@@ -1361,21 +1361,21 @@ The bind plugin accepts the following configuration options:
     information you want to collect about a view. If no **View** block is
     configured, no detailed view statistics will be collected.
 
-    - **QTypes** **true**|**false**
+    - **QTypes** **true**&#124;**false**
 
         If enabled, the number of _outgoing_ queries by query type (e. g. `A`,
         `MX`) is collected.
 
         Default: Enabled.
 
-    - **ResolverStats** **true**|**false**
+    - **ResolverStats** **true**&#124;**false**
 
         Collect resolver statistics, i. e. statistics about outgoing requests
         (e. g. queries over IPv4, lame servers).
 
         Default: Enabled.
 
-    - **CacheRRSets** **true**|**false**
+    - **CacheRRSets** **true**&#124;**false**
 
         If enabled, the number of entries (_"RR sets"_) in the view's cache by query
         type is collected. Negative entries (queries which resulted in an error, for
@@ -1459,7 +1459,7 @@ separate ceph daemons running on the same device (two OSDs, one MON, one MDS) :
 
 The ceph plugin accepts the following configuration options:
 
-- **LongRunAvgLatency** **true**|**false**
+- **LongRunAvgLatency** **true**&#124;**false**
 
     If enabled, latency values(sum,count pairs) are calculated as the long run
     average - average since the ceph daemon was started = (sum / count).
@@ -1468,7 +1468,7 @@ The ceph plugin accepts the following configuration options:
 
     Default: Disabled
 
-- **ConvertSpecialMetricTypes** **true**|**false**
+- **ConvertSpecialMetricTypes** **true**&#124;**false**
 
     If enabled, special metrics (metrics that differ in type from similar counters)
     are converted to the type of those similar counters. This currently only
@@ -1505,7 +1505,7 @@ This plugin collects the CPU user/system time for each _cgroup_ by reading the
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Invert the selection: If set to true, all cgroups _except_ the ones that
     match any one of the criteria are collected. By default only selected
@@ -1620,37 +1620,37 @@ per-CPU metrics to be reported as percentage.
 
 The following configuration options are available:
 
-- **ReportByState** **true**|**false**
+- **ReportByState** **true**&#124;**false**
 
     When set to **true**, the default, reports per-state metrics, e.g. "system",
     "user" and "idle".
     When set to **false**, aggregates (sums) all _non-idle_ states into one
     "active" metric.
 
-- **ReportByCpu** **true**|**false**
+- **ReportByCpu** **true**&#124;**false**
 
     When set to **true**, the default, reports per-CPU (per-core) metrics.
     When set to **false**, instead of reporting metrics for individual CPUs, only a
     global sum of CPU states is emitted.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     This option is only considered when both, **ReportByCpu** and **ReportByState**
     are set to **true**. In this case, by default, metrics will be reported as
     Jiffies. By setting this option to **true**, you can request percentage values
     in the un-aggregated (per-CPU, per-state) mode as well.
 
-- **ReportNumCpu** **false**|**true**
+- **ReportNumCpu** **false**&#124;**true**
 
     When set to **true**, reports the number of available CPUs.
     Defaults to **false**.
 
-- **ReportGuestState** **false**|**true**
+- **ReportGuestState** **false**&#124;**true**
 
     When set to **true**, reports the "guest" and "guest\_nice" CPU states.
     Defaults to **false**.
 
-- **SubtractGuestState** **false**|**true**
+- **SubtractGuestState** **false**&#124;**true**
 
     This option is only considered when **ReportGuestState** is set to **true**.
     "guest" and "guest\_nice" are included in respectively "user" and "nice".
@@ -1699,13 +1699,13 @@ wall clock.
     output and standard error channels, respectively. This, of course, only makes
     much sense when collectd is running in foreground- or non-daemon-mode.
 
-- **StoreRates** **true|false**
+- **StoreRates** **true&#124;false**
 
     If set to **true**, convert counter values to rates. If set to **false** (the
     default) counter values are stored as is, i. e. as an increasing integer
     number.
 
-- **FileDate** **true|false**
+- **FileDate** **true&#124;false**
 
     If set to **true** (the default value), the generated files will include the date.
     If set to **false** the date will not be included in the generated files.
@@ -1721,74 +1721,74 @@ options are disabled by default.
 
 See [http://curl.haxx.se/libcurl/c/curl\_easy\_getinfo.html](http://curl.haxx.se/libcurl/c/curl_easy_getinfo.html) for more details.
 
-- **TotalTime** **true|false**
+- **TotalTime** **true&#124;false**
 
     Total time of the transfer, including name resolving, TCP connect, etc.
 
-- **NamelookupTime** **true|false**
+- **NamelookupTime** **true&#124;false**
 
     Time it took from the start until name resolving was completed.
 
-- **ConnectTime** **true|false**
+- **ConnectTime** **true&#124;false**
 
     Time it took from the start until the connect to the remote host (or proxy)
     was completed.
 
-- **AppconnectTime** **true|false**
+- **AppconnectTime** **true&#124;false**
 
     Time it took from the start until the SSL/SSH connect/handshake to the remote
     host was completed.
 
-- **PretransferTime** **true|false**
+- **PretransferTime** **true&#124;false**
 
     Time it took from the start until just before the transfer begins.
 
-- **StarttransferTime** **true|false**
+- **StarttransferTime** **true&#124;false**
 
     Time it took from the start until the first byte was received.
 
-- **RedirectTime** **true|false**
+- **RedirectTime** **true&#124;false**
 
     Time it took for all redirection steps include name lookup, connect,
     pre-transfer and transfer before final transaction was started.
 
-- **RedirectCount** **true|false**
+- **RedirectCount** **true&#124;false**
 
     The total number of redirections that were actually followed.
 
-- **SizeUpload** **true|false**
+- **SizeUpload** **true&#124;false**
 
     The total amount of bytes that were uploaded.
 
-- **SizeDownload** **true|false**
+- **SizeDownload** **true&#124;false**
 
     The total amount of bytes that were downloaded.
 
-- **SpeedDownload** **true|false**
+- **SpeedDownload** **true&#124;false**
 
     The average download speed that curl measured for the complete download.
 
-- **SpeedUpload** **true|false**
+- **SpeedUpload** **true&#124;false**
 
     The average upload speed that curl measured for the complete upload.
 
-- **HeaderSize** **true|false**
+- **HeaderSize** **true&#124;false**
 
     The total size of all the headers received.
 
-- **RequestSize** **true|false**
+- **RequestSize** **true&#124;false**
 
     The total size of the issued requests.
 
-- **ContentLengthDownload** **true|false**
+- **ContentLengthDownload** **true&#124;false**
 
     The content-length of the download.
 
-- **ContentLengthUpload** **true|false**
+- **ContentLengthUpload** **true&#124;false**
 
     The specified size of the upload.
 
-- **NumConnects** **true|false**
+- **NumConnects** **true&#124;false**
 
     The number of new connections that were created to achieve the transfer.
 
@@ -1864,16 +1864,16 @@ The following options are valid within **Page** blocks:
 
     Password to use if authorization is required to read the page.
 
-- **Digest** **true**|**false**
+- **Digest** **true**&#124;**false**
 
     Enable HTTP digest authentication.
 
-- **VerifyPeer** **true**|**false**
+- **VerifyPeer** **true**&#124;**false**
 
     Enable or disable peer SSL certificate verification. See
     [http://curl.haxx.se/docs/sslcerts.html](http://curl.haxx.se/docs/sslcerts.html) for details. Enabled by default.
 
-- **VerifyHost** **true**|**false**
+- **VerifyHost** **true**&#124;**false**
 
     Enable or disable peer host name verification. If enabled, the plugin checks if
     the `Common Name` or a `Subject Alternate Name` field of the SSL certificate
@@ -1900,7 +1900,7 @@ The following options are valid within **Page** blocks:
     `Content-Type` for the post body (e.g. to
     `application/x-www-form-urlencoded`).
 
-- **MeasureResponseTime** **true**|**false**
+- **MeasureResponseTime** **true**&#124;**false**
 
     Measure response time for the request. If this setting is enabled, **Match**
     blocks (see below) are optional. Disabled by default.
@@ -1912,7 +1912,7 @@ The following options are valid within **Page** blocks:
     This option is similar to enabling the **TotalTime** statistic but it's
     measured by collectd instead of cURL.
 
-- **MeasureResponseCode** **true**|**false**
+- **MeasureResponseCode** **true**&#124;**false**
 
     Measure response code for the request. If this setting is enabled, **Match**
     blocks (see below) are optional. Disabled by default.
@@ -2041,9 +2041,9 @@ The following options are valid within **URL** blocks:
 
 - **User** _Name_
 - **Password** _Password_
-- **Digest** **true**|**false**
-- **VerifyPeer** **true**|**false**
-- **VerifyHost** **true**|**false**
+- **Digest** **true**&#124;**false**
+- **VerifyPeer** **true**&#124;**false**
+- **VerifyHost** **true**&#124;**false**
 - **CACert** _file_
 - **Header** _Header_
 - **Post** _Body_
@@ -2145,9 +2145,9 @@ The following options are valid within **URL** blocks:
 
 - **User** _Name_
 - **Password** _Password_
-- **Digest** **true**|**false**
-- **VerifyPeer** **true**|**false**
-- **VerifyHost** **true**|**false**
+- **Digest** **true**&#124;**false**
+- **VerifyPeer** **true**&#124;**false**
+- **VerifyHost** **true**&#124;**false**
 - **CACert** _file_
 - **Header** _Header_
 - **Post** _Body_
@@ -2273,9 +2273,9 @@ Within the **URL** block the following options are accepted:
 
 - **User** _User_
 - **Password** _Password_
-- **Digest** **true**|**false**
-- **VerifyPeer** **true**|**false**
-- **VerifyHost** **true**|**false**
+- **Digest** **true**&#124;**false**
+- **VerifyPeer** **true**&#124;**false**
+- **VerifyHost** **true**&#124;**false**
 - **CACert** _CA Cert File_
 - **Header** _Header_
 - **Post** _Body_
@@ -2623,12 +2623,12 @@ The plugin requires root privileges to perform the statistics collection.
     Sets the _Interval (in seconds)_ in which the values will be collected. Defaults to `global Interval` value.
     This will override the _global Interval_ for _dcpmm_ plugin. None of the other plugins will be affected.
 
-- **CollectHealth** _true_|_false_
+- **CollectHealth** _true_&#124;_false_
 
     Collects health information. _CollectHealth and CollectPerfMetrics cannot be true at the same time_. Defaults to `false`.
 
     The health information metrics are the following:
-      health\_status              Overall health summary (0: normal | 1: non-critical | 2: critical | 3: fatal).
+      health\_status              Overall health summary (0: normal &#124; 1: non-critical &#124; 2: critical &#124; 3: fatal).
       lifespan\_remaining         The module’s remaining life as a percentage value of factory expected life span.
       lifespan\_used              The module’s used life as a percentage value of factory expected life span.
       power\_on\_time              The lifetime the DIMM has been powered on in seconds.
@@ -2641,7 +2641,7 @@ The plugin requires root privileges to perform the statistics collection.
       tsc\_cycles                 The number of tsc cycles during each interval.
       epoch                      The timestamp in seconds at which the metrics are collected from DCPMM DIMMs.
 
-- **CollectPerfMetrics** _true_|_false_
+- **CollectPerfMetrics** _true_&#124;_false_
 
     Collects memory performance metrics. _CollectHealth and CollectPerfMetrics cannot be true at the same time_. Defaults to `true`.
 
@@ -2684,24 +2684,24 @@ The plugin requires root privileges to perform the statistics collection.
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Invert the selection: If set to true, all partitions **except** the ones that
     match any one of the criteria are collected. By default only selected
     partitions are collected if a selection is made. If no selection is configured
     at all, **all** partitions are selected.
 
-- **LogOnce** **false**|**false**
+- **LogOnce** **false**&#124;**false**
 
     Only log stat() errors once.
 
-- **ReportByDevice** **true**|**false**
+- **ReportByDevice** **true**&#124;**false**
 
     Report using the device name rather than the mountpoint. i.e. with this _false_,
     (the default), it will report a disk as "root", but with it _true_, it will be
     "sda1" (or whichever).
 
-- **ReportInodes** **true**|**false**
+- **ReportInodes** **true**&#124;**false**
 
     Enables or disables reporting of free, reserved and used inodes. Defaults to
     inode collection being disabled.
@@ -2710,12 +2710,12 @@ The plugin requires root privileges to perform the statistics collection.
     many small files are stored on the disk. This is a usual scenario for mail
     transfer agents and web caches.
 
-- **ValuesAbsolute** **true**|**false**
+- **ValuesAbsolute** **true**&#124;**false**
 
     Enables or disables reporting of free and used disk space in 1K-blocks.
     Defaults to **true**.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     Enables or disables reporting of free and used disk space in percentage.
     Defaults to **false**.
@@ -2747,7 +2747,7 @@ collection only of specific disks.
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Sets whether selected disks, i. e. the ones matches by any of the **Disk**
     statements, are ignored or if all other disks are ignored. The behavior
@@ -2756,7 +2756,7 @@ collection only of specific disks.
     set to **false**, **only** matching disks will be collected. If **IgnoreSelected**
     is set to **true**, all disks are collected **except** the ones matched.
 
-- **UseBSDName** **true**|**false**
+- **UseBSDName** **true**&#124;**false**
 
     Whether to use the device's "BSD Name", on Mac OS X, instead of the
     default major/minor numbers. Requires collectd to be built with Apple's
@@ -2789,7 +2789,7 @@ collection only of specific disks.
 
     Ignore packets that originate from this address.
 
-- **SelectNumericQueryTypes** **true**|**false**
+- **SelectNumericQueryTypes** **true**&#124;**false**
 
     Enabled by default, collects unknown (and thus presented as numeric only) query types.
 
@@ -2846,7 +2846,7 @@ single argument which specifies the name of the event.
 
 #### Link Status event
 
-- **SendEventOnUpdate** _true|false_
+- **SendEventOnUpdate** _true&#124;false_
 
     If set to true link status value will be dispatched only when it is
     different from previously read value. This is an optional argument - default
@@ -2867,7 +2867,7 @@ single argument which specifies the name of the event.
     are less PortName options than there are enabled ports, the default naming
     convention will be used for the additional ports.
 
-- **SendNotification** _true|false_
+- **SendNotification** _true&#124;false_
 
     If set to true, link status notifications are sent, instead of link status
     being collected as a statistic. This is an optional argument - default
@@ -2875,7 +2875,7 @@ single argument which specifies the name of the event.
 
 #### Keep Alive event
 
-- **SendEventOnUpdate** _true|false_
+- **SendEventOnUpdate** _true&#124;false_
 
     If set to true keep alive value will be dispatched only when it is
     different from previously read value. This is an optional argument - default
@@ -2890,7 +2890,7 @@ single argument which specifies the name of the event.
     Shared memory name identifier that is used by secondary process to monitor
     the keep alive cores state.
 
-- **SendNotification** _true|false_
+- **SendNotification** _true&#124;false_
 
     If set to true, keep alive notifications are sent, instead of keep alive
     information being collected as a statistic. This is an optional
@@ -3056,7 +3056,7 @@ by talking directly with the underlying kernel driver using [ioctl(2)](http://ma
     an appropriate **Map** option exists, the given _Type_ and, optionally,
     _TypeInstance_ will be used.
 
-- **MappedOnly** **true**|**false**
+- **MappedOnly** **true**&#124;**false**
 
     When set to **true**, only metrics that can be mapped to a _type_ will be
     collected, all other metrics will be ignored. Defaults to **false**.
@@ -3097,12 +3097,12 @@ file handles on Linux.
 
 The _fhcount plugin_ provides the following configuration options:
 
-- **ValuesAbsolute** **true**|**false**
+- **ValuesAbsolute** **true**&#124;**false**
 
     Enables or disables reporting of file handles usage in absolute numbers,
     e.g. file handles used. Defaults to **true**.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     Enables or disables reporting of file handles usage in percentages, e.g.
     percent of file handles used. Defaults to **false**.
@@ -3180,17 +3180,17 @@ blocks, the following options are recognized:
     `m` (megabyte), `g` (gigabyte), `t` (terabyte), and `p` (petabyte). Please
     note that there are 1000 bytes in a kilobyte, not 1024.
 
-- **Recursive** _true_|_false_
+- **Recursive** _true_&#124;_false_
 
     Controls whether or not to recurse into subdirectories. Enabled by default.
 
-- **IncludeHidden** _true_|_false_
+- **IncludeHidden** _true_&#124;_false_
 
     Controls whether or not to include "hidden" files and directories in the count.
     "Hidden" files and directories are those, whose name begins with a dot.
     Defaults to _false_, i.e. by default hidden files and directories are ignored.
 
-- **RegularOnly** _true_|_false_
+- **RegularOnly** _true_&#124;_false_
 
     Controls whether or not to include only regular files in the count.
     Defaults to _true_, i.e. by default non regular files are ignored.
@@ -3383,7 +3383,7 @@ The **gRPC** homepage can be found at [https://grpc.io/](https://grpc.io/).
     Optionally, **Server** may be specified as a configuration block which supports
     the following options:
 
-    - **EnableSSL** **false**|**true**
+    - **EnableSSL** **false**&#124;**true**
 
         Whether to require SSL for outgoing connections. Default: false.
 
@@ -3405,7 +3405,7 @@ The **gRPC** homepage can be found at [https://grpc.io/](https://grpc.io/).
     Optionally, **Listen** may be specified as a configuration block which
     supports the following options:
 
-    - **EnableSSL** _true_|_false_
+    - **EnableSSL** _true_&#124;_false_
 
         Whether to enable SSL for incoming connections. Default: false.
 
@@ -3416,7 +3416,7 @@ The **gRPC** homepage can be found at [https://grpc.io/](https://grpc.io/).
         Filenames specifying SSL certificate and key material to be used with SSL
         connections.
 
-    - **VerifyPeer** **true**|**false**
+    - **VerifyPeer** **true**&#124;**false**
 
         When enabled, a valid client certificate is required to connect to the server.
         When disabled, a client certifiacte is not requested and any unsolicited client
@@ -3450,31 +3450,31 @@ To collect **hugepages** information, collectd reads directories
 Reading of these directories can be disabled by the following
 options (default is enabled).
 
-- **ReportPerNodeHP** **true**|**false**
+- **ReportPerNodeHP** **true**&#124;**false**
 
     If enabled, information will be collected from the hugepage
     counters in "/sys/devices/system/node/\*/hugepages".
     This is used to check the per-node hugepage statistics on
     a NUMA system.
 
-- **ReportRootHP** **true**|**false**
+- **ReportRootHP** **true**&#124;**false**
 
     If enabled, information will be collected from the hugepage
     counters in "/sys/kernel/mm/hugepages".
     This can be used on both NUMA and non-NUMA systems to check
     the overall hugepage statistics.
 
-- **ValuesPages** **true**|**false**
+- **ValuesPages** **true**&#124;**false**
 
     Whether to report hugepages metrics in number of pages.
     Defaults to **true**.
 
-- **ValuesBytes** **false**|**true**
+- **ValuesBytes** **false**&#124;**true**
 
     Whether to report hugepages metrics in bytes.
     Defaults to **false**.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     Whether to report hugepages metrics as percentage.
     Defaults to **false**.
@@ -3499,7 +3499,7 @@ are formatted like `DEVICE:PORTNUM` (see examples below).
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     Sets whether selected ports are ignored or if all other ports are ignored. The
     behavior (hopefully) is intuitive: If no **Port** option is configured, all
@@ -3568,7 +3568,7 @@ number of events on many cores.
     configuration is applied - that is separate group is created for each core.
     This option can be used once for every **HardwareEvents** set.
 
-- **AggregateUncorePMUs** **false**|**true**
+- **AggregateUncorePMUs** **false**&#124;**true**
 
     This option toggles the event value reporting from all the uncore PMUs to either
     dispatch as aggregated value in a single metric or dispatch as individual
@@ -3615,12 +3615,12 @@ Please refer to _contrib/systemd.collectd.service_ file for more details.
     is 50ms, set interval to 0.05. Due to limited capacity of counters it is not
     recommended to set interval higher than 1 sec.
 
-- **MonIPCEnabled** **true**|**false**
+- **MonIPCEnabled** **true**&#124;**false**
 
     Determines whether or not to enable IPC monitoring. If set to **true** (the
     default), IPC monitoring statistics will be collected by intel\_rdt plugin.
 
-- **MonLLCRefEnabled** **true**|**false**
+- **MonLLCRefEnabled** **true**&#124;**false**
 
     Determines whether or not to enable LLC references monitoring. If set to
     **false** (the default), LLC references monitoring statistics will not be
@@ -3664,7 +3664,7 @@ than 1 sec.
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     If no configuration is given, the **interface**-plugin will collect data from
     all interfaces. This may not be practical, especially for loopback- and
@@ -3691,7 +3691,7 @@ than 1 sec.
     with _veth_ and all interfaces with names starting with _tun_ followed by
     at least one digit.
 
-- **ReportInactive** _true_|_false_
+- **ReportInactive** _true_&#124;_false_
 
     When set to _false_, only interfaces with non-zero traffic will be
     reported. Note that the check is done by looking into whether a
@@ -3704,7 +3704,7 @@ than 1 sec.
     from all interfaces that are selected by **Interface** and
     **IgnoreSelected** options.
 
-- **UniqueName** _true_|_false_
+- **UniqueName** _true_&#124;_false_
 
     Interface name is not unique on Solaris (KSTAT), interface name is unique
     only within a module/instance. Following tuple is considered unique:
@@ -3741,7 +3741,7 @@ Within the **Instance** blocks, the following options are allowed:
 
     The username and the password to use for the connection to remote BMC.
 
-- **AuthType** _MD5_|_rmcp+_
+- **AuthType** _MD5_&#124;_rmcp+_
 
     Forces the authentication type to use for the connection to remote BMC.
     By default most secure type is seleted.
@@ -3757,7 +3757,7 @@ Within the **Instance** blocks, the following options are allowed:
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     If no configuration if given, the **ipmi** plugin will collect data from all
     sensors found of type "temperature", "voltage", "current" and "fanspeed".
@@ -3765,26 +3765,26 @@ Within the **Instance** blocks, the following options are allowed:
     the effect of **Sensor** is inverted: All selected sensors are ignored and
     all other sensors are collected.
 
-- **NotifySensorAdd** _true_|_false_
+- **NotifySensorAdd** _true_&#124;_false_
 
     If a sensor appears after initialization time of a minute a notification
     is sent.
 
-- **NotifySensorRemove** _true_|_false_
+- **NotifySensorRemove** _true_&#124;_false_
 
     If a sensor disappears a notification is sent.
 
-- **NotifySensorNotPresent** _true_|_false_
+- **NotifySensorNotPresent** _true_&#124;_false_
 
     If you have for example dual power supply and one of them is (un)plugged then
     a notification is sent.
 
-- **NotifyIPMIConnectionState** _true_|_false_
+- **NotifyIPMIConnectionState** _true_&#124;_false_
 
     If a IPMI connection state changes after initialization time of a minute
     a notification is sent. Defaults to **false**.
 
-- **SELEnabled** _true_|_false_
+- **SELEnabled** _true_&#124;_false_
 
     If system event log (SEL) is enabled, plugin will listen for sensor threshold
     and discrete events. When event is received the notification is sent.
@@ -3798,14 +3798,14 @@ Within the **Instance** blocks, the following options are allowed:
 
     See `/"IGNORELISTS"` for details.
 
-- **SELIgnoreSelected** _true_|_false_
+- **SELIgnoreSelected** _true_&#124;_false_
 
     If no configuration is given, the **ipmi** plugin will pass events from all
     sensors. This option enables you to do that: By setting **SELIgnoreSelected**
     to _true_ the effect of **SELSensor** is inverted: All events from selected
     sensors are ignored and all events from other sensors are passed.
 
-- **SELClearEvent** _true_|_false_
+- **SELClearEvent** _true_&#124;_false_
 
     If SEL clear event is enabled, plugin will delete event from SEL list after
     it is received and successfully handled. In this case other tools that are
@@ -3894,8 +3894,8 @@ following configuration:
 
 ## Plugin `iptables`
 
-- **Chain** _Table_ _Chain_ \[_Comment|Number_ \[_Name_\]\]
-- **Chain6** _Table_ _Chain_ \[_Comment|Number_ \[_Name_\]\]
+- **Chain** _Table_ _Chain_ \[_Comment&#124;Number_ \[_Name_\]\]
+- **Chain6** _Table_ _Chain_ \[_Comment&#124;Number_ \[_Name_\]\]
 
     Select the iptables/ip6tables filter rules to count packets and bytes from.
 
@@ -3919,7 +3919,7 @@ following configuration:
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     If no configuration if given, the **irq**-plugin will collect data from all
     irqs. This may not be practical, especially if no interrupts happen. Thus, you
@@ -3990,14 +3990,14 @@ one, five or fifteen minute average.
 
 The following configuration options are available:
 
-- **ReportRelative** **false**|**true**
+- **ReportRelative** **false**&#124;**true**
 
     When enabled, system load divided by number of available CPU cores is reported
     for intervals 1 min, 5 min and 15 min. Defaults to false.
 
 ## Plugin `logfile`
 
-- **LogLevel** **debug|info|notice|warning|err**
+- **LogLevel** **debug&#124;info&#124;notice&#124;warning&#124;err**
 
     Sets the log-level. If, for example, set to **notice**, then all events with
     severity **notice**, **warning**, or **err** will be written to the logfile.
@@ -4012,11 +4012,11 @@ The following configuration options are available:
     channels, respectively. This, of course, only makes much sense when _collectd_
     is running in foreground- or non-daemon-mode.
 
-- **Timestamp** **true**|**false**
+- **Timestamp** **true**&#124;**false**
 
     Prefix all lines printed by the current time. Defaults to **true**.
 
-- **PrintSeverity** **true**|**false**
+- **PrintSeverity** **true**&#124;**false**
 
     When enabled, all lines are prefixed by the severity of the log message, for
     example "warning". Defaults to **false**.
@@ -4100,7 +4100,7 @@ are found then it sends proper notification containing all fetched values.
     The **Logfile** block defines file to search. It may contain one or more
     **Message** blocks which are defined below.
 
-- **FirstFullRead** _true_|_false_
+- **FirstFullRead** _true_&#124;_false_
 
     Set to true if the file has to be parsed from the beginning on the first read.
     If false only subsequent writes to log file will be parsed.
@@ -4153,22 +4153,22 @@ are found then it sends proper notification containing all fetched values.
     This is processed before checking _Regex_ pattern. It is optional and can
     be omitted.
 
-- **IsMandatory**  _true_|_false_
+- **IsMandatory**  _true_&#124;_false_
 
     Flag indicating if _Match_ item is mandatory for message validation. If set to
     true, whole message is discarded if it's missing. For false its presence is
     optional. Default value is set to true.
 
-- **PluginInstance** _true_|_String_
+- **PluginInstance** _true_&#124;_String_
 
     If set to true, it sets plugin instance to string returned by regex. It can be
     overridden by user string.
 
-- **Type** _true_|_String_
+- **Type** _true_&#124;_String_
 
     Sets notification type using rules like **PluginInstance**.
 
-- **TypeInstance** _true_|_String_
+- **TypeInstance** _true_&#124;_String_
 
     Sets notification type instance using rules like above.
 
@@ -4181,7 +4181,7 @@ are found then it sends proper notification containing all fetched values.
 The _log logstash plugin_ behaves like the logfile plugin but formats
 messages as JSON events for logstash to parse and input.
 
-- **LogLevel** **debug|info|notice|warning|err**
+- **LogLevel** **debug&#124;info&#124;notice&#124;warning&#124;err**
 
     Sets the log-level. If, for example, set to **notice**, then all events with
     severity **notice**, **warning**, or **err** will be written to the logfile.
@@ -4209,13 +4209,13 @@ system, I/O statistics.
 
 The following configuration options are available:
 
-- **CpuPoolStats** **false**|**true**
+- **CpuPoolStats** **false**&#124;**true**
 
     When enabled, statistics about the processor pool are read, too. The partition
     needs to have pool authority in order to be able to acquire this information.
     Defaults to false.
 
-- **ReportBySerial** **false**|**true**
+- **ReportBySerial** **false**&#124;**true**
 
     If enabled, the serial of the physical machine the partition is currently
     running on is reported as _hostname_ and the logical hostname of the machine
@@ -4318,7 +4318,7 @@ lists are empty - plugin will accept entry anyway.
     User should set the events that should be monitored as a strings separated by spaces,
     for example Events "DeviceDisappeared Fail DegradedArray".
 
-- **IgnoreEvent** _false_|_true_
+- **IgnoreEvent** _false_&#124;_true_
 
     If _IgnoreEvent_ is set to true, events specified in _Events_ will be ignored.
     If it's false, only specified events will be monitored.
@@ -4328,7 +4328,7 @@ lists are empty - plugin will accept entry anyway.
     User can specify an array or a group of arrays using regexp. Plugin will accept
     only RAID arrays names that start with "/dev/md".
 
-- **IgnoreArray** _false_|_true_
+- **IgnoreArray** _false_&#124;_true_
 
     If _IgnoreArray_ is set to true, arrays specified in _Array_ will be ignored.
     If it's false, only specified events will be monitored.
@@ -4353,7 +4353,7 @@ exclusive.
 - **McelogClientSocket** _Path_
 Connect to the mcelog client socket using the UNIX domain socket at _Path_.
 Defaults to **"/var/run/mcelog-client"**.
-- **PersistentNotification** **true**|**false**
+- **PersistentNotification** **true**&#124;**false**
 Override default configuration to only send notifications when sent when there
 is a change in the number of corrected/uncorrected memory errors. When set to
 true notifications will be sent for every read cycle. Default is false. Does
@@ -4381,7 +4381,7 @@ _missing_ (physically absent) disks.
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Invert device selection: If set to **true**, all md devices **except** those
     listed using **Device** are collected. If **false** (the default), only those
@@ -4506,20 +4506,20 @@ Intel's Many Integrated Core (MIC) systems.
 
 The following options are valid inside the **Plugin mic** block:
 
-- **ShowCPU** **true**|**false**
+- **ShowCPU** **true**&#124;**false**
 
     If enabled (the default) a sum of the CPU usage across all cores is reported.
 
-- **ShowCPUCores** **true**|**false**
+- **ShowCPUCores** **true**&#124;**false**
 
     If enabled (the default) per-core CPU usage is reported.
 
-- **ShowMemory** **true**|**false**
+- **ShowMemory** **true**&#124;**false**
 
     If enabled (the default) the physical memory usage of the MIC system is
     reported.
 
-- **ShowTemperatures** **true**|**false**
+- **ShowTemperatures** **true**&#124;**false**
 
     If enabled (the default) various temperatures of the MIC system are reported.
 
@@ -4530,7 +4530,7 @@ The following options are valid inside the **Plugin mic** block:
     depends on the **IgnoreSelectedTemperature** setting below. By default _all_
     temperatures are reported.
 
-- **IgnoreSelectedTemperature** **false**|**true**
+- **IgnoreSelectedTemperature** **false**&#124;**true**
 
     Controls the behavior of the **Temperature** setting above. If set to **false**
     (the default) only temperatures matching a **Temperature** option are reported
@@ -4568,7 +4568,7 @@ The following options are valid inside the **Plugin mic** block:
 
         Voltage ddq
 
-- **ShowPower** **true**|**false**
+- **ShowPower** **true**&#124;**false**
 
     If enabled (the default) various temperatures of the MIC system are reported.
 
@@ -4579,7 +4579,7 @@ The following options are valid inside the **Plugin mic** block:
     depends on the **IgnoreSelectedPower** setting below. By default _all_
     power readings are reported.
 
-- **IgnoreSelectedPower** **false**|**true**
+- **IgnoreSelectedPower** **false**&#124;**true**
 
     Controls the behavior of the **Power** setting above. If set to **false**
     (the default) only power readings matching a **Power** option are reported
@@ -4633,12 +4633,12 @@ The following options are valid inside the **Plugin mic** block:
 
 The _memory plugin_ provides the following configuration options:
 
-- **ValuesAbsolute** **true**|**false**
+- **ValuesAbsolute** **true**&#124;**false**
 
     Enables or disables reporting of physical memory usage in absolute numbers,
     i.e. bytes. Defaults to **true**.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     Enables or disables reporting of physical memory usage in percentages, e.g.
     percent of physical memory used. Defaults to **false**.
@@ -4718,7 +4718,7 @@ notation).
         **RegisterType** has been set to **Uint32** or **Float**, this and the next
         register will be read (the register number is increased by one).
 
-    - **RegisterType** **Int16**|**Int32**|**Int64**|**Uint16**|**Uint32**|**UInt64**|**Float**|**Int32LE**|**Uint32LE**|**FloatLE**|**Double**
+    - **RegisterType** **Int16**&#124;**Int32**&#124;**Int64**&#124;**Uint16**&#124;**Uint32**&#124;**UInt64**&#124;**Float**&#124;**Int32LE**&#124;**Uint32LE**&#124;**FloatLE**&#124;**Double**
 
         Specifies what kind of data is returned by the device. This defaults to
         **Uint16**.  If the type is **Int32**, **Int32LE**, **Uint32**, **Uint32LE**,
@@ -4735,7 +4735,7 @@ notation).
         and **RegisterBase+3** will be read and the data combined into one 64 bit
         value.
 
-    - **RegisterCmd** **ReadHolding**|**ReadInput**
+    - **RegisterCmd** **ReadHolding**&#124;**ReadInput**
 
         Specifies register type to be collected from device. Works only with libmodbus
         2.9.2 or higher. Defaults to **ReadHolding**.
@@ -4900,17 +4900,17 @@ it will be mentioned explicitly.
 
         collectd/cpu-0/cpu-user
 
-- **Retain** **false**|**true** (Publish only)
+- **Retain** **false**&#124;**true** (Publish only)
 
     Controls whether the MQTT broker will retain (keep a copy of) the last message
     sent to each topic and deliver it to new subscribers. Defaults to **false**.
 
-- **StoreRates** **true**|**false** (Publish only)
+- **StoreRates** **true**&#124;**false** (Publish only)
 
     Controls whether `DERIVE` and `COUNTER` metrics are converted to a _rate_
     before sending. Defaults to **true**.
 
-- **CleanSession** **true**|**false** (Subscribe only)
+- **CleanSession** **true**&#124;**false** (Subscribe only)
 
     Controls whether the MQTT "cleans" the session up after the subscriber
     disconnects or if it maintains the subscriber's subscriptions and all messages
@@ -5060,24 +5060,24 @@ options are required. MySQL will use default values as documented in the
     Otherwise, use the **Port** option above. See the documentation for the
     `mysql_real_connect` function for details.
 
-- **InnodbStats** _true|false_
+- **InnodbStats** _true&#124;false_
 
     If enabled, metrics about the InnoDB storage engine are collected.
     Disabled by default.
 
-- **MasterStats** _true|false_
-- **SlaveStats** _true|false_
+- **MasterStats** _true&#124;false_
+- **SlaveStats** _true&#124;false_
 
     Enable the collection of primary / replica statistics in a replication setup. In
     order to be able to get access to these statistics, the user needs special
     privileges. See the **User** documentation above. Defaults to **false**.
 
-- **SlaveNotifications** _true|false_
+- **SlaveNotifications** _true&#124;false_
 
     If enabled, the plugin sends a notification if the replication slave I/O and /
     or SQL threads are not running. Defaults to **false**.
 
-- **WsrepStats** _true|false_
+- **WsrepStats** _true&#124;false_
 
     Enable the collection of wsrep plugin statistics, used in Master-Master
     replication setups like in MySQL Galera/Percona XtraDB Cluster.
@@ -5226,7 +5226,7 @@ The netapp plugin accepts the following configuration options:
     available in the host filer (vfiler0) but only in the respective VFiler
     context.
 
-- **Protocol** **httpd**|**http**
+- **Protocol** **httpd**&#124;**http**
 
     The protocol collectd will use to query this host.
 
@@ -5307,7 +5307,7 @@ This will collect various performance data about the whole system.
 
     Collect disk statistics every _Seconds_ seconds.
 
-- **GetCPULoad** **true**|**false**
+- **GetCPULoad** **true**&#124;**false**
 
     If you set this option to true the current CPU usage will be read. This will be
     the average usage between all CPUs in your NetApp without any information about
@@ -5324,7 +5324,7 @@ This will collect various performance data about the whole system.
 
     Result: Two value lists of type "cpu", and type instances "idle" and "system".
 
-- **GetInterfaces** **true**|**false**
+- **GetInterfaces** **true**&#124;**false**
 
     If you set this option to true the current traffic of the network interfaces
     will be read. This will be the total traffic over all interfaces of your NetApp
@@ -5343,7 +5343,7 @@ This will collect various performance data about the whole system.
 
     Result: One value list of type "if\_octects".
 
-- **GetDiskIO** **true**|**false**
+- **GetDiskIO** **true**&#124;**false**
 
     If you set this option to true the current IO throughput will be read. This
     will be the total IO of your NetApp without any information about individual
@@ -5360,7 +5360,7 @@ This will collect various performance data about the whole system.
 
     Result: One value list of type "disk\_octets".
 
-- **GetDiskOps** **true**|**false**
+- **GetDiskOps** **true**&#124;**false**
 
     If you set this option to true the current number of HTTP, NFS, CIFS, FCP,
     iSCSI, etc. operations will be read. This will be the total number of
@@ -5396,7 +5396,7 @@ releases.
 
     Collect disk statistics every _Seconds_ seconds.
 
-- **GetNameCache** **true**|**false**
+- **GetNameCache** **true**&#124;**false**
 
     Optional
 
@@ -5407,7 +5407,7 @@ releases.
     Result: One value list of type "cache\_ratio" and type instance
     "name\_cache\_hit".
 
-- **GetDirCache** **true**|**false**
+- **GetDirCache** **true**&#124;**false**
 
     Optional
 
@@ -5417,7 +5417,7 @@ releases.
 
     Result: One value list of type "cache\_ratio" and type instance "find\_dir\_hit".
 
-- **GetInodeCache** **true**|**false**
+- **GetInodeCache** **true**&#124;**false**
 
     Optional
 
@@ -5428,7 +5428,7 @@ releases.
     Result: One value list of type "cache\_ratio" and type instance
     "inode\_cache\_hit".
 
-- **GetBufferCache** **true**|**false**
+- **GetBufferCache** **true**&#124;**false**
 
     **Note:** This is the same value that the NetApp CLI command "sysstat" returns
     in the "Cache hit" field.
@@ -5452,7 +5452,7 @@ This will collect performance data about the individual disks in the NetApp.
 
     Collect disk statistics every _Seconds_ seconds.
 
-- **GetBusy** **true**|**false**
+- **GetBusy** **true**&#124;**false**
 
     If you set this option to true the busy time of all disks will be calculated
     and the value of the busiest disk in the system will be written.
@@ -5504,9 +5504,9 @@ _api-perf-object-get-instances_ capability.
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelectedIO** **true**|**false**
-- **IgnoreSelectedOps** **true**|**false**
-- **IgnoreSelectedLatency** **true**|**false**
+- **IgnoreSelectedIO** **true**&#124;**false**
+- **IgnoreSelectedOps** **true**&#124;**false**
+- **IgnoreSelectedLatency** **true**&#124;**false**
 
     When set to **true**, the volumes selected for IO, operations or latency
     statistics collection will be ignored and the data will be collected for all
@@ -5551,7 +5551,7 @@ capability.
 
     Repeat this option to specify multiple volumes.
 
-- **IgnoreSelectedCapacity** **true**|**false**
+- **IgnoreSelectedCapacity** **true**&#124;**false**
 
     Specify whether to collect only the volumes selected by the **GetCapacity**
     option or to ignore those volumes. **IgnoreSelectedCapacity** defaults to
@@ -5694,7 +5694,7 @@ statistics of various interface and routing aspects.
     **IgnoreSelected** to **true**, this behavior is inverted, i. e. the
     specified statistics will not be collected.
 
-- **CollectVFStats** **true|false**
+- **CollectVFStats** **true&#124;false**
 
     Allow plugin to collect VF's statistics if there are Virtual Functions
     available for interfaces specified in **Interface** or **VerboseInterface**.
@@ -5743,7 +5743,7 @@ signature):
 
     The following options are recognized within **Server** blocks:
 
-    - **SecurityLevel** **Encrypt**|**Sign**|**None**
+    - **SecurityLevel** **Encrypt**&#124;**Sign**&#124;**None**
 
         Set the security you require for network communication. When the security level
         has been set to **Encrypt**, data sent over the network will be encrypted using
@@ -5804,7 +5804,7 @@ signature):
 
     The following options are recognized within `<Listen>` blocks:
 
-    - **SecurityLevel** **Encrypt**|**Sign**|**None**
+    - **SecurityLevel** **Encrypt**&#124;**Sign**&#124;**None**
 
         Set the security you require for network communication. When the security level
         has been set to **Encrypt**, only encrypted data will be accepted. The integrity
@@ -5867,7 +5867,7 @@ signature):
     value of 1024 bytes to avoid problems when sending data to an older
     server.
 
-- **Forward** _true|false_
+- **Forward** _true&#124;false_
 
     If set to _true_, write packets that were received via the network plugin to
     the sending sockets. This should only be activated when the **Listen**- and
@@ -5876,7 +5876,7 @@ signature):
     necessary it's not a huge problem since the plugin has a duplicate detection,
     so the values will not loop.
 
-- **ReportStats** **true**|**false**
+- **ReportStats** **true**&#124;**false**
 
     The network plugin cannot only receive and send statistics, it can also create
     statistics about itself. Collectd data included the number of received and
@@ -5893,9 +5893,9 @@ grouped by version and whether the system runs as server or client.
 It is possibly to omit metrics for a specific NFS version by setting one or
 more of the following options to **false** (all of them default to **true**).
 
-- **ReportV2** **true**|**false**
-- **ReportV3** **true**|**false**
-- **ReportV4** **true**|**false**
+- **ReportV2** **true**&#124;**false**
+- **ReportV3** **true**&#124;**false**
+- **ReportV4** **true**&#124;**false**
 
 ## Plugin `nginx`
 
@@ -5920,12 +5920,12 @@ The following options are accepted by the `nginx plugin`:
 
     Optional password needed for authentication.
 
-- **VerifyPeer** **true|false**
+- **VerifyPeer** **true&#124;false**
 
     Enable or disable peer SSL certificate verification. See
     [http://curl.haxx.se/docs/sslcerts.html](http://curl.haxx.se/docs/sslcerts.html) for details. Enabled by default.
 
-- **VerifyHost** **true|false**
+- **VerifyHost** **true&#124;false**
 
     Enable or disable peer host name verification. If enabled, the plugin checks
     if the `Common Name` or a `Subject Alternate Name` field of the SSL
@@ -6056,14 +6056,14 @@ Available configuration options for the `ntpd` plugin:
 
     UDP-Port to connect to. Defaults to **123**.
 
-- **ReverseLookups** **true**|**false**
+- **ReverseLookups** **true**&#124;**false**
 
     Sets whether or not to perform reverse lookups on peers. Since the name or
     IP-address may be used in a filename it is recommended to disable reverse
     lookups. The default is to do reverse lookups to preserve backwards
     compatibility, though.
 
-- **IncludeUnitID** **true**|**false**
+- **IncludeUnitID** **true**&#124;**false**
 
     When a peer is a refclock, include the unit ID in the _type instance_.
     Defaults to **false** for backward compatibility.
@@ -6080,12 +6080,12 @@ Available configuration options for the `ntpd` plugin:
     Add a UPS to collect data from. The format is identical to the one accepted by
     [upsc(8)](http://man.he.net/man8/upsc).
 
-- **ForceSSL** **true**|**false**
+- **ForceSSL** **true**&#124;**false**
 
     Stops connections from falling back to unsecured if an SSL connection
     cannot be established. Defaults to false if undeclared.
 
-- **VerifyPeer** _true_|_false_
+- **VerifyPeer** _true_&#124;_false_
 
     If set to true, requires a CAPath be provided. Will use the CAPath to find
     certificates to use as Trusted Certificates to validate a upsd server certificate.
@@ -6131,7 +6131,7 @@ The following configuration options are understood:
     Specifies the port to connect to. This must be a string, even if you give the
     port as a number rather than a service name. Defaults to **"2006"**.
 
-- **CollectLinks** **No**|**Summary**|**Detail**
+- **CollectLinks** **No**&#124;**Summary**&#124;**Detail**
 
     Specifies what information to collect about links, i. e. direct
     connections of the daemon queried. If set to **No**, no information is
@@ -6141,7 +6141,7 @@ The following configuration options are understood:
 
     Defaults to **Detail**.
 
-- **CollectRoutes** **No**|**Summary**|**Detail**
+- **CollectRoutes** **No**&#124;**Summary**&#124;**Detail**
 
     Specifies what information to collect about routes of the daemon queried. If
     set to **No**, no information is collected. If set to **Summary**, the number of
@@ -6150,7 +6150,7 @@ The following configuration options are understood:
 
     Defaults to **Summary**.
 
-- **CollectTopology** **No**|**Summary**|**Detail**
+- **CollectTopology** **No**&#124;**Summary**&#124;**Detail**
 
     Specifies what information to collect about the global topology. If set to
     **No**, no information is collected. If set to **Summary**, the number of links
@@ -6230,7 +6230,7 @@ It is not possible to mix the two modes. Once a full path is detected in any
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     If no configuration is given, the **onewire** plugin will collect data from all
     sensors found. This may not be practical, especially if sensors are added and
@@ -6299,12 +6299,12 @@ The following options are accepted within each **Instance** block:
     Password for simple bind authentication. If this option is not set,
     unauthenticated bind operation is used.
 
-- **StartTLS** **true|false**
+- **StartTLS** **true&#124;false**
 
     Defines whether TLS must be used when connecting to the _OpenLDAP_ server.
     Disabled by default.
 
-- **VerifyHost** **true|false**
+- **VerifyHost** **true&#124;false**
 
     Enables or disables peer host name verification. If enabled, the plugin checks
     if the `Common Name` or a `Subject Alternate Name` field of the SSL
@@ -6348,26 +6348,26 @@ Available options:
 
     Specifies the location of the status file.
 
-- **ImprovedNamingSchema** **true**|**false**
+- **ImprovedNamingSchema** **true**&#124;**false**
 
     When enabled, the filename of the status file will be used as plugin instance
     and the client's "common name" will be used as type instance. This is required
     when reading multiple status files. Enabling this option is recommended, but to
     maintain backwards compatibility this option is disabled by default.
 
-- **CollectCompression** **true**|**false**
+- **CollectCompression** **true**&#124;**false**
 
     Sets whether or not statistics about the compression used by OpenVPN should be
     collected. This information is only available in _single_ mode. Enabled by
     default.
 
-- **CollectIndividualUsers** **true**|**false**
+- **CollectIndividualUsers** **true**&#124;**false**
 
     Sets whether or not traffic information is collected for each connected client
     individually. If set to false, currently no traffic data is collected at all
     because aggregating this data in a save manner is tricky. Defaults to **true**.
 
-- **CollectUserCount** **true**|**false**
+- **CollectUserCount** **true**&#124;**false**
 
     When enabled, the number of currently connected clients or users is collected.
     This is especially interesting when **CollectIndividualUsers** is disabled, but
@@ -6490,12 +6490,12 @@ The plugin provides the following configuration options:
 
     Default: empty (all interfaces on all bridges are monitored)
 
-- **SendNotification** _true|false_
+- **SendNotification** _true&#124;false_
 
     If set to true, OVS link notifications (interface status and OVS DB connection
     terminate) are sent to collectd. Default value is true.
 
-- **DispatchValues** _true|false_
+- **DispatchValues** _true&#124;false_
 
     Dispatch the OVS DB interface link status value with configured plugin interval.
     Defaults to false. Please note, if **SendNotification** and **DispatchValues**
@@ -6552,7 +6552,7 @@ The plugin provides the following configuration options:
 
     Default: empty (monitor all bridges)
 
-- **InterfaceStats** **false**|**true**
+- **InterfaceStats** **false**&#124;**true**
 
     Indicates that the plugin should gather statistics for individual interfaces
     in addition to ports.  This can be useful when monitoring an OVS setup with
@@ -6581,7 +6581,7 @@ Fatal errors are reported as _NOTIF\_FAILURE_ and all others as _NOTIF\_WARNING_
 
 **Options:**
 
-- **Source** **sysfs**|**proc**
+- **Source** **sysfs**&#124;**proc**
 
     Use **sysfs** or **proc** to read data from /sysfs or /proc.
     The default value is **sysfs**.
@@ -6591,12 +6591,12 @@ Fatal errors are reported as _NOTIF\_FAILURE_ and all others as _NOTIF\_WARNING_
     Directory used to access device config space. It is optional and defaults to
     /sys/bus/pci for **sysfs** and to /proc/bus/pci for **proc**.
 
-- **ReportMasked** **false**|**true**
+- **ReportMasked** **false**&#124;**true**
 
     If true plugin will notify about errors that are set to masked in Error Mask register.
     Such errors are not reported to the PCI Express Root Complex. Defaults to **false**.
 
-- **PersistentNotifications** **false**|**true**
+- **PersistentNotifications** **false**&#124;**true**
 
     If false plugin will dispatch notification only on set/clear of error.
     The ones already reported will be ignored. Defaults to **false**.
@@ -6852,7 +6852,7 @@ The following configuration options are available to define the query:
 
     The returned lines will be handled separately one after another.
 
-- **Param** _hostname_|_database_|_instance_|_username_|_interval_
+- **Param** _hostname_&#124;_database_&#124;_instance_&#124;_username_&#124;_interval_
 
     Specify the parameters which should be passed to the SQL query. The parameters
     are referred to in the SQL query as **$1**, **$2**, etc. in the same order as
@@ -7060,7 +7060,7 @@ specified:
     PostgreSQL will do (see chapter "Server Programming" in the PostgreSQL manual
     for details).
 
-- **StoreRates** **false**|**true**
+- **StoreRates** **false**&#124;**true**
 
     If set to **true** (the default), convert counter values to rates. If set to
     **false** counter values are stored as is, i. e. as an increasing integer
@@ -7133,7 +7133,7 @@ for details.
 
     Skip expired values in query output.
 
-- **SSLMode** _disable_|_allow_|_prefer_|_require_
+- **SSLMode** _disable_&#124;_allow_&#124;_prefer_&#124;_require_
 
     Specify whether to use an SSL connection when contacting the server. The
     following modes are supported:
@@ -7455,7 +7455,7 @@ Available configuration options:
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     If set to **true**, inverts the selection made by **Value**, i. e. all
     matching values will be ignored.
@@ -7652,40 +7652,40 @@ options are understood:
 
     Set the password used to authenticate.
 
-- **CollectInterface** **true**|**false**
+- **CollectInterface** **true**&#124;**false**
 
     When set to **true**, interface statistics will be collected for all interfaces
     present on the device. Defaults to **false**.
 
-- **CollectRegistrationTable** **true**|**false**
+- **CollectRegistrationTable** **true**&#124;**false**
 
     When set to **true**, information about wireless LAN connections will be
     collected. Defaults to **false**.
 
-- **CollectCPULoad** **true**|**false**
+- **CollectCPULoad** **true**&#124;**false**
 
     When set to **true**, information about the CPU usage will be collected. The
     number is a dimensionless value where zero indicates no CPU usage at all.
     Defaults to **false**.
 
-- **CollectMemory** **true**|**false**
+- **CollectMemory** **true**&#124;**false**
 
     When enabled, the amount of used and free memory will be collected. How used
     memory is calculated is unknown, for example whether or not caches are counted
     as used space.
     Defaults to **false**.
 
-- **CollectDF** **true**|**false**
+- **CollectDF** **true**&#124;**false**
 
     When enabled, the amount of used and free disk space will be collected.
     Defaults to **false**.
 
-- **CollectDisk** **true**|**false**
+- **CollectDisk** **true**&#124;**false**
 
     When enabled, the number of sectors written and bad blocks will be collected.
     Defaults to **false**.
 
-- **CollectHealth** **true**|**false**
+- **CollectHealth** **true**&#124;**false**
 
     When enabled, the health statistics will be collected. This includes the
     voltage and temperature on supported hardware.
@@ -7752,13 +7752,13 @@ parameters and set of user-defined queries for this node.
 
     Defaults to 2000 (2 seconds).
 
-- **ReportCommandStats** **false**|**true**
+- **ReportCommandStats** **false**&#124;**true**
 
     Enables or disables reporting of statistics based on the command type, including
     rate of command calls and average CPU time consumed by command processing.
     Defaults to **false**.
 
-- **ReportCpuUsage** **true**|**false**
+- **ReportCpuUsage** **true**&#124;**false**
 
     Enables or disables reporting of CPU consumption statistics.
     Defaults to **true**.
@@ -7828,13 +7828,13 @@ does not result in RRD files being created / expected in the wrong place.
     path, it is relative to the working base directory of the `rrdcached` daemon!
     Use of an absolute path is recommended.
 
-- **CreateFiles** **true**|**false**
+- **CreateFiles** **true**&#124;**false**
 
     Enables or disables the creation of RRD files. If the daemon is not running
     locally, or **DataDir** is set to a relative path, this will not work as
     expected. Default is **true**.
 
-- **CreateFilesAsync** **false**|**true**
+- **CreateFilesAsync** **false**&#124;**true**
 
     When enabled, new RRD files are enabled asynchronously, using a separate thread
     that runs in the background. This prevents writes to block, which is a problem
@@ -7888,7 +7888,7 @@ does not result in RRD files being created / expected in the wrong place.
     _Factor_ must be in the range `[0.0-1.0)`, i.e. between zero (inclusive) and
     one (exclusive).
 
-- **CollectStatistics** **false**|**true**
+- **CollectStatistics** **false**&#124;**true**
 
     When set to **true**, various statistics about the _rrdcached_ daemon will be
     collected, with "rrdcached" as the _plugin name_. Defaults to **false**.
@@ -7908,7 +7908,7 @@ can safely ignore these settings.
     Set the directory to store RRD files under. By default RRD files are generated
     beneath the daemon's working directory, i.e. the **BaseDir**.
 
-- **CreateFilesAsync** **false**|**true**
+- **CreateFilesAsync** **false**&#124;**true**
 
     When enabled, new RRD files are enabled asynchronously, using a separate thread
     that runs in the background. This prevents writes to block, which is a problem
@@ -8048,7 +8048,7 @@ The **lm\_sensors** homepage can be found at
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     If no configuration if given, the **sensors**-plugin will collect data from all
     sensors. This may not be practical, especially for uninteresting sensors.
@@ -8058,7 +8058,7 @@ The **lm\_sensors** homepage can be found at
     _true_ the effect of **Sensor** is inverted: All selected sensors are ignored
     and all other sensors are collected.
 
-- **UseLabels** _true_|_false_
+- **UseLabels** _true_&#124;_false_
 
     Configures how sensor readings are reported. When set to _true_, sensor
     readings are reported using their descriptive label (e.g. "VCore"). When set to
@@ -8164,7 +8164,7 @@ collection only of specific disks.
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Sets whether selected disks, i. e. the ones matches by any of the **Disk**
     statements, are ignored or if all other disks are ignored. The behavior
@@ -8173,7 +8173,7 @@ collection only of specific disks.
     set to **false**, **only** matching disks will be collected. If **IgnoreSelected**
     is set to **true**, all disks are collected **except** the ones matched.
 
-- **IgnoreSleepMode** **true**|**false**
+- **IgnoreSleepMode** **true**&#124;**false**
 
     Normally, the `smart` plugin will ignore disks that are reported to be asleep.
     This option disables the sleep mode check and allows the plugin to collect data
@@ -8181,7 +8181,7 @@ collection only of specific disks.
     reports disks as asleep because it has not been updated to incorporate support
     for newer idle states in the ATA spec.
 
-- **UseSerial** **true**|**false**
+- **UseSerial** **true**&#124;**false**
 
     A disk's kernel name (e.g., sda) can change from one boot to the next. If this
     option is enabled, the `smart` plugin will use the disk's serial number (e.g.,
@@ -8378,10 +8378,10 @@ The following configuration options are valid:
     UDP port to listen to. This can be either a service name or a port number.
     Defaults to `8125`.
 
-- **DeleteCounters** **false**|**true**
-- **DeleteTimers** **false**|**true**
-- **DeleteGauges** **false**|**true**
-- **DeleteSets** **false**|**true**
+- **DeleteCounters** **false**&#124;**true**
+- **DeleteTimers** **false**&#124;**true**
+- **DeleteGauges** **false**&#124;**true**
+- **DeleteSets** **false**&#124;**true**
 
     These options control what happens if metrics are not updated in an interval.
     If set to **False**, the default, metrics are dispatched unchanged, i.e. the
@@ -8389,13 +8389,13 @@ The following configuration options are valid:
     are unchanged. If set to **True**, the such metrics are not dispatched and
     removed from the internal cache.
 
-- **CounterSum** **false**|**true**
+- **CounterSum** **false**&#124;**true**
 
     When enabled, creates a `count` metric which reports the change since the last
     read. This option primarily exists for compatibility with the _statsd_
     implementation by Etsy.
 
-- **CounterSum** **false**|**true**
+- **CounterSum** **false**&#124;**true**
 
     When enabled, creates a `gauge` metric which reports counters as a "gauge"
     of the differential, resetting the counter between flush intervals.  This
@@ -8412,10 +8412,10 @@ The following configuration options are valid:
     Different percentiles can be calculated by setting this option several times.
     If none are specified, no percentiles are calculated / dispatched.
 
-- **TimerLower** **false**|**true**
-- **TimerUpper** **false**|**true**
-- **TimerSum** **false**|**true**
-- **TimerCount** **false**|**true**
+- **TimerLower** **false**&#124;**true**
+- **TimerUpper** **false**&#124;**true**
+- **TimerSum** **false**&#124;**true**
+- **TimerCount** **false**&#124;**true**
 
     Calculate and dispatch various values out of _Timer_ metrics received during
     an interval. If set to **False**, the default, these values aren't calculated /
@@ -8428,7 +8428,7 @@ The following configuration options are valid:
 The _Swap plugin_ collects information about used and available swap space. On
 _Linux_ and _Solaris_, the following options are available:
 
-- **ReportByDevice** **false**|**true**
+- **ReportByDevice** **false**&#124;**true**
 
     Configures how to report physical swap devices. If set to **false** (the
     default), the summary over all swap devices is reported only, i.e. the globally
@@ -8438,17 +8438,17 @@ _Linux_ and _Solaris_, the following options are available:
     This option is only available if the _Swap plugin_ can read `/proc/swaps`
     (under Linux) or use the [swapctl(2)](http://man.he.net/man2/swapctl) mechanism (under _Solaris_).
 
-- **ReportBytes** **false**|**true**
+- **ReportBytes** **false**&#124;**true**
 
     When enabled, the _swap I/O_ is reported in bytes. When disabled, the default,
     _swap I/O_ is reported in pages. This option is available under Linux only.
 
-- **ValuesAbsolute** **true**|**false**
+- **ValuesAbsolute** **true**&#124;**false**
 
     Enables or disables reporting of absolute swap metrics, i.e. number of _bytes_
     available and used. Defaults to **true**.
 
-- **ValuesPercentage** **false**|**true**
+- **ValuesPercentage** **false**&#124;**true**
 
     Enables or disables reporting of relative swap metrics, i.e. _percent_
     available and free. Defaults to **false**.
@@ -8456,7 +8456,7 @@ _Linux_ and _Solaris_, the following options are available:
     This is useful for deploying _collectd_ in a heterogeneous environment, where
     swap sizes differ and you want to specify generic thresholds or similar.
 
-- **ReportIO** **true**|**false**
+- **ReportIO** **true**&#124;**false**
 
     Enables or disables reporting swap IO. Defaults to **true**.
 
@@ -8525,7 +8525,7 @@ are meant to demonstration the proper remote logging and JSON format syntax.
 
 ## Plugin `syslog`
 
-- **LogLevel** **debug|info|notice|warning|err**
+- **LogLevel** **debug&#124;info&#124;notice&#124;warning&#124;err**
 
     Sets the log-level. If, for example, set to **notice**, then all events with
     severity **notice**, **warning**, or **err** will be submitted to the
@@ -8534,7 +8534,7 @@ are meant to demonstration the proper remote logging and JSON format syntax.
     Please note that **debug** is only available if collectd has been compiled with
     debugging support.
 
-- **NotifyLevel** **OKAY**|**WARNING**|**FAILURE**
+- **NotifyLevel** **OKAY**&#124;**WARNING**&#124;**FAILURE**
 
     Controls which notifications should be sent to syslog. The default behaviour is
     not to send any. Less severe notifications always imply logging more severe
@@ -9006,7 +9006,7 @@ a lot of connections the default if to count all connections with a local port,
 for which a listening socket is opened. You can use the following options to
 fine-tune the ports you are interested in:
 
-- **ListeningPorts** _true_|_false_
+- **ListeningPorts** _true_&#124;_false_
 
     If this option is set to _true_, statistics for all local ports for which a
     listening socket exists are collected. The default depends on **LocalPort** and
@@ -9032,14 +9032,14 @@ fine-tune the ports you are interested in:
     how many connections a web proxy holds to web servers. You have to give the
     port in numeric form.
 
-- **AllPortsSummary** _true_|_false_
+- **AllPortsSummary** _true_&#124;_false_
 
     If this option is set to _true_ a summary of statistics from all connections
     are collected. This option defaults to _false_.
 
 ## Plugin `thermal`
 
-- **ForceUseProcfs** _true_|_false_
+- **ForceUseProcfs** _true_&#124;_false_
 
     By default, the _Thermal plugin_ tries to read the statistics from the Linux
     `sysfs` interface. If that is not available, the plugin falls back to the
@@ -9054,7 +9054,7 @@ fine-tune the ports you are interested in:
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** _true_|_false_
+- **IgnoreSelected** _true_&#124;_false_
 
     Invert the selection: If set to true, all devices **except** the ones that
     match the device names specified by the **Device** option are collected. By
@@ -9117,13 +9117,13 @@ Intel processors by using _Model Specific Registers_.
         States 2, 3, 6 and 7:
         (1<<2) + (1<<3) + (1<<6) + (1<<7) = 396
 
-- **SystemManagementInterrupt** _true_|_false_
+- **SystemManagementInterrupt** _true_&#124;_false_
 
     Boolean enabling the collection of the I/O System-Management Interrupt counter.
     This option should only be used if the automated detection fails or if you want
     to disable this feature.
 
-- **DigitalTemperatureSensor** _true_|_false_
+- **DigitalTemperatureSensor** _true_&#124;_false_
 
     Boolean enabling the collection of the temperature of each core. This option
     should only be used if the automated detection fails or if you want to disable
@@ -9147,7 +9147,7 @@ Intel processors by using _Model Specific Registers_.
     - 2 ('4'): Cores
     - 3 ('8'): Embedded graphic device
 
-- **LogicalCoreNames** _true_|_false_
+- **LogicalCoreNames** _true_&#124;_false_
 
     Boolean enabling the use of logical core numbering for per core statistics.
     When enabled, `cpu<n>` is used as plugin instance, where _n_ is a
@@ -9155,7 +9155,7 @@ Intel processors by using _Model Specific Registers_.
     if there is only one package and `pkg<n>-core<m>` if there is
     more than one, where _n_ is the n-th core of package _m_.
 
-- **RestoreAffinityPolicy** _AllCPUs_|_Restore_
+- **RestoreAffinityPolicy** _AllCPUs_&#124;_Restore_
 
     Reading data from CPU has side-effect: collectd process's CPU affinity mask
     changes. After reading data is completed, affinity mask needs to be restored.
@@ -9201,7 +9201,7 @@ See following links for details:
 
     See `/"IGNORELISTS"` for details.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Sets whether selected devices, i. e. the ones matches by any of the **Device**
     statements, are ignored or if all other devices are ignored. If no **Device** option
@@ -9227,7 +9227,7 @@ See following links for details:
     permissions must be given as a numeric, octal value as you would pass to
     [chmod(1)](http://man.he.net/man1/chmod). Defaults to **0770**.
 
-- **DeleteSocket** **false**|**true**
+- **DeleteSocket** **false**&#124;**true**
 
     If set to **true**, delete the socket file before calling [bind(2)](http://man.he.net/man2/bind), if a file
     with the given name already exists. If _collectd_ crashes a socket file may be
@@ -9305,67 +9305,67 @@ fine in most cases).
 
 Inside each <**Instance**> blocks, the following options are recognized:
 
-- **CollectBackend** **true**|**false**
+- **CollectBackend** **true**&#124;**false**
 
     Back-end connection statistics, such as successful, reused,
     and closed connections. True by default.
 
-- **CollectBan** **true**|**false**
+- **CollectBan** **true**&#124;**false**
 
     Statistics about ban operations, such as number of bans added, retired, and
     number of objects tested against ban operations. Only available with Varnish
     3.x and above. False by default.
 
-- **CollectCache** **true**|**false**
+- **CollectCache** **true**&#124;**false**
 
     Cache hits and misses. True by default.
 
-- **CollectConnections** **true**|**false**
+- **CollectConnections** **true**&#124;**false**
 
     Number of client connections received, accepted and dropped. True by default.
 
-- **CollectDirectorDNS** **true**|**false**
+- **CollectDirectorDNS** **true**&#124;**false**
 
     DNS director lookup cache statistics. Only available with Varnish 3.x. False by
     default.
 
-- **CollectESI** **true**|**false**
+- **CollectESI** **true**&#124;**false**
 
     Edge Side Includes (ESI) parse statistics. False by default.
 
-- **CollectFetch** **true**|**false**
+- **CollectFetch** **true**&#124;**false**
 
     Statistics about fetches (HTTP requests sent to the backend). False by default.
 
-- **CollectHCB** **true**|**false**
+- **CollectHCB** **true**&#124;**false**
 
     Inserts and look-ups in the crit bit tree based hash. Look-ups are
     divided into locked and unlocked look-ups. False by default.
 
-- **CollectObjects** **true**|**false**
+- **CollectObjects** **true**&#124;**false**
 
     Statistics on cached objects: number of objects expired, nuked (prematurely
     expired), saved, moved, etc. False by default.
 
-- **CollectPurge** **true**|**false**
+- **CollectPurge** **true**&#124;**false**
 
     Statistics about purge operations, such as number of purges added, retired, and
     number of objects tested against purge operations. Only available with Varnish
     2.x. False by default.
 
-- **CollectSession** **true**|**false**
+- **CollectSession** **true**&#124;**false**
 
     Client session statistics. Number of past and current sessions, session herd and
     linger counters, etc. False by default. Note that if using Varnish 4.x, some
     metrics found in the Connections and Threads sections with previous versions of
     Varnish have been moved here.
 
-- **CollectSHM** **true**|**false**
+- **CollectSHM** **true**&#124;**false**
 
     Statistics about the shared memory log, a memory region to store
     log messages which is flushed to disk when full. True by default.
 
-- **CollectSMA** **true**|**false**
+- **CollectSMA** **true**&#124;**false**
 
     malloc or umem (umem\_alloc(3MALLOC) based) storage statistics. The umem storage
     component is Solaris specific. Note: SMA, SMF and MSE share counters, enable
@@ -9373,75 +9373,75 @@ Inside each <**Instance**> blocks, the following options are recognized:
     varnish 4.x and above (Not available in varnish 3.x).
     False by default.
 
-- **CollectSMS** **true**|**false**
+- **CollectSMS** **true**&#124;**false**
 
     synth (synthetic content) storage statistics. This storage
     component is used internally only. False by default.
 
-- **CollectSM** **true**|**false**
+- **CollectSM** **true**&#124;**false**
 
     file (memory mapped file) storage statistics. Only available with Varnish 2.x,
     in varnish 4.x and above use CollectSMF.
     False by default.
 
-- **CollectStruct** **true**|**false**
+- **CollectStruct** **true**&#124;**false**
 
     Current varnish internal state statistics. Number of current sessions, objects
     in cache store, open connections to backends (with Varnish 2.x), etc. False by
     default.
 
-- **CollectTotals** **true**|**false**
+- **CollectTotals** **true**&#124;**false**
 
     Collects overview counters, such as the number of sessions created,
     the number of requests and bytes transferred. False by default.
 
-- **CollectUptime** **true**|**false**
+- **CollectUptime** **true**&#124;**false**
 
     Varnish uptime. Only available with Varnish 3.x and above. False by default.
 
-- **CollectVCL** **true**|**false**
+- **CollectVCL** **true**&#124;**false**
 
     Number of total (available + discarded) VCL (config files). False by default.
 
-- **CollectVSM** **true**|**false**
+- **CollectVSM** **true**&#124;**false**
 
     Collect statistics about Varnish's shared memory usage (used by the logging and
     statistics subsystems). Only available with Varnish 4.x. False by default.
 
-- **CollectWorkers** **true**|**false**
+- **CollectWorkers** **true**&#124;**false**
 
     Collect statistics about worker threads. False by default.
 
-- **CollectVBE** **true**|**false**
+- **CollectVBE** **true**&#124;**false**
 
     Backend counters. Only available with Varnish 4.x and above. False by default.
 
-- **CollectSMF** **true**|**false**
+- **CollectSMF** **true**&#124;**false**
 
     file (memory mapped file) storage statistics. Only available with Varnish 4.x and above.
     Note: SMA, SMF and MSE share counters, enable only the one used by the Varnish
     instance. Used to be called SM in Varnish 2.x. False by default.
 
-- **CollectManagement** **true**|**false**
+- **CollectManagement** **true**&#124;**false**
 
     Management process counters. Only available with Varnish 4.x and above. False by default.
 
-- **CollectLock** **true**|**false**
+- **CollectLock** **true**&#124;**false**
 
     Lock counters. Only available with Varnish 4.x and above. False by default.
 
-- **CollectMempool** **true**|**false**
+- **CollectMempool** **true**&#124;**false**
 
     Memory pool counters. Only available with Varnish 4.x and above. False by default.
 
-- **CollectMSE** **true**|**false**
+- **CollectMSE** **true**&#124;**false**
 
     Varnish Massive Storage Engine 2.0 (MSE2) is an improved storage backend for
     Varnish, replacing the traditional malloc and file storages. Only available
     with Varnish-Plus 4.x and above. Note: SMA, SMF and MSE share counters, enable only the
     one used by the Varnish instance. False by default.
 
-- **CollectGOTO** **true**|**false**
+- **CollectGOTO** **true**&#124;**false**
 
     vmod-goto counters. Only available with Varnish Plus 6.x. False by default.
 
@@ -9510,7 +9510,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
 - **Domain** _name_
 - **BlockDevice** _name:dev_
 - **InterfaceDevice** _name:dev_
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     Select which domains and devices are collected.
 
@@ -9571,7 +9571,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     It is possible to filter multiple block devices/domains/interfaces by
     adding multiple filtering entries in separate lines.
 
-- **BlockDeviceFormat** **target**|**source**
+- **BlockDeviceFormat** **target**&#124;**source**
 
     If _BlockDeviceFormat_ is set to **target**, the default, then the device name
     seen by the guest will be used for reporting metrics.
@@ -9605,7 +9605,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     will be applied to target or source). More info about filtering
     block devices can be found in the description of **BlockDevice**.
 
-- **BlockDeviceFormatBasename** **false**|**true**
+- **BlockDeviceFormatBasename** **false**&#124;**true**
 
     The **BlockDeviceFormatBasename** controls whether the full path or the
     [basename(1)](http://man.he.net/man1/basename) of the source is being used as the _type instance_ when
@@ -9619,7 +9619,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     Setting `BlockDeviceFormatBasename true` will cause the _type instance_ to be
     set to `image1.qcow2`.
 
-- **HostnameFormat** **name|uuid|hostname|metadata...**
+- **HostnameFormat** **name&#124;uuid&#124;hostname&#124;metadata...**
 
     When the virt plugin logs data, it sets the hostname of the collected data
     according to this setting. The default is to use the guest name as provided by
@@ -9643,7 +9643,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     characters. In case when combination of fields exceeds 62 characters,
     hostname will be truncated without a warning.
 
-- **InterfaceFormat** **name**|**address**|**number**
+- **InterfaceFormat** **name**&#124;**address**&#124;**number**
 
     When the virt plugin logs interface data, it sets the name of the collected
     data according to this setting. The default is to use the path as provided by
@@ -9660,7 +9660,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     will be applied to name, address or number).  More info about filtering
     interfaces can be found in the description of **InterfaceDevice**.
 
-- **PluginInstanceFormat** **name|uuid|metadata|none**
+- **PluginInstanceFormat** **name&#124;uuid&#124;metadata&#124;none**
 
     When the virt plugin logs data, it sets the plugin\_instance of the collected
     data according to this setting. The default is to not set the plugin\_instance.
@@ -9685,12 +9685,12 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     describes where the hostname is located in the libvirt metadata. The default is
     _/instance/name/text()_.
 
-- **ReportBlockDevices** **true**|**false**
+- **ReportBlockDevices** **true**&#124;**false**
 
     Enabled by default. Allows to disable stats reporting of block devices for
     whole plugin.
 
-- **ReportNetworkInterfaces** **true**|**false**
+- **ReportNetworkInterfaces** **true**&#124;**false**
 
     Enabled by default. Allows to disable stats reporting of network interfaces for
     whole plugin.
@@ -9741,7 +9741,7 @@ For instance, _virt\_cpu\_total_ is in nanoseconds.
     **Note**: This statistic is only reported for disk devices with 'source'
     property available.
 
-- **PersistentNotification** **true**|**false**
+- **PersistentNotification** **true**&#124;**false**
 
     Override default configuration to only send notifications when there is a change
     in the lifecycle state of a domain. When set to true notifications will be sent
@@ -9782,7 +9782,7 @@ collected very detailed. However, to get all the details, you have to switch
 them on manually. Most people just want an overview over, such as the number of
 pages read from swap space.
 
-- **Verbose** **true**|**false**
+- **Verbose** **true**&#124;**false**
 
     Enables verbose collection of information. This will start collecting page
     "actions", e. g. page allocations, (de)activations, steals and so on.
@@ -9849,7 +9849,7 @@ blocks. Inside the **Node** blocks, the following options are recognized:
     for example. When set to zero, the default, the connetion is kept open for as
     long as possible.
 
-- **LogSendErrors** **false**|**true**
+- **LogSendErrors** **false**&#124;**true**
 
     If set to **true** (the default), logs errors when sending data to _Graphite_.
     If set to **false**, it will not log the errors. This is especially useful when
@@ -9880,13 +9880,13 @@ blocks. Inside the **Node** blocks, the following options are recognized:
     dots, whitespace and control characters are replaced with. Defaults to
     underscore (`_`).
 
-- **StoreRates** **false**|**true**
+- **StoreRates** **false**&#124;**true**
 
     If set to **true** (the default), convert counter values to rates. If set to
     **false** counter values are stored as is, i. e. as an increasing integer
     number.
 
-- **SeparateInstances** **false**|**true**
+- **SeparateInstances** **false**&#124;**true**
 
     If set to **true**, the plugin instance and type instance will be in their own
     path component, for example `host.cpu.0.cpu.idle`. If set to **false** (the
@@ -9895,13 +9895,13 @@ blocks. Inside the **Node** blocks, the following options are recognized:
 
     Option value is not used when **UseTags** is _true_.
 
-- **AlwaysAppendDS** **false**|**true**
+- **AlwaysAppendDS** **false**&#124;**true**
 
     If set to **true**, append the name of the _Data Source_ (DS) to the "metric"
     identifier. If set to **false** (the default), this is only done when there is
     more than one DS.
 
-- **PreserveSeparator** **false**|**true**
+- **PreserveSeparator** **false**&#124;**true**
 
     If set to **false** (the default) the `.` (dot) character is replaced with
     _EscapeCharacter_. Otherwise, if set to **true**, the `.` (dot) character
@@ -9909,13 +9909,13 @@ blocks. Inside the **Node** blocks, the following options are recognized:
 
     Option value is not used when **UseTags** is _true_.
 
-- **DropDuplicateFields** **false**|**true**
+- **DropDuplicateFields** **false**&#124;**true**
 
     If set to **true**, detect and remove duplicate components in Graphite metric
     names. For example, the metric name  `host.load.load.shortterm` will
     be shortened to `host.load.shortterm`.
 
-- **UseTags** **false**|**true**
+- **UseTags** **false**&#124;**true**
 
     If set to **true**, Graphite metric names will be generated as tagged series.
     This allows for much more flexibility than the traditional hierarchical layout.
@@ -9932,7 +9932,7 @@ blocks. Inside the **Node** blocks, the following options are recognized:
 
     Default value: **false**.
 
-- **ReverseHost** **false**|**true**
+- **ReverseHost** **false**&#124;**true**
 
     If set to **true**, the (dot separated) parts of the **host** field of the
     _value list_ will be rewritten in reverse order. The rewrite happens _before_
@@ -10034,13 +10034,13 @@ Inside the **Node** blocks, the following options are recognized:
     used for name=value pairs that the TSD will tag the metric with. Dots and
     whitespace are _not_ escaped in this string.
 
-- **StoreRates** **false**|**true**
+- **StoreRates** **false**&#124;**true**
 
     If set to **true**, convert counter values to rates. If set to **false**
     (the default) counter values are stored as is, as an increasing
     integer number.
 
-- **AlwaysAppendDS** **false**|**true**
+- **AlwaysAppendDS** **false**&#124;**true**
 
     If set the **true**, append the name of the _Data Source_ (DS) to the "metric"
     identifier. If set to **false** (the default), this is only done when there is
@@ -10079,7 +10079,7 @@ options are available:
     Set the timeout for each operation on _MongoDB_ to _Timeout_ milliseconds.
     Setting this option to zero means no timeout, which is the default.
 
-- **StoreRates** **false**|**true**
+- **StoreRates** **false**&#124;**true**
 
     If set to **true** (the default), convert counter values to rates. If set to
     **false** counter values are stored as is, i.e. as an increasing integer
@@ -10164,12 +10164,12 @@ block, the following options are available:
 
     Optional password needed for authentication.
 
-- **VerifyPeer** **true**|**false**
+- **VerifyPeer** **true**&#124;**false**
 
     Enable or disable peer SSL certificate verification. See
     [http://curl.haxx.se/docs/sslcerts.html](http://curl.haxx.se/docs/sslcerts.html) for details. Enabled by default.
 
-- **VerifyHost** **true|false**
+- **VerifyHost** **true&#124;false**
 
     Enable or disable peer host name verification. If enabled, the plugin checks if
     the `Common Name` or a `Subject Alternate Name` field of the SSL certificate
@@ -10210,13 +10210,13 @@ block, the following options are available:
 
         Header "X-Custom-Header: custom_value"
 
-- **SSLVersion** **SSLv2**|**SSLv3**|**TLSv1**|**TLSv1\_0**|**TLSv1\_1**|**TLSv1\_2**
+- **SSLVersion** **SSLv2**&#124;**SSLv3**&#124;**TLSv1**&#124;**TLSv1\_0**&#124;**TLSv1\_1**&#124;**TLSv1\_2**
 
     Define which SSL protocol version must be used. By default `libcurl` will
     attempt to figure out the remote SSL protocol version. See
     [curl\_easy\_setopt(3)](http://man.he.net/man3/curl_easy_setopt) for more details.
 
-- **Format** **Command**|**JSON**|**KAIROSDB**
+- **Format** **Command**&#124;**JSON**&#124;**KAIROSDB**
 
     Format of the output to generate. If set to **Command**, will create output that
     is understood by the _Exec_ and _UnixSock_ plugins. When set to **JSON**, will
@@ -10248,15 +10248,15 @@ block, the following options are available:
 
     Sets the metrics prefix _string_. Defaults to _collectd_.
 
-- **Metrics** **true**|**false**
+- **Metrics** **true**&#124;**false**
 
     Controls whether _metrics_ are POSTed to this location. Defaults to **true**.
 
-- **Notifications** **false**|**true**
+- **Notifications** **false**&#124;**true**
 
     Controls whether _notifications_ are POSTed to this location. Defaults to **false**.
 
-- **StoreRates** **true|false**
+- **StoreRates** **true&#124;false**
 
     If set to **true**, convert counter values to rates. If set to **false** (the
     default) counter values are stored as is, i.e. as an increasing integer number.
@@ -10284,7 +10284,7 @@ block, the following options are available:
     all the data in the current send buffer will probably be lost. Defaults to 0,
     which means the connection never times out.
 
-- **LogHttpError** **false**|**true**
+- **LogHttpError** **false**&#124;**true**
 
     Enables printing of HTTP error code to log. Turned off by default.
 
@@ -10324,7 +10324,7 @@ miliseconds while plugin instance, type and type instance are sent as tags.
     given, the default, **8089**, is used. The arguments _Host_ and _Port_ should
     be enclosed in "quotes".
 
-- **TimePrecision** _ms_|_us_|_ns_
+- **TimePrecision** _ms_&#124;_us_&#124;_ns_
 
     The **TimePrecision** option sets the precision of the timestamps sent to 
     InfluxDB. It must match the precision set in InfluxDB line protocol 
@@ -10346,12 +10346,12 @@ miliseconds while plugin instance, type and type instance are sent as tags.
     payload size that can be transmitted in one Ethernet frame using IPv6 /
     UDP.
 
-- **StoreRates** **true|false**
+- **StoreRates** **true&#124;false**
 
     If set to **true**, convert absolute, counter and derive values to rates. If set
     to **false** (the default) absolute, counter and derive values are sent as is.
 
-- **WriteMetadata** **true|false**
+- **WriteMetadata** **true&#124;false**
 
     Defaults to **false**. If set to **true**, send aditional tags to influxdb with
     collectd value metadata.
@@ -10391,7 +10391,7 @@ The following options are understood by the _write\_kafka plugin_:
         string **Random** can be used to specify that an arbitrary partition should
         be used.
 
-    - **Format** **Command**|**JSON**|**Graphite**
+    - **Format** **Command**&#124;**JSON**&#124;**Graphite**
 
         Selects the format in which messages are sent to the broker. If set to
         **Command** (the default), values are sent as `PUTVAL` commands which are
@@ -10403,7 +10403,7 @@ The following options are understood by the _write\_kafka plugin_:
         If set to **Graphite**, values are encoded in the _Graphite_ format, which is
         `<metric> <value> <timestamp>\n`.
 
-    - **StoreRates** **true**|**false**
+    - **StoreRates** **true**&#124;**false**
 
         Determines whether or not `COUNTER`, `DERIVE` and `ABSOLUTE` data sources
         are converted to a _rate_ (i.e. a `GAUGE` value). If set to **false** (the
@@ -10443,7 +10443,7 @@ The following options are understood by the _write\_kafka plugin_:
         metric parts (host, plugin, type).
         Default is `_` (_Underscore_).
 
-    - **GraphiteSeparateInstances** **false**|**true**
+    - **GraphiteSeparateInstances** **false**&#124;**true**
 
         If set to **true**, the plugin instance and type instance will be in their own
         path component, for example `host.cpu.0.cpu.idle`. If set to **false** (the
@@ -10452,13 +10452,13 @@ The following options are understood by the _write\_kafka plugin_:
 
         Option value is not used when **GraphiteUseTags** is _true_.
 
-    - **GraphiteAlwaysAppendDS** **true**|**false**
+    - **GraphiteAlwaysAppendDS** **true**&#124;**false**
 
         If set to **true**, append the name of the _Data Source_ (DS) to the "metric"
         identifier. If set to **false** (the default), this is only done when there is
         more than one DS.
 
-    - **GraphitePreserveSeparator** **false**|**true**
+    - **GraphitePreserveSeparator** **false**&#124;**true**
 
         If set to **false** (the default) the `.` (dot) character is replaced with
         _GraphiteEscapeChar_. Otherwise, if set to **true**, the `.` (dot) character
@@ -10466,13 +10466,13 @@ The following options are understood by the _write\_kafka plugin_:
 
         Option value is not used when **GraphiteUseTags** is _true_.
 
-    - **GraphiteUseTags** **false**|**true**
+    - **GraphiteUseTags** **false**&#124;**true**
 
         If set to **true** Graphite metric names will be generated as tagged series.
 
         Default value: **false**.
 
-    - **StoreRates** **true**|**false**
+    - **StoreRates** **true**&#124;**false**
 
         If set to **true** (the default), convert counter values to rates. If set to
         **false** counter values are stored as is, i.e. as an increasing integer number.
@@ -10567,7 +10567,7 @@ options are available:
     _Sorted Sets_ can hold. Negative values for _Items_ sets no duration, which
     is the default behavior.
 
-- **StoreRates** **true**|**false**
+- **StoreRates** **true**&#124;**false**
 
     If set to **true** (the default), convert counter values to rates. If set to
     **false** counter values are stored as is, i.e. as an increasing integer number.
@@ -10610,7 +10610,7 @@ The following options are understood by the _write\_riemann plugin_:
 
         Service name or port number to connect to. Defaults to `5555`.
 
-    - **Protocol** **UDP**|**TCP**|**TLS**
+    - **Protocol** **UDP**&#124;**TCP**&#124;**TLS**
 
         Specify the protocol to use when communicating with _Riemann_. Defaults to
         **TCP**.
@@ -10630,7 +10630,7 @@ The following options are understood by the _write\_riemann plugin_:
         When using the **TLS** protocol, path to a PEM private key associated
         with the certificate defined by **TLSCertFile**.
 
-    - **Batch** **true**|**false**
+    - **Batch** **true**&#124;**false**
 
         If set to **true** and **Protocol** is set to **TCP**,
         events will be batched in memory and flushed at
@@ -10654,7 +10654,7 @@ The following options are understood by the _write\_riemann plugin_:
         Maximum amount of seconds to wait in between to batch flushes.
         No timeout by default.
 
-    - **StoreRates** **true**|**false**
+    - **StoreRates** **true**&#124;**false**
 
         If set to **true** (the default), convert counter values to rates. If set to
         **false** counter values are stored as is, i.e. as an increasing integer number.
@@ -10663,7 +10663,7 @@ The following options are understood by the _write\_riemann plugin_:
         converted values will have "rate" appended to the data source type, e.g.
         `ds_type:derive:rate`.
 
-    - **AlwaysAppendDS** **false**|**true**
+    - **AlwaysAppendDS** **false**&#124;**true**
 
         If set to **true**, append the name of the _Data Source_ (DS) to the
         "service", i.e. the field that, together with the "host" field, uniquely
@@ -10679,13 +10679,13 @@ The following options are understood by the _write\_riemann plugin_:
         know exactly what you're doing, you should only increase this setting from its
         default value.
 
-    - **Notifications** **false**|**true**
+    - **Notifications** **false**&#124;**true**
 
         If set to **true**, create riemann events for notifications. This is **true**
         by default. When processing thresholds from write\_riemann, it might prove
         useful to avoid getting notification events.
 
-    - **CheckThresholds** **false**|**true**
+    - **CheckThresholds** **false**&#124;**true**
 
         If set to **true**, attach state to events based on thresholds defined
         in the **Threshold** plugin. Defaults to **false**.
@@ -10748,7 +10748,7 @@ The following options are understood by the _write\_sensu plugin_:
 
         Service name or port number to connect to. Defaults to `3030`.
 
-    - **StoreRates** **true**|**false**
+    - **StoreRates** **true**&#124;**false**
 
         If set to **true** (the default), convert counter values to rates. If set to
         **false** counter values are stored as is, i.e. as an increasing integer number.
@@ -10757,19 +10757,19 @@ The following options are understood by the _write\_sensu plugin_:
         **StoreRates** is enabled, converted values will have "rate" appended to the
         data source type, e.g.  `collectd_data_source_type:derive:rate`.
 
-    - **AlwaysAppendDS** **false**|**true**
+    - **AlwaysAppendDS** **false**&#124;**true**
 
         If set the **true**, append the name of the _Data Source_ (DS) to the
         "service", i.e. the field that, together with the "host" field, uniquely
         identifies a metric in _Sensu_. If set to **false** (the default), this is
         only done when there is more than one DS.
 
-    - **Notifications** **false**|**true**
+    - **Notifications** **false**&#124;**true**
 
         If set to **true**, create _Sensu_ events for notifications. This is **false**
         by default. At least one of **Notifications** or **Metrics** should be enabled.
 
-    - **Metrics** **false**|**true**
+    - **Metrics** **false**&#124;**true**
 
         If set to **true**, create _Sensu_ events for metrics. This is **false**
         by default. At least one of **Notifications** or **Metrics** should be enabled.
@@ -10804,7 +10804,7 @@ The following options are understood by the _write\_sensu plugin_:
     Consider the two given strings to be the key and value of an additional
     attribute for each metric being sent out to _Sensu_.
 
-- **IncludeSource** **false**|**true**
+- **IncludeSource** **false**&#124;**true**
 
     If set to **true**, then the source host of the metrics/notification is passed
     on to sensu using the source attribute. This may register the host as a proxy
@@ -11024,13 +11024,13 @@ Inside the **Node** blocks, the following options are recognized:
           } , "host":"host_v", "host_tag_example": "host_tag_example_v"
         }
 
-- **StoreRates** **false**|**true**
+- **StoreRates** **false**&#124;**true**
 
     If set to **true**, convert counter values to rates. If set to **false**
     (the default) counter values are stored as is, as an increasing
     integer number.
 
-- **AlwaysAppendDS** **false**|**true**
+- **AlwaysAppendDS** **false**&#124;**true**
 
     If set to **true**, append the name of the _Data Source_ (DS) to the "metric"
     identifier. If set to **false** (the default), this is only done when there is
@@ -11177,13 +11177,13 @@ included in a `Type` block. Currently the following statements are recognized:
     source, you can use the **DataSource** option to have a threshold apply only to
     one data source.
 
-- **Invert** **true**|**false**
+- **Invert** **true**&#124;**false**
 
     If set to **true** the range of acceptable values is inverted, i. e.
     values between **FailureMin** and **FailureMax** (**WarningMin** and
     **WarningMax**) are not okay. Defaults to **false**.
 
-- **Persist** **true**|**false**
+- **Persist** **true**&#124;**false**
 
     Sets how often notifications are generated. If set to **true** one notification
     will be generated for each value that is out of the acceptable range. If set to
@@ -11194,7 +11194,7 @@ included in a `Type` block. Currently the following statements are recognized:
     missing value is generated once every **Interval** seconds. If set to **false**
     only one such notification is generated until the value appears again.
 
-- **Percentage** **true**|**false**
+- **Percentage** **true**&#124;**false**
 
     If set to **true**, the minimum and maximum values given are interpreted as
     percentage value, relative to the other data sources. This is helpful for
@@ -11585,7 +11585,7 @@ plugins to be loaded:
         the identifier of a value. If multiple regular expressions are given, **all**
         regexen must match for a value to match.
 
-    - **Invert** **false**|**true**
+    - **Invert** **false**&#124;**true**
 
         When set to **true**, the result of the match is inverted, i.e. all value lists
         where all regular expressions apply are not matched, all other value lists are
@@ -11656,7 +11656,7 @@ plugins to be loaded:
         Sets the largest value which still results in a match. If unset, behaves like
         positive infinity.
 
-    - **Invert** **true**|**false**
+    - **Invert** **true**&#124;**false**
 
         Inverts the selection. If the **Min** and **Max** settings result in a match,
         no-match is returned and vice versa. Please note that the **Invert** setting
@@ -11670,7 +11670,7 @@ plugins to be loaded:
         data source of the specified name(s), this will always result in no match
         (independent of the **Invert** setting).
 
-    - **Satisfy** **Any**|**All**
+    - **Satisfy** **Any**&#124;**All**
 
         Specifies how checking with several data sources is performed. If set to
         **Any**, the match succeeds if one of the data sources is in the configured
@@ -11811,7 +11811,7 @@ plugins to be loaded:
 
         Please note that these placeholders are **case sensitive**!
 
-    - **Severity** **"FAILURE"**|**"WARNING"**|**"OKAY"**
+    - **Severity** **"FAILURE"**&#124;**"WARNING"**&#124;**"OKAY"**
 
         Sets the severity of the message. If omitted, the severity **"WARNING"** is
         used.
@@ -11958,7 +11958,7 @@ the items (mounts points, devices, ...) and the boolean option
 
     The **Select** option may be repeated to select multiple items.
 
-- **IgnoreSelected** **true**|**false**
+- **IgnoreSelected** **true**&#124;**false**
 
     If set to **true**, matching metrics are _ignored_ and all other metrics are
     collected. If set to **false**, matching metrics are _collected_ and all other

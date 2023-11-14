@@ -122,7 +122,7 @@ queried. The following options can be set:
     (see [collectd.conf(5)](./collectd.conf.md)), so you may want to check for which types are
     defined. See [types.db(5)]./(./types.db.md) for a description of the format of this file.
 
-- **Table** _true|false_
+- **Table** _true&#124;false_
 
     Define if this is a single list of values or a table of values. The difference
     is the following:
@@ -257,7 +257,7 @@ queried. The following options can be set:
     value, e. g. `IF-MIB::ifInOctets.3` for the third counter of incoming
     traffic.
 
-- **Count** _true|false_
+- **Count** _true&#124;false_
 
     Instead of dispatching one or multiple values per Table entry containing the
     _OID_(s) given in the **Values** option, just dispatch a single count giving the
@@ -294,7 +294,7 @@ queried. The following options can be set:
 
     When **Table** is set to _false_ then this option has no effect.
 
-- **InvertMatch** _true|false(default)_
+- **InvertMatch** _true&#124;false(default)_
 
     The invertmatch value should be use in combination of the Ignore option.
     It changes the behaviour of the Ignore option, from a blocklist behaviour
@@ -302,7 +302,7 @@ queried. The following options can be set:
 
 - **FilterOID** _OID_
 - **FilterValues** _Value_ \[, _Value_ ...\]
-- **FilterIgnoreSelected** _true|false(default)_
+- **FilterIgnoreSelected** _true&#124;false(default)_
 
     When **Table** is set to _true_, these options allow to configure filtering
     based on MIB values.
@@ -327,12 +327,12 @@ version to use and which of the defined **Data** to query.
 The argument passed to the **Host** block is used as the hostname in the data
 stored by collectd.
 
-- **Address** _IP-Address_|_Hostname_
+- **Address** _IP-Address_&#124;_Hostname_
 
     Set the address to connect to. Address may include transport specifier and/or
     port number.
 
-- **Version** **1**|**2**|**3**
+- **Version** **1**&#124;**2**&#124;**3**
 
     Set the SNMP version to use. When giving **2** version `2c` is actually used.
 
@@ -344,7 +344,7 @@ stored by collectd.
 
     Sets the _Username_ to use for SNMPv3 security.
 
-- **SecurityLevel** _authPriv_|_authNoPriv_|_noAuthNoPriv_
+- **SecurityLevel** _authPriv_&#124;_authNoPriv_&#124;_noAuthNoPriv_
 
     Selects the security level for SNMPv3 security.
 
@@ -352,7 +352,7 @@ stored by collectd.
 
     Sets the _Context_ for SNMPv3 security.
 
-- **AuthProtocol** _MD5_|_SHA_
+- **AuthProtocol** _MD5_&#124;_SHA_
 
     Selects the authentication protocol for SNMPv3 security.
 
@@ -360,7 +360,7 @@ stored by collectd.
 
     Sets the authentication passphrase for SNMPv3 security.
 
-- **PrivacyProtocol** _AES_|_DES_
+- **PrivacyProtocol** _AES_&#124;_DES_
 
     Selects the privacy (encryption) protocol for SNMPv3 security.
 

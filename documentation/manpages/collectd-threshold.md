@@ -136,13 +136,13 @@ included in a `Type` block. Currently the following statements are recognized:
     source, you can use the **DataSource** option to have a threshold apply only to
     one data source.
 
-- **Invert** **true**|**false**
+- **Invert** **true**&#124;**false**
 
     If set to **true** the range of acceptable values is inverted, i.e. values
     between **FailureMin** and **FailureMax** (**WarningMin** and **WarningMax**) are
     not okay. Defaults to **false**.
 
-- **Persist** **true**|**false**
+- **Persist** **true**&#124;**false**
 
     Sets how often notifications are generated. If set to **true** one notification
     will be generated for each value that is out of the acceptable range. If set to
@@ -153,14 +153,14 @@ included in a `Type` block. Currently the following statements are recognized:
     missing value is generated once every **Interval** seconds. If set to **false**
     only one such notification is generated until the value appears again.
 
-- **PersistOK** **true**|**false**
+- **PersistOK** **true**&#124;**false**
 
     Sets how OKAY notifications act. If set to **true** one notification will be
     generated for each value that is in the acceptable range. If set to **false**
     (the default) then a notification is only generated if a value is in range but
     the previous value was not.
 
-- **Percentage** **true**|**false**
+- **Percentage** **true**&#124;**false**
 
     If set to **true**, the minimum and maximum values given are interpreted as
     percentage value, relative to the other data sources. This is helpful for
@@ -181,7 +181,7 @@ included in a `Type` block. Currently the following statements are recognized:
     everything else) minus the hysteresis value, the failure (respectively warning)
     state will be keep.
 
-- **Interesting** **true**|**false**
+- **Interesting** **true**&#124;**false**
 
     If set to **true** (the default), a notification with severity `FAILURE` will
     be created when a matching value list is no longer updated and purged from the

@@ -44,7 +44,7 @@ as no argument is passed more than once.
     specify this option again. If multiple data sources are examined they are
     handled according to the consolidation function given with the **-g** option.
 
-- **-g** **none**_|_**average**_|_**sum**
+- **-g** **none**_&#124;_**average**_&#124;_**sum**
 
     When multiple data sources are selected from a value spec, they can be handled
     differently depending on this option. The values of the following meaning:

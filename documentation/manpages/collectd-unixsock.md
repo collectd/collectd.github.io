@@ -57,9 +57,9 @@ The following commands are implemented:
     Undefined values are returned as **NaN**.
 
     Example:
-      -> | GETVAL myhost/cpu-0/cpu-user
-      <- | 1 Value found
-      <- | value=1.260000e+00
+      -> &#124; GETVAL myhost/cpu-0/cpu-user
+      <- &#124; 1 Value found
+      <- &#124; value=1.260000e+00
 
 - **LISTVAL**
 
@@ -72,12 +72,12 @@ The following commands are implemented:
     "now".
 
     Example:
-      -> | LISTVAL
-      <- | 69 Values found
-      <- | 1182204284 myhost/cpu-0/cpu-idle
-      <- | 1182204284 myhost/cpu-0/cpu-nice
-      <- | 1182204284 myhost/cpu-0/cpu-system
-      <- | 1182204284 myhost/cpu-0/cpu-user
+      -> &#124; LISTVAL
+      <- &#124; 69 Values found
+      <- &#124; 1182204284 myhost/cpu-0/cpu-idle
+      <- &#124; 1182204284 myhost/cpu-0/cpu-nice
+      <- &#124; 1182204284 myhost/cpu-0/cpu-system
+      <- &#124; 1182204284 myhost/cpu-0/cpu-user
       ...
 
 - **PUTVAL** _Identifier_ \[_OptionList_\] _Valuelist_
@@ -125,8 +125,8 @@ The following commands are implemented:
     [collectd-exec(5)](./collectd-exec.md).
 
     Example:
-      -> | PUTVAL testhost/interface/if\_octets-test0 interval=10 1179574444:123:456
-      <- | 0 Success
+      -> &#124; PUTVAL testhost/interface/if\_octets-test0 interval=10 1179574444:123:456
+      <- &#124; 0 Success
 
 - **PUTNOTIF** \[_OptionList_\] **message=**_Message_
 
@@ -147,7 +147,7 @@ The following commands are implemented:
         all options: If the message includes spaces, it must be quoted with double
         quotes. This option is mandatory.
 
-    - **severity=failure**|**warning**|**okay** (**REQUIRED**)
+    - **severity=failure**&#124;**warning**&#124;**okay** (**REQUIRED**)
 
         Sets the severity of the notification. This option is mandatory.
 
@@ -183,8 +183,8 @@ The following commands are implemented:
     [collectd-exec(5)](./collectd-exec.md).
 
     Example:
-      -> | PUTNOTIF type=temperature severity=warning time=1201094702 message=The roof is on fire!
-      <- | 0 Success
+      -> &#124; PUTNOTIF type=temperature severity=warning time=1201094702 message=The roof is on fire!
+      <- &#124; 0 Success
 
 - **FLUSH** \[**timeout=**_Timeout_\] \[**plugin=**_Plugin_ \[...\]\] \[**identifier=**_Ident_ \[...\]\]
 
@@ -203,8 +203,8 @@ The following commands are implemented:
     not specified at all, all values will be flushed.
 
     Example:
-      -> | FLUSH plugin=rrdtool identifier=localhost/df/df-root identifier=localhost/df/df-var
-      <- | 0 Done: 2 successful, 0 errors
+      -> &#124; FLUSH plugin=rrdtool identifier=localhost/df/df-root identifier=localhost/df/df-var
+      <- &#124; 0 Done: 2 successful, 0 errors
 
 ## Identifiers
 
