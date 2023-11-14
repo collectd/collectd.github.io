@@ -23,9 +23,9 @@
           <h2>{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
         </header>
         <section id="downloads" class="clearfix">
-          {% if site.show_downloads %}
-	  <a href="{{ data.version.latest.url }}" id="download-tar-gz" class="button"><span>Download collectd-{{ data.versions.latest.number }}</span></a>
-	  <a href="{{ data.version.previous.url }}" id="download-tar-gz" class="button"><span>Download collectd-{{ data.versions.previous.number }}</span></a>
+          {% if page.show_downloads %}
+	  <a href="{{ site.data.version.latest.url }}" id="download-tar-gz" class="button"><span>Download collectd-{{ site.data.versions.latest.number }}</span></a>
+	  <a href="{{ site.data.version.previous.url }}" id="download-tar-gz" class="button"><span>Download collectd-{{ site.data.versions.previous.number }}</span></a>
           {% endif %}
 	{% if site.github.public %}
 	  {% if site.github.is_project_page %}
