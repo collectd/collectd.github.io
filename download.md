@@ -30,12 +30,12 @@ These tarballs hold the collectd sources as published by the collectd
 developers. These are the *supported* versions, previous versions will not get
 updates.
 
-*   Version {{ site.current.version }}
-    *   [collectd-{{ site.current.version }}.tar.bz2](https://storage.googleapis.com/collectd-tarballs/collectd-{{ site.current.version }}.tar.bz2)<br>
-        SHA-256: `{{ site.current.sha256 }}`
-*   Version 5.11
-    *   [collectd-5.11.0.tar.bz2](https://storage.googleapis.com/collectd-tarballs/collectd-5.11.0.tar.bz2)<br>
-        `SHA-256: 37b10a806e34aa8570c1cafa6006c604796fae13cc2e1b3e630d33dcba9e5db2`
+*   Version {{ data.version.current.number }}
+    *   [collectd-{{ data.version.current.number }}.tar.bz2]({{ data.version.current.url }})<br>
+        SHA-256: `{{ data.version.current.sha256 }}`
+*   Version {{ data.version.previous.number }}
+    *   [collectd-{{ data.version.previous.number }}.tar.bz2]({{ data.version.previous.url }})<br>
+        SHA-256: `{{ data.version.previous.sha256 }}`
 
 ### How to compile source packages
 
