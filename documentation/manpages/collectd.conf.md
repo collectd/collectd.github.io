@@ -1,3 +1,6 @@
+---
+title: collectd.conf(5)
+---
 # NAME
 
 collectd.conf - Configuration for the system statistics collection daemon **collectd**
@@ -111,8 +114,8 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
         _Python plugins_). Scripting languages usually provide means to load
         extensions written in C. Those extensions require symbols provided by the
         interpreter, which is loaded as a dependency of the respective collectd plugin.
-        See the documentation of those plugins (e.g., [collectd-perl(5)](http://man.he.net/man5/collectd-perl) or
-        [collectd-python(5)](http://man.he.net/man5/collectd-python)) for details.
+        See the documentation of those plugins (e.g., [collectd-perl(5)](./collectd-perl.md) or
+        [collectd-python(5)](./collectd-python.md)) for details.
 
         By default, this is disabled. As a special exception, if the plugin name is
         either `perl` or `python`, the default is changed to enabled in order to keep
@@ -167,7 +170,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
     - `collectd-cache/cache_size`
 
         The number of elements in the metric cache (the cache you can interact with
-        using [collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock)).
+        using [collectd-unixsock(5)](./collectd-unixsock.md)).
 
 - **Include** _Path_ \[_pattern_\]
 
@@ -223,7 +226,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
 - **TypesDB** _File_ \[_File_ ...\]
 
     Set one or more files that contain the data-set descriptions. See
-    [types.db(5)](http://man.he.net/man5/types.db) for a description of the format of this file.
+    [types.db(5)]./(./types.db.md) for a description of the format of this file.
 
     If this option is not specified, a default file is read. If you need to define
     custom types in addition to the types defined in the default file, you need to
@@ -257,7 +260,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
     this setting uses iterations, the maximum allowed time without update depends
     on the _Interval_ information contained in each value list. This is used in
     the _Threshold_ configuration to dispatch notifications about missing values,
-    see [collectd-threshold(5)](http://man.he.net/man5/collectd-threshold) for details.
+    see [collectd-threshold(5)](./collectd-threshold.md) for details.
 
 - **ReadThreads** _Num_
 
@@ -292,7 +295,7 @@ during configuration. Also, unless **AutoLoadPlugin** is enabled, the
     _will_ be enqueued. If the number of metrics currently in the queue is between
     _LowNum_ and _HighNum_, the metric is dropped with a probability that is
     proportional to the number of metrics in the queue (i.e. it increases linearly
-    until it reaches 100&#37;.)
+    until it reaches 100%.)
 
     If **WriteQueueLimitHigh** is set to non-zero and **WriteQueueLimitLow** is
     unset, the latter will default to half of **WriteQueueLimitHigh**.
@@ -406,7 +409,7 @@ aggregations. The following options are valid inside **Aggregation** blocks:
 - **TypeInstance** _TypeInstance_
 
     Selects the value lists to be added to this aggregation. **Type** must be a
-    valid data set name, see [types.db(5)](http://man.he.net/man5/types.db) for details.
+    valid data set name, see [types.db(5)]./(./types.db.md) for details.
 
     If the string starts with and ends with a slash (`/`), the string is
     interpreted as a _regular expression_. The regex flavor used are POSIX
@@ -1183,7 +1186,7 @@ Synopsis:
     `TemperatureSensor` (uses fixed global temperature average instead).
     - **2** - formula as recommended by the Deutsche Wetterdienst (German
     Meteorological Service).
-    See [http://de.wikipedia.org/wiki/Barometrische\_H&#37;C3&#37;B6henformel#Theorie](http://de.wikipedia.org/wiki/Barometrische_H%C3%B6henformel#Theorie)
+    See [http://de.wikipedia.org/wiki/Barometrische\_H%C3%B6henformel#Theorie](http://de.wikipedia.org/wiki/Barometrische_H%C3%B6henformel#Theorie)
     For this method you have to configure both  `Altitude` and
     `TemperatureSensor`.
 
@@ -1210,7 +1213,7 @@ laptop batteries.
 
 - **ValuesPercentage** **false**|**true**
 
-    When enabled, remaining capacity is reported as a percentage, e.g. "42&#37;
+    When enabled, remaining capacity is reported as a percentage, e.g. "42%
     capacity remaining". Otherwise the capacity is stored as reported by the
     battery, most likely in "Wh". This option does not work with all input methods,
     in particular when only `/proc/pmu` is available on an old Linux system.
@@ -2060,7 +2063,7 @@ The following options are valid within **Key** blocks:
 - **Type** _Type_
 
     Sets the type used to dispatch the values to the daemon. Detailed information
-    about types and their configuration can be found in [types.db(5)](http://man.he.net/man5/types.db). This
+    about types and their configuration can be found in [types.db(5)]./(./types.db.md). This
     option is mandatory.
 
 - **Instance** _Instance_
@@ -2178,7 +2181,7 @@ The following options are valid within **URL** blocks:
     - **Type** _Type_
 
         Sets the type used to dispatch the values to the daemon. Detailed information
-        about types and their configuration can be found in [types.db(5)](http://man.he.net/man5/types.db). This
+        about types and their configuration can be found in [types.db(5)]./(./types.db.md). This
         option is mandatory.
 
 ## Plugin `curl_xml`
@@ -2300,7 +2303,7 @@ Within the **URL** block the following options are accepted:
 
         Specifies the _Type_ used for submitting patches. This determines the number
         of values that are required / expected and whether the strings are parsed as
-        signed or unsigned integer or as double values. See [types.db(5)](http://man.he.net/man5/types.db) for details.
+        signed or unsigned integer or as double values. See [types.db(5)]./(./types.db.md) for details.
         This option is required.
 
     - **InstancePrefix** _InstancePrefix_
@@ -2466,7 +2469,7 @@ The following options are accepted:
 
 - **Type** _Type_
 
-    The **type** that's used for each line returned. See [types.db(5)](http://man.he.net/man5/types.db) for more
+    The **type** that's used for each line returned. See [types.db(5)]./(./types.db.md) for more
     details on how types are defined. In short: A type is a predefined layout of
     data and the number of values and type of values has to match the type
     definition.
@@ -3060,7 +3063,7 @@ by talking directly with the underlying kernel driver using [ioctl(2)](http://ma
 
 ## Plugin `exec`
 
-Please make sure to read [collectd-exec(5)](http://man.he.net/man5/collectd-exec) before using this plugin. It
+Please make sure to read [collectd-exec(5)](./collectd-exec.md) before using this plugin. It
 contains valuable information on when the executable is executed and the
 output that is expected from it.
 
@@ -3085,7 +3088,7 @@ output that is expected from it.
 
     The **Exec** and **NotificationExec** statements change the semantics of the
     programs executed, i. e. the data passed to them and the response
-    expected from them. This is documented in great detail in [collectd-exec(5)](http://man.he.net/man5/collectd-exec).
+    expected from them. This is documented in great detail in [collectd-exec(5)](./collectd-exec.md).
 
 ## Plugin `fhcount`
 
@@ -3210,7 +3213,7 @@ blocks, the following options are recognized:
 ## Plugin `GenericJMX`
 
 The _GenericJMX plugin_ is written in _Java_ and therefore documented in
-[collectd-java(5)](http://man.he.net/man5/collectd-java).
+[collectd-java(5)](./collectd-java.md).
 
 ## Plugin `gmond`
 
@@ -3931,7 +3934,7 @@ following configuration:
 The _Java_ plugin makes it possible to write extensions for collectd in Java.
 This section only discusses the syntax and semantic of the configuration
 options. For more in-depth information on the _Java_ plugin, please read
-[collectd-java(5)](http://man.he.net/man5/collectd-java).
+[collectd-java(5)](./collectd-java.md).
 
 Synopsis:
 
@@ -3961,7 +3964,7 @@ Available configuration options:
     Instantiates a new _JavaClass_ object. The constructor of this object very
     likely then registers one or more callback methods with the server.
 
-    See [collectd-java(5)](http://man.he.net/man5/collectd-java) for details.
+    See [collectd-java(5)](./collectd-java.md) for details.
 
     When the first such option is found, the virtual machine (JVM) is created. This
     means that all **JVMArg** options must appear before (i. e. above) all
@@ -3973,7 +3976,7 @@ Available configuration options:
     _org.collectd.api.OConfigItem_ object.
 
     For this to work, the plugin has to register a configuration callback first,
-    see ["config callback" in collectd-java(5)](http://man.he.net/man5/collectd-java). This means, that the **Plugin** block
+    see ["config callback" in collectd-java(5)](./collectd-java.md). This means, that the **Plugin** block
     must appear after the appropriate **LoadPlugin** block. Also note, that _Name_
     depends on the (Java) plugin registering the callback and is completely
     independent from the _JavaClass_ argument passed to **LoadPlugin**.
@@ -4223,7 +4226,7 @@ The following configuration options are available:
 ## Plugin `lua`
 
 This plugin embeds a Lua interpreter into collectd and provides an interface
-to collectd's plugin system. See [collectd-lua(5)](http://man.he.net/man5/collectd-lua) for its documentation.
+to collectd's plugin system. See [collectd-lua(5)](./collectd-lua.md) for its documentation.
 
 ## Plugin `mbmon`
 
@@ -4270,7 +4273,7 @@ Example message:
 `Jan 17 05:24:27 pc1 mdadm[188]: NewArray event detected on md device /dev/md0`
 
 Plugin also classifies gathered event. This means that a notification will have
-a different severity &#123;OKAY, WARNING, FAILURE&#125; for particular mdadm event.
+a different severity {OKAY, WARNING, FAILURE} for particular mdadm event.
 
 For proper work, mdevents plugin needs syslog and mdadm utilities to be present on
 the running system. Otherwise it will not be compiled as a part of collectd.
@@ -6601,7 +6604,7 @@ Fatal errors are reported as _NOTIF\_FAILURE_ and all others as _NOTIF\_WARNING_
 ## Plugin `perl`
 
 This plugin embeds a Perl-interpreter into collectd and provides an interface
-to collectd's plugin system. See [collectd-perl(5)](http://man.he.net/man5/collectd-perl) for its documentation.
+to collectd's plugin system. See [collectd-perl(5)](./collectd-perl.md) for its documentation.
 
 ## Plugin `pinba`
 
@@ -6908,7 +6911,7 @@ the daemon.
 - **Type** _type_
 
     The _type_ name to be used when dispatching the values. The type describes
-    how to handle the data and where to store it. See [types.db(5)](http://man.he.net/man5/types.db) for more
+    how to handle the data and where to store it. See [types.db(5)]./(./types.db.md) for more
     details on types and their configuration. The number and type of values (as
     selected by the **ValuesFrom** option) has to match the type of the given name.
 
@@ -7028,7 +7031,7 @@ specified:
 
     - **$5**
 
-        The type of the queried value (cf. [types.db(5)](http://man.he.net/man5/types.db)).
+        The type of the queried value (cf. [types.db(5)]./(./types.db.md)).
 
     - **$6**
 
@@ -7188,7 +7191,7 @@ for details.
 
     Each writer will register a flush callback which may be used when having long
     transactions enabled (see the **CommitInterval** option above). When issuing
-    the **FLUSH** command (see [collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock) for details) the current
+    the **FLUSH** command (see [collectd-unixsock(5)](./collectd-unixsock.md) for details) the current
     transaction will be committed right away. Two different kinds of flush
     callbacks are available with the `postgresql` plugin:
 
@@ -7460,7 +7463,7 @@ Available configuration options:
 ## Plugin `python`
 
 This plugin embeds a Python-interpreter into collectd and provides an interface
-to collectd's plugin system. See [collectd-python(5)](http://man.he.net/man5/collectd-python) for its documentation.
+to collectd's plugin system. See [collectd-python(5)](./collectd-python.md) for its documentation.
 
 ## Plugin `ras`
 
@@ -7772,7 +7775,7 @@ parameters and set of user-defined queries for this node.
     the result of the query. When not supplied, will default to **gauge**.
 
     Currently only types with one datasource are supported.
-    See [types.db(5)](http://man.he.net/man5/types.db) for more details on types and their configuration.
+    See [types.db(5)]./(./types.db.md) for more details on types and their configuration.
 
 - **Instance** _Type instance_
 
@@ -8190,7 +8193,7 @@ collection only of specific disks.
 
 Since the configuration of the `snmp plugin` is a little more complicated than
 other plugins, its documentation has been moved to an own manpage,
-[collectd-snmp(5)](http://man.he.net/man5/collectd-snmp). Please see there for details.
+[collectd-snmp(5)](./collectd-snmp.md). Please see there for details.
 
 ## Plugin `snmp_agent`
 
@@ -8312,7 +8315,7 @@ The following options can be set:
 - **Type** _String_
 
     Collectd's type that is to be used for specified OID, e. g. "if\_octets"
-    for example. The types are read from the **TypesDB** (see [collectd.conf(5)](http://man.he.net/man5/collectd.conf)).
+    for example. The types are read from the **TypesDB** (see [collectd.conf(5)](./collectd.conf.md)).
 
 - **TypeInstance** _String_
 
@@ -8602,7 +8605,7 @@ The following options are available inside a **Result** block:
 - **Type** _type_
 
     Sets the type used to dispatch the values to the daemon. Detailed information
-    about types and their configuration can be found in [types.db(5)](http://man.he.net/man5/types.db). This
+    about types and their configuration can be found in [types.db(5)]./(./types.db.md). This
     option is mandatory.
 
 - **InstancePrefix** _prefix_
@@ -8841,7 +8844,7 @@ be performed:
 - **Type** _Type_
 
     Sets the type used to dispatch this value. Detailed information about types and
-    their configuration can be found in [types.db(5)](http://man.he.net/man5/types.db).
+    their configuration can be found in [types.db(5)]./(./types.db.md).
 
 - **Instance** _TypeInstance_
 
@@ -8886,7 +8889,7 @@ extract.
     - **Type** _Type_
 
         Configures which _Type_ to use when dispatching this metric. Types are defined
-        in the [types.db(5)](http://man.he.net/man5/types.db) file, see the appropriate manual page for more
+        in the [types.db(5)]./(./types.db.md) file, see the appropriate manual page for more
         information on specifying types. Only types with a single _data source_ are
         supported by the _tail\_csv plugin_. The information whether the value is an
         absolute value (i.e. a `GAUGE`) or a rate (i.e. a `DERIVE`) is taken from the
@@ -9064,7 +9067,7 @@ The _Threshold plugin_ checks values collected or received by _collectd_
 against a configurable _threshold_ and issues _notifications_ if values are
 out of bounds.
 
-Documentation for this plugin is available in the [collectd-threshold(5)](http://man.he.net/man5/collectd-threshold)
+Documentation for this plugin is available in the [collectd-threshold(5)](./collectd-threshold.md)
 manual page.
 
 ## Plugin `tokyotyrant`
@@ -10132,7 +10135,7 @@ using _Prometheus_.
 
 This output plugin submits values to an HTTP server using POST requests and
 encoding metrics with JSON or using the `PUTVAL` command described in
-[collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock).
+[collectd-unixsock(5)](./collectd-unixsock.md).
 
 Synopsis:
 
@@ -11196,7 +11199,7 @@ included in a `Type` block. Currently the following statements are recognized:
     If set to **true**, the minimum and maximum values given are interpreted as
     percentage value, relative to the other data sources. This is helpful for
     example for the "df" type, where you may want to issue a warning when less than
-    5 &#37; of the total space is available. Defaults to **false**.
+    5 % of the total space is available. Defaults to **false**.
 
 - **Hits** _Number_
 
@@ -11206,7 +11209,7 @@ included in a `Type` block. Currently the following statements are recognized:
     collected once every 10 seconds and **Hits** is set to 3, a notification
     will be dispatched at most once every 30 seconds.
 
-    This is useful when short bursts are not a problem. If, for example, 100&#37; CPU
+    This is useful when short bursts are not a problem. If, for example, 100% CPU
     usage for up to a minute is normal (and data is collected every
     10 seconds), you could set **Hits** to **6** to account for this.
 
@@ -11791,15 +11794,15 @@ plugins to be loaded:
         This required option sets the message of the notification. The following
         placeholders will be replaced by an appropriate value:
 
-        - **&#37;&#123;host&#125;**
-        - **&#37;&#123;plugin&#125;**
-        - **&#37;&#123;plugin\_instance&#125;**
-        - **&#37;&#123;type&#125;**
-        - **&#37;&#123;type\_instance&#125;**
+        - **%{host}**
+        - **%{plugin}**
+        - **%{plugin\_instance}**
+        - **%{type}**
+        - **%{type\_instance}**
 
             These placeholders are replaced by the identifier field of the same name.
 
-        - **&#37;&#123;ds:**_name_**&#125;**
+        - **%{ds:**_name_**}**
 
             These placeholders are replaced by a (hopefully) human readable representation
             of the current rate of this data source. If you changed the instance name
@@ -11869,15 +11872,15 @@ plugins to be loaded:
 
         The following placeholders will be replaced by an appropriate value:
 
-        - **&#37;&#123;host&#125;**
-        - **&#37;&#123;plugin&#125;**
-        - **&#37;&#123;plugin\_instance&#125;**
-        - **&#37;&#123;type&#125;**
-        - **&#37;&#123;type\_instance&#125;**
+        - **%{host}**
+        - **%{plugin}**
+        - **%{plugin\_instance}**
+        - **%{type}**
+        - **%{type\_instance}**
 
             These placeholders are replaced by the identifier field of the same name.
 
-        - **&#37;&#123;meta:**_name_**&#125;**
+        - **%{meta:**_name_**}**
 
             These placeholders are replaced by the meta data value with the given name.
 
@@ -11963,11 +11966,11 @@ the items (mounts points, devices, ...) and the boolean option
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd-exec(5)](http://man.he.net/man5/collectd-exec),
-[collectd-perl(5)](http://man.he.net/man5/collectd-perl),
-[collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock),
-[types.db(5)](http://man.he.net/man5/types.db),
+[collectd(1)](./collectd.md),
+[collectd-exec(5)](./collectd-exec.md),
+[collectd-perl(5)](./collectd-perl.md),
+[collectd-unixsock(5)](./collectd-unixsock.md),
+[types.db(5)]./(./types.db.md),
 [hddtemp(8)](http://man.he.net/man8/hddtemp),
 [iptables(8)](http://man.he.net/man8/iptables),
 [kstat(3KSTAT)](http://man.he.net/man3KSTAT/kstat),

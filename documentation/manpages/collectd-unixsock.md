@@ -1,3 +1,6 @@
+---
+title: collectd-unixsock(5)
+---
 # NAME
 
 collectd-unixsock - Documentation of collectd's `unixsock plugin`
@@ -21,7 +24,7 @@ the daemon. This can be used to use the values collected by collectd in other
 applications, such as monitoring solutions, or submit externally collected
 values to collectd.
 
-For example, this plugin is used by [collectd-nagios(1)](http://man.he.net/man1/collectd-nagios) to check if some
+For example, this plugin is used by [collectd-nagios(1)](./collectd-nagios.md) to check if some
 value is in a certain range and exit with a Nagios-compatible exit code.
 
 # COMMANDS
@@ -119,7 +122,7 @@ The following commands are implemented:
         Add meta data with the key **key** and the value _value_.
 
     Please note that this is the same format as used in the **exec plugin**, see
-    [collectd-exec(5)](http://man.he.net/man5/collectd-exec).
+    [collectd-exec(5)](./collectd-exec.md).
 
     Example:
       -> | PUTVAL testhost/interface/if\_octets-test0 interval=10 1179574444:123:456
@@ -177,7 +180,7 @@ The following commands are implemented:
         - **s** A string passed as-is.
 
     Please note that this is the same format as used in the **exec plugin**, see
-    [collectd-exec(5)](http://man.he.net/man5/collectd-exec).
+    [collectd-exec(5)](./collectd-exec.md).
 
     Example:
       -> | PUTNOTIF type=temperature severity=warning time=1201094702 message=The roof is on fire!
@@ -231,9 +234,9 @@ and expand this module.
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
-[collectd-nagios(1)](http://man.he.net/man1/collectd-nagios),
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
+[collectd-nagios(1)](./collectd-nagios.md),
 [unix(7)](http://man.he.net/man7/unix)
 
 # AUTHOR

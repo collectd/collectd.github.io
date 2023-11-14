@@ -1,3 +1,6 @@
+---
+title: collectd-nagios(1)
+---
 # NAME
 
 collectd-nagios - Nagios plugin for querying collectd
@@ -10,7 +13,7 @@ collectd-nagios **-s** _socket_ **-n** _value\_spec_ **-H** _hostname_ _\[option
 
 This small program is the glue between collectd and nagios. collectd collects
 various performance statistics which it provides via the `unixsock plugin`,
-see [collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock). This program is called by Nagios, connects to the
+see [collectd-unixsock(5)](./collectd-unixsock.md). This program is called by Nagios, connects to the
 UNIX socket and reads the values from collectd. It then returns **OKAY**,
 **WARNING** or **CRITICAL** depending on the values and the ranges provided by
 Nagios.
@@ -103,9 +106,9 @@ it returns **3** for _unknown_.
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
-[collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock),
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
+[collectd-unixsock(5)](./collectd-unixsock.md),
 [http://nagios.org/](http://nagios.org/)
 
 # AUTHOR

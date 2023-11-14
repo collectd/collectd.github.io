@@ -1,3 +1,6 @@
+---
+title: collectd-snmp(5)
+---
 # NAME
 
 collectd-snmp - Documentation of collectd's `snmp plugin`
@@ -116,8 +119,8 @@ queried. The following options can be set:
 
     collectd's type that is to be used, e. g. "if\_octets" for interface
     traffic or "users" for a user count. The types are read from the **TypesDB**
-    (see [collectd.conf(5)](http://man.he.net/man5/collectd.conf)), so you may want to check for which types are
-    defined. See [types.db(5)](http://man.he.net/man5/types.db) for a description of the format of this file.
+    (see [collectd.conf(5)](./collectd.conf.md)), so you may want to check for which types are
+    defined. See [types.db(5)]./(./types.db.md) for a description of the format of this file.
 
 - **Table** _true|false_
 
@@ -394,8 +397,8 @@ stored by collectd.
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
 [snmpget(1)](http://man.he.net/man1/snmpget),
 [snmpgetnext(1)](http://man.he.net/man1/snmpgetnext),
 [variables(5)](http://man.he.net/man5/variables),

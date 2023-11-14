@@ -1,3 +1,6 @@
+---
+title: types.db(5)
+---
 # NAME
 
 types.db - Data-set specifications for the system statistics collection daemon
@@ -46,7 +49,7 @@ rate, not the raw cumulative metric value.
 # FILES
 
 The location of the types.db file is defined by the **TypesDB** configuration
-option (see [collectd.conf(5)](http://man.he.net/man5/collectd.conf)). It defaults to collectd's shared data
+option (see [collectd.conf(5)](./collectd.conf.md)). It defaults to collectd's shared data
 directory, i. e. `_prefix_/share/collectd/`.
 
 # CUSTOM TYPES
@@ -66,8 +69,8 @@ sending values over the network.
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
 [rrdcreate(1)](http://man.he.net/man1/rrdcreate)
 
 # AUTHOR

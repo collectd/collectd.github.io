@@ -1,3 +1,6 @@
+---
+title: collectdmon(1)
+---
 # NAME
 
 collectdmon - Monitoring daemon for collectd
@@ -33,7 +36,7 @@ collectdmon supports the following options:
 - _collectd options_
 
     Specify options that are passed on to collectd. If it is not already included,
-    **-f** will be added to these options. See [collectd(1)](http://man.he.net/man1/collectd).
+    **-f** will be added to these options. See [collectd(1)](./collectd.md).
 
 # SIGNALS
 
@@ -51,8 +54,8 @@ collectdmon supports the following options:
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
 [http://collectd.org/](http://collectd.org/)
 
 # AUTHOR

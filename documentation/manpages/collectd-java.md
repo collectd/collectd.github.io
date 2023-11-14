@@ -1,3 +1,6 @@
+---
+title: collectd-java(5)
+---
 # NAME
 
 collectd-java - Documentation of collectd's "java plugin"
@@ -22,13 +25,13 @@ provides a Java interface to part of collectd's API. This makes it possible to
 write additions to the daemon in Java.
 
 This plugin is similar in nature to, but shares no code with, the _Perl_
-plugin by Sebastian Harl, see [collectd-perl(5)](http://man.he.net/man5/collectd-perl) for details.
+plugin by Sebastian Harl, see [collectd-perl(5)](./collectd-perl.md) for details.
 
 # CONFIGURATION
 
 A short outline of this plugin's configuration can be seen in ["SYNOPSIS"](#synopsis)
 above. For a complete list of all configuration options and their semantics
-please read ["Plugin `java`" in collectd.conf(5)](http://man.he.net/man5/collectd.conf).
+please read ["Plugin `java`" in collectd.conf(5)](./collectd.conf.md).
 
 # OVERVIEW
 
@@ -337,8 +340,8 @@ Interface: **org.collectd.api.CollectdFlushInterface**
 Signature: _int_ **flush** (_int_ timeout, _String_ identifier)
 
 This method is called when the daemon received a flush command. This can either
-be done using the `USR1` signal (see [collectd(1)](http://man.he.net/man1/collectd)) or using the _unixsock_
-plugin (see [collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock)).
+be done using the `USR1` signal (see [collectd(1)](./collectd.md)) or using the _unixsock_
+plugin (see [collectd-unixsock(5)](./collectd-unixsock.md)).
 
 If _timeout_ is greater than zero, only values older than this number of
 seconds should be flushed. To signal that all values should be flushed
@@ -634,10 +637,10 @@ to retrieve. The following configuration options are available:
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
-[collectd-perl(5)](http://man.he.net/man5/collectd-perl),
-[types.db(5)](http://man.he.net/man5/types.db)
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
+[collectd-perl(5)](./collectd-perl.md),
+[types.db(5)]./(./types.db.md)
 
 # AUTHOR
 

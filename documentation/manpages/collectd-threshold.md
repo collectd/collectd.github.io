@@ -1,3 +1,6 @@
+---
+title: collectd-threshold(5)
+---
 # NAME
 
 collectd-threshold - Documentation of collectd's _Threshold plugin_
@@ -37,7 +40,7 @@ as a moving average or similar - at least not now.
 Also, all values that match a threshold are considered to be relevant or
 "interesting". As a consequence collectd will issue a notification if they are
 not received for **Timeout** iterations. The **Timeout** configuration option is
-explained in section ["GLOBAL OPTIONS" in collectd.conf(5)](http://man.he.net/man5/collectd.conf). If, for example,
+explained in section ["GLOBAL OPTIONS" in collectd.conf(5)](./collectd.conf.md). If, for example,
 **Timeout** is set to "2" (the default) and some hosts sends its CPU statistics
 to the server every 60 seconds, a notification will be dispatched after about
 120 seconds. It may take a little longer because the timeout is checked only
@@ -162,7 +165,7 @@ included in a `Type` block. Currently the following statements are recognized:
     If set to **true**, the minimum and maximum values given are interpreted as
     percentage value, relative to the other data sources. This is helpful for
     example for the "df" type, where you may want to issue a warning when less than
-    5 &#37; of the total space is available. Defaults to **false**.
+    5 % of the total space is available. Defaults to **false**.
 
 - **Hits** _Value_
 
@@ -184,13 +187,13 @@ included in a `Type` block. Currently the following statements are recognized:
     be created when a matching value list is no longer updated and purged from the
     internal cache. When this happens depends on the _interval_ of the value list
     and the global **Timeout** setting. See the **Interval** and **Timeout** settings
-    in [collectd.conf(5)](http://man.he.net/man5/collectd.conf) for details. If set to **false**, this event will be
+    in [collectd.conf(5)](./collectd.conf.md) for details. If set to **false**, this event will be
     ignored.
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf)
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md)
 
 # AUTHOR
 

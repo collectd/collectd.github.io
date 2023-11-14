@@ -1,3 +1,6 @@
+---
+title: collectd-exec(5)
+---
 # NAME
 
 collectd-exec - Documentation of collectd's `exec plugin`
@@ -17,10 +20,10 @@ collectd-exec - Documentation of collectd's `exec plugin`
 
 The `exec plugin` forks off an executable either to receive values or to
 dispatch notifications to the outside world. The syntax of the configuration is
-explained in [collectd.conf(5)](http://man.he.net/man5/collectd.conf) but summarized in the above synopsis.
+explained in [collectd.conf(5)](./collectd.conf.md) but summarized in the above synopsis.
 
 If you want/need better performance or more functionality you should take a
-long look at the `perl plugin`, [collectd-perl(5)](http://man.he.net/man5/collectd-perl).
+long look at the `perl plugin`, [collectd-perl(5)](./collectd-perl.md).
 
 # EXECUTABLE TYPES
 
@@ -74,7 +77,7 @@ format is as follows:
     as the tuple (plugin, plugin instance, type instance) uniquely identifies the
     plugin within collectd. _type_ identifies the type and number of values
     (i. e. data-set) passed to collectd. A large list of predefined
-    data-sets is available in the **types.db** file. See [types.db(5)](http://man.he.net/man5/types.db) for a
+    data-sets is available in the **types.db** file. See [types.db(5)]./(./types.db.md) for a
     description of the format of this file.
 
     The _OptionList_ is an optional list of _Options_, where each option is a
@@ -105,7 +108,7 @@ format is as follows:
         Add meta data with the key **key** and the value _value_.
 
     Please note that this is the same format as used in the **unixsock plugin**, see
-    [collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock). There's also a bit more information on identifiers in
+    [collectd-unixsock(5)](./collectd-unixsock.md). There's also a bit more information on identifiers in
     case you're confused.
 
     Since examples usually let one understand a lot better, here are some:
@@ -165,7 +168,7 @@ format is as follows:
         - **s** A string passed as-is.
 
 Please note that this is the same format as used in the **unixsock plugin**, see
-[collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock).
+[collectd-unixsock(5)](./collectd-unixsock.md).
 
 When collectd exits it sends a **SIGTERM** to all still running
 child-processes upon which they have to quit.
@@ -255,10 +258,10 @@ in _collectd 5_.
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
-[collectd-perl(5)](http://man.he.net/man5/collectd-perl),
-[collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock),
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md),
+[collectd-perl(5)](./collectd-perl.md),
+[collectd-unixsock(5)](./collectd-unixsock.md),
 [fork(2)](http://man.he.net/man2/fork), [exec(3)](http://man.he.net/man3/exec)
 
 # AUTHOR

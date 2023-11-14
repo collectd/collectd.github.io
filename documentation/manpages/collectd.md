@@ -1,3 +1,6 @@
+---
+title: collectd(1)
+---
 # NAME
 
 collectd - System statistics collection daemon
@@ -16,7 +19,7 @@ available plugins please see ["PLUGINS"](#plugins) below.
 # OPTIONS
 
 Most of collectd's configuration is done using using a configfile. See
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf) for an in-depth description of all options.
+[collectd.conf(5)](./collectd.conf.md) for an in-depth description of all options.
 
 - **-C** _&lt;config-file>_
 
@@ -94,12 +97,12 @@ Several loglevels let you suppress uninteresting messages.
 Starting with version `4.3.0` collectd has support for **monitoring**. This is
 done by checking thresholds defined by the user. If a value is out of range, a
 notification will be dispatched to "notification plugins". See
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf) for more detailed information about threshold checking.
+[collectd.conf(5)](./collectd.conf.md) for more detailed information about threshold checking.
 
 Please note that some plugins, that provide other means of communicating with
 the daemon, have manpages of their own to describe their functionality in more
-detail. In particular those are [collectd-email(5)](http://man.he.net/man5/collectd-email), [collectd-exec(5)](http://man.he.net/man5/collectd-exec),
-[collectd-perl(5)](http://man.he.net/man5/collectd-perl), [collectd-snmp(5)](http://man.he.net/man5/collectd-snmp), and [collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock)
+detail. In particular those are [collectd-email(5)](./collectd-email.md), [collectd-exec(5)](./collectd-exec.md),
+[collectd-perl(5)](./collectd-perl.md), [collectd-snmp(5)](./collectd-snmp.md), and [collectd-unixsock(5)](./collectd-unixsock.md)
 
 # SIGNALS
 
@@ -118,13 +121,13 @@ detail. In particular those are [collectd-email(5)](http://man.he.net/man5/colle
 
 # SEE ALSO
 
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf),
-[collectd-email(5)](http://man.he.net/man5/collectd-email),
-[collectd-exec(5)](http://man.he.net/man5/collectd-exec),
-[collectd-perl(5)](http://man.he.net/man5/collectd-perl),
-[collectd-snmp(5)](http://man.he.net/man5/collectd-snmp),
-[collectd-unixsock(5)](http://man.he.net/man5/collectd-unixsock),
-[types.db(5)](http://man.he.net/man5/types.db),
+[collectd.conf(5)](./collectd.conf.md),
+[collectd-email(5)](./collectd-email.md),
+[collectd-exec(5)](./collectd-exec.md),
+[collectd-perl(5)](./collectd-perl.md),
+[collectd-snmp(5)](./collectd-snmp.md),
+[collectd-unixsock(5)](./collectd-unixsock.md),
+[types.db(5)]./(./types.db.md),
 [http://collectd.org/](http://collectd.org/)
 
 # AUTHOR

@@ -1,3 +1,6 @@
+---
+title: collectd-email(5)
+---
 # NAME
 
 collectd-email - Documentation of collectd's `email plugin`
@@ -48,8 +51,8 @@ with the plugin:
 
 # SEE ALSO
 
-[collectd(1)](http://man.he.net/man1/collectd),
-[collectd.conf(5)](http://man.he.net/man5/collectd.conf)
+[collectd(1)](./collectd.md),
+[collectd.conf(5)](./collectd.conf.md)
 
 # AUTHOR
 
