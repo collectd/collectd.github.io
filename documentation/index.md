@@ -4,7 +4,7 @@ title: Documentation
 **collectd's** documentation consists primarily of the manpages that come
 with the daemon, accompanied with some special documents on certain aspects. A more generic source of
 information is the file
-`[README](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)` that's
+[`README`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README) that's
 included in the source tarball. Also, some more specialized documentation, including a
 [getting started guide](/wiki/index.php/First_steps), can be found below.</p>
 
@@ -14,19 +14,19 @@ The manpages, that come with the daemon, are provided here in HTML form for your
 converting them to HTML format is not fully automatic they may be a little outdated here. If in doubt,
 please refer to the manpages that come with the distribution.
 
-*   `[collectd(1)](/documentation/manpages/collectd.html)`
-*   `[collectdmon(1)](/documentation/manpages/collectdmon.html)`
-*   **`[collectd.conf(5)](/documentation/manpages/collectd.conf.html)`**
-*   `[collectd-email(5)](/documentation/manpages/collectd-email.html)`
-*   `[collectd-exec(5)](/documentation/manpages/collectd-exec.html)`
-*   `[collectd-nagios(1)](/documentation/manpages/collectd-nagios.html)`
-*   `[collectd-perl(5)](/documentation/manpages/collectd-perl.html)`
-*   `[collectd-python(5)](/documentation/manpages/collectd-python.html)`
-*   `[collectd-java(5)](/documentation/manpages/collectd-java.html)`
-*   `[collectd-snmp(5)](/documentation/manpages/collectd-snmp.html)`
-*   `[collectd-tg(1)](/documentation/manpages/collectd-tg.html)`
-*   `[collectd-unixsock(5)](/documentation/manpages/collectd-unixsock.html)`
-*   `[types.db(5)](/documentation/manpages/types.db.html)`
+*   [`collectd(1)`](/documentation/manpages/collectd.html)
+*   [`collectdmon(1)`](/documentation/manpages/collectdmon.html)
+*   **[`collectd.conf(5)`](/documentation/manpages/collectd.conf.html)**
+*   [`collectd-email(5)`](/documentation/manpages/collectd-email.html)
+*   [`collectd-exec(5)`](/documentation/manpages/collectd-exec.html)
+*   [`collectd-nagios(1)`](/documentation/manpages/collectd-nagios.html)
+*   [`collectd-perl(5)`](/documentation/manpages/collectd-perl.html)
+*   [`collectd-python(5)`](/documentation/manpages/collectd-python.html)
+*   [`collectd-java(5)`](/documentation/manpages/collectd-java.html)
+*   [`collectd-snmp(5)`](/documentation/manpages/collectd-snmp.html)
+*   [`collectd-tg(1)`](/documentation/manpages/collectd-tg.html)
+*   [`collectd-unixsock(5)`](/documentation/manpages/collectd-unixsock.html)
+*   [`types.db(5)`](/documentation/manpages/types.db.html)
 
 ## collectd Wiki
 
@@ -57,19 +57,19 @@ to specific parts of our documentation here.
 
 [Plugins](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)
 :   A list of all plugins, together with a short description for each, can be found in the
-    `[README](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)`
+    [`README`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)
     file included in the source code distribution.<br />
     There's also the [Table of Plugins](/wiki/index.php/Table_of_Plugins) wiki page.
 [Libraries / Dependencies](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)
 :   A list of all supported libraries and which plugins make use of each library is documented in the
-    `[README](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)` file under
+    [`README`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README) file under
     &quot;Prerequisites&quot;.
 [Configuration options](/documentation/manpages/collectd.conf.html)
 :   All configuration options, both, for the server and for all plugins, are documented in
-    `[collectd.conf(5)](/documentation/manpages/collectd.conf.html)`.
+    [`collectd.conf(5)`](/documentation/manpages/collectd.conf.html).
 [Contributors](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=AUTHORS)
 :   A list of all contributors can be found in the file
-    `[AUTHORS](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=AUTHORS)`
+    [`AUTHORS`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=AUTHORS)
     included in the source code distribution.
 
 ## Help writing documentation!
