@@ -1,18 +1,17 @@
 ---
 title: Documentation
 ---
-**collectd's** documentation consists primarily of the manpages that come
-with the daemon, accompanied with some special documents on certain aspects. A more generic source of
-information is the file
-[`README`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README) that's
-included in the source tarball. Also, some more specialized documentation, including a
-[getting started guide](/wiki/index.php/First_steps), can be found below.</p>
+
+**collectd's** documentation consists primarily of the manpages that come with the daemon, accompanied with some special
+documents on certain aspects. A more generic source of information is the file
+[`README`](https://github.com/collectd/collectd/blob/main/README.md) that's included in the source tarball. Also, some
+more specialized documentation, including a [getting started guide](/wiki/index.php/First_steps), can be found below.
 
 ## Manual pages {#manual_pages}
 
-The manpages, that come with the daemon, are provided here in HTML form for your convenience. Since
-converting them to HTML format is not fully automatic they may be a little outdated here. If in doubt,
-please refer to the manpages that come with the distribution.
+The manpages, that come with the daemon, are provided here in HTML form for your convenience. Since converting them to
+HTML format is not fully automatic they may be a little outdated here. If in doubt, please refer to the manpages that
+come with the distribution.
 
 *   [`collectd(1)`](/documentation/manpages/collectd.html)
 *   [`collectdmon(1)`](/documentation/manpages/collectdmon.html)
