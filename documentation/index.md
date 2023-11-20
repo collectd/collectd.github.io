@@ -58,29 +58,30 @@ A lot of projects refer to their technical documentation under &quot;reference d
 you're looking for that, please read the [manual pages](#manual_pages) above. We provide links
 to specific parts of our documentation here.
 
-[Plugins](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)
-:   A list of all plugins, together with a short description for each, can be found in the
+*   [Plugins](https://github.com/collectd/collectd/blob/main/README.md)
+
+    A list of all plugins, together with a short description for each, can be found in the
     [`README`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)
     file included in the source code distribution.<br />
     There's also the [Table of Plugins](/wiki/index.php/Table_of_Plugins) wiki page.
-[Libraries / Dependencies](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README)
-:   A list of all supported libraries and which plugins make use of each library is documented in the
-    [`README`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=README) file under
-    &quot;Prerequisites&quot;.
-[Configuration options](/documentation/manpages/collectd.conf.html)
-:   All configuration options, both, for the server and for all plugins, are documented in
+*   [Libraries / Dependencies](https://github.com/collectd/collectd/blob/main/README.md)
+
+    A list of all supported libraries and which plugins make use of each library is documented in the
+    [`README`](https://github.com/collectd/collectd/blob/main/README.md) file under &quot;Prerequisites&quot;.
+*   [Configuration options](/documentation/manpages/collectd.conf.html)
+
+    All configuration options, both, for the server and for all plugins, are documented in
     [`collectd.conf(5)`](/documentation/manpages/collectd.conf.html).
-[Contributors](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=AUTHORS)
-:   A list of all contributors can be found in the file
-    [`AUTHORS`](http://git.verplant.org/?p=collectd.git;a=blob;hb=master;f=AUTHORS)
-    included in the source code distribution.
+*   [Contributors](https://github.com/collectd/collectd/blob/main/AUTHORS)
+
+    A list of all contributors can be found in the file
+    [`AUTHORS`](https://github.com/collectd/collectd/blob/main/AUTHORS) included in the source code distribution.
 
 ## Help writing documentation!
 
-Writing documentation is, along with reporting bugs, an easy and very much appreciated way of
-contributing to an open source project. You can do this without any coding skills whats-o-ever and
-everybody will benefit from it&nbsp;- users and developers alike. If you have written something up, or
-plan to, [let us know](/contact.shtml)&nbsp;:)
+Writing documentation is, along with reporting bugs, an easy and very much appreciated way of contributing to an open
+source project. You can do this without any coding skills whats-o-ever and everybody will benefit from it&nbsp;- users
+and developers alike. If you have written something up, or plan to, [let us know](/contact.shtml)&nbsp;:)
 
 ## External documentation
 
