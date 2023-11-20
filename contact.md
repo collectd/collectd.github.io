@@ -1,5 +1,5 @@
 ---
-Title: Contact
+title: Contact
 ---
 
 ## Bugtracking system
