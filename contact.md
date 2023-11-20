@@ -14,8 +14,8 @@ problem has already be reported before filing a new bug and provide as much info
 <span class="summary">The mailing list is the central place for announcements and development issues.</span> New
 versions of <span class="collectd">collectd</span> are announced on the mailing list and we're discussing development
 related topics here. It used to be **the** place for bugs and problems, too, but this proved to be impractical. You can
-still ask your questions there, but please make sure to [read the FAQs](faq.html) first. Please don't be surprised if we
-ask you to open a bug in the bugtracking system.
+still ask your questions there, but please make sure to [read the FAQs](/documentation/faq.html) first. Please don't be
+surprised if we ask you to open a bug in the bugtracking system.
 
 ### Subscribe
 

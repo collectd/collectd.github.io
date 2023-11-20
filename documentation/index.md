@@ -36,6 +36,10 @@ the site. Or follow this link:
 
 *   [collectd Wiki](https://collectd.org/wiki/)
 
+## Frequently Asked Questions
+
+Answers to frequent questions are available on our [FAQ page](faq.html).
+
 ## Special documentation
 
 The following documentation describes some special aspects of the daemon.
