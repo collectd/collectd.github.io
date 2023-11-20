@@ -50,9 +50,9 @@ This site is run by [Florian octo Forster](http://octo.it/), `<octo at collectd.
 
 ### Postal address
 
-> Florian Forster
-> Stralsunder Straße 46
-> 90425 Nürnberg
+Florian Forster<br>
+Stralsunder Straße 46<br>
+90425 Nürnberg
 
 ### Disclaimer
 
