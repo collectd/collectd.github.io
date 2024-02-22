@@ -1,3 +1,3 @@
-version: 6.0.0.rc3
-url: "https://storage.googleapis.com/collectd-tarballs/collectd-6.0.0.rc3.tar.bz2"
-sha256: 395326ab534722677ee46ae295ba073c9b7021887cac212a9000f2b24e442f84
+version: 6.0.0.rc99
+url: "https://example.com/"
+sha256: b543fb6fe7fee6d8ef475c1ac29ef85f0d7c16662881673ba86753f9285ce64b
