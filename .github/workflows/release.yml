@@ -27,7 +27,7 @@ jobs:
         run: |
           cat >_data/collectd6.yml <<EOF
           version: ${{ inputs.version }}
-          url: "${{ inputs.url }}"
+          url: "${{ inputs.download_url }}"
           sha256: ${{ inputs.sha256sum }}
           EOF
           git add _data/collectd6.yml
