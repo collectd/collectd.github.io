@@ -24,8 +24,8 @@
         </header>
         <section id="downloads" class="clearfix">
           {% if page.show_downloads %}
-	  <a href="{{ site.data.version.latest.url }}" id="download-tar-gz" class="button"><span>collectd-{{ site.data.version.latest.number }}</span></a>
-	  <a href="{{ site.data.version.previous.url }}" id="download-tar-gz" class="button"><span>collectd-{{ site.data.version.previous.number }}</span></a>
+	  <a href="{{ site.data.collectd6.url }}" id="download-tar-gz" class="button"><span>collectd-{{ site.data.collectd6.version }}</span></a>
+	  <a href="{{ site.data.collectd5.url }}" id="download-tar-gz" class="button"><span>collectd-{{ site.data.collectd5.version }}</span></a>
           {% endif %}
 	{% if site.github.public %}
 	  {% if site.github.is_project_page %}

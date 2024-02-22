@@ -30,12 +30,12 @@ These tarballs hold the collectd sources as published by the collectd
 developers. These are the *supported* versions, previous versions will not get
 updates.
 
-*   Version {{ site.data.version.latest.number }}
-    *   [collectd-{{ site.data.version.latest.number }}.tar.bz2]({{ site.data.version.latest.url }})<br>
-        SHA-256: `{{ site.data.version.latest.sha256 }}`
-*   Version {{ site.data.version.previous.number }}
-    *   [collectd-{{ site.data.version.previous.number }}.tar.bz2]({{ site.data.version.previous.url }})<br>
-        SHA-256: `{{ site.data.version.previous.sha256 }}`
+*   Version {{ site.data.collectd6.version }}
+    *   [collectd-{{ site.data.collectd6.version }}.tar.bz2]({{ site.data.collectd6.url }})<br>
+        SHA-256: `{{ site.data.collectd6.sha256 }}`
+*   Version {{ site.data.collectd5.version }}
+    *   [collectd-{{ site.data.collectd5.version }}.tar.bz2]({{ site.data.collectd5.url }})<br>
+        SHA-256: `{{ site.data.collectd5.sha256 }}`
 
 ### How to compile source packages
 

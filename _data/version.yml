@@ -1,8 +1,0 @@
-latest:
-  number: 6.0.0.rc3
-  url: "https://storage.googleapis.com/collectd-tarballs/collectd-6.0.0.rc3.tar.bz2"
-  sha256: 395326ab534722677ee46ae295ba073c9b7021887cac212a9000f2b24e442f84
-previous:
-  number: 5.12.0
-  url: "https://storage.googleapis.com/collectd-tarballs/collectd-5.12.0.tar.bz2"
-  sha256: 5bae043042c19c31f77eb8464e56a01a5454e0b39fa07cf7ad0f1bfc9c3a09d6
