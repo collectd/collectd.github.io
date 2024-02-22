@@ -1,0 +1,39 @@
+---
+name: Publish Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version Number'
+        required: true
+        type: string
+      download_url:
+        description: 'Download URL'
+        required: true
+        type: string
+      sha256sum:
+        description: 'SHA-256 checksum'
+        required: true
+        type: string
+
+jobs:
+  collectd6:
+    if: ${{ startsWith(inputs.version, '6.') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update data file
+        run: |
+          cat >_data/collectd6.yml <<EOF
+          version: ${{ inputs.version }}
+          url: "${{ inputs.url }}"
+          sha256: ${{ inputs.sha256sum }}
+          EOF
+          git add _data/collectd6.yml
+      - name: Commit data file
+        run: |
+          git config --global user.name 'collectd bot'
+          git config --global user.email 'collectd-bot@users.noreply.github.com'
+          git commit -am "Bump collectd6 to ${{ inputs.version }}"
+          git push
