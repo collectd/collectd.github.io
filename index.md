@@ -40,7 +40,7 @@ thousands of metrics. The daemon comes with [over
 cases to very specialized and advanced topics. It provides powerful networking
 features and is extensible in numerous ways. Last but not least: collectd is
 actively developed and supported and well documented. A more complete [list of
-features](features.shtml) is available in our wiki.
+features](features.html) is available in our wiki.
 
 ### Limitations
 
