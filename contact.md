@@ -33,7 +33,7 @@ that before asking questions that may have been answered before.
 
 ## IRC
 
-Some of us are hanging out in `#collectd` on [freenode](http://freenode.net/). Feel free to join us there :)
+Some of us are hanging out in `#collectd` on [libera](http://libera.chat/). Feel free to join us there :)
 
 ## Twitter
 
