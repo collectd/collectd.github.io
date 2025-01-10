@@ -13,7 +13,7 @@ the following command.
 git clone git://git.verplant.org/collectd.git  
   
 <span class="comment">\# Github mirror</span>  
-git clone git://github.com/collectd/collectd.git  
+git clone https://github.com/collectd/collectd.git
 
 </div>
 

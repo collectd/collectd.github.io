@@ -60,7 +60,7 @@ The Git repository, along with issue tracker and Pull Requests, is hosted on Git
 http://github.com/collectd/collectd/.
 
 ```shell
-git clone git://github.com/collectd/collectd.git
+git clone https://github.com/collectd/collectd.git
 ```
 
 More information is available in [the development documentation](dev-info.md).
