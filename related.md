@@ -14,7 +14,7 @@ For a **list of graphing front-ends**, see our [List of front-ends](/wiki/index.
 
 </div>
 
-  - [Collectd-web](/wiki/index.php/Collectd-web) ([Homepage](http://wiki.github.com/httpdss/collectd-web/))  
+  - [Collectd-web](/wiki/index.php/Collectd-web) ([Homepage](https://httpdss.github.io/collectd-web/))  
     Web-based graphing front-end using JavaScript and a modified version of *collection 2*.
     <div class="code">
     git://github.com/httpdss/collectd-web.git
